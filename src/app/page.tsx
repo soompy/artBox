@@ -10,7 +10,7 @@ export default function Home() {
   const allArtworks = getAllArtworks();
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen pb-80">
       <Header />
       
       <main className="pt-20">
