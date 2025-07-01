@@ -8,9 +8,9 @@ export default function Footer() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.5 }}
-      className="border-t border-white/10 bg-black/20 backdrop-blur-xl"
+      className="fixed bottom-0 left-0 right-0 z-40 w-full border-t border-white/10 bg-black/20 backdrop-blur-xl"
     >
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="w-full px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
