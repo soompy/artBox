@@ -23,20 +23,20 @@ const emotions: Emotion[] = [
   { name: '활력', color: '#F97316', description: '에너지 넘치는 생동감' }
 ];
 
-export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
+const sectionTitles = [
+  '출근의 리듬',
+  '도시의 리듬', 
+  '감정의 흐트러짐',
+  '다시 일상으로',
+  '당신의 오늘 아침 감정은?'
+];
+
+export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [selectedEmotion, setSelectedEmotion] = useState<Emotion | null>(null);
-  const [showEmotionSelector, setShowEmotionSelector] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
-
-  const sectionTitles = [
-    '출근의 리듬',
-    '도시의 리듬', 
-    '감정의 흐트러짐',
-    '다시 일상으로',
-    '당신의 오늘 아침 감정은?'
-  ];
+  const [emotionEffect, setEmotionEffect] = useState<string | null>(null);
 
   const [particles, setParticles] = useState<Array<{
     x: number;
@@ -52,13 +52,6 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
     target: containerRef,
     offset: ["start start", "end end"]
   });
-
-  // 스크롤 진행도에 따른 섹션 계산
-  const section1Progress = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const section2Progress = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
-  const section3Progress = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
-  const section4Progress = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
-  const section5Progress = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
 
   // 배경색 보간
   const backgroundColor = useTransform(
@@ -81,13 +74,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
       else if (progress < 0.4) setCurrentSection(1);
       else if (progress < 0.6) setCurrentSection(2);
       else if (progress < 0.8) setCurrentSection(3);
-      else if (progress < 0.85) setCurrentSection(4); // 0.85에서 제목 사라짐
-      else setCurrentSection(-1); // -1일 때 제목 숨김
-
-      // 감정 선택기 표시 시점 조정
-      if (progress >= 0.85) {
-        setShowEmotionSelector(true);
-      }
+      else setCurrentSection(4);
     });
 
     return () => unsubscribe();
@@ -115,14 +102,14 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
   // 파티클 초기화
   useEffect(() => {
     const newParticles = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       newParticles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
         size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.3 + 0.1,
         color: '#ffffff'
       });
     }
@@ -132,6 +119,8 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
   // 감정 선택 핸들러
   const handleEmotionSelect = (emotion: Emotion) => {
     setSelectedEmotion(emotion);
+    setEmotionEffect(emotion.name);
+    
     // 파티클 색상 변경
     setParticles(prev => prev.map(particle => ({
       ...particle,
@@ -139,6 +128,11 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
       vx: (Math.random() - 0.5) * 4,
       vy: (Math.random() - 0.5) * 4
     })));
+
+    // 효과를 5초 후에 제거
+    setTimeout(() => {
+      setEmotionEffect(null);
+    }, 5000);
   };
 
   // 캔버스 렌더링
@@ -155,7 +149,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // 파티클 업데이트 및 렌더링
-      particles.forEach((particle, index) => {
+      particles.forEach((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
@@ -184,283 +178,389 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
     };
   }, [particles]);
 
-  return (
-    <motion.div 
-      ref={containerRef} 
-      className="relative w-full min-h-[500vh] text-white overflow-hidden"
-      style={{ backgroundColor }}
-    >
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 pointer-events-none"
-        style={{ zIndex: 1 }}
-      />
-
-      {/* 중앙 고정 제목 */}
-      {currentSection !== -1 && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center">
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={currentSection}
-              className="text-6xl font-bold font-black-han-sans"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5 }}
-            >
-              {sectionTitles[currentSection]}
-            </motion.h1>
-          </AnimatePresence>
-        </div>
-      )}
-
-      {/* 섹션 1: 인트로 - 회색 도시 + 실루엣 군중 이동 */}
-      <motion.section
-        className="sticky top-0 h-screen flex items-center justify-center"
-        style={{ zIndex: 2 }}
-      >
-        <div className="text-center relative mt-32">
+  // 섹션별 컨텐츠 렌더링 함수
+  const renderSectionContent = () => {
+    switch (currentSection) {
+      case 0: // 출근의 리듬
+        return (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-            className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-50"
-          />
-          
-          {/* 도시 실루엣 */}
-          <motion.div
-            className="relative mb-8"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
+            key="section-0"
+            className="relative w-full h-full"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="w-full h-32 bg-gradient-to-t from-gray-700 to-gray-500 opacity-60 mb-4" 
-                 style={{ clipPath: 'polygon(0 100%, 10% 80%, 20% 90%, 30% 70%, 40% 85%, 50% 60%, 60% 75%, 70% 55%, 80% 80%, 90% 65%, 100% 85%, 100% 100%)' }} />
-          </motion.div>
+            {/* 거대한 도시 실루엣 - 화면 전체 배경 */}
+            <motion.div
+              className="absolute inset-0 flex items-end justify-center"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 2, delay: 0.5 }}
+            >
+              <div 
+                className="w-full h-80 bg-gradient-to-t from-gray-800 via-gray-700 to-gray-600 opacity-70" 
+                style={{ 
+                  clipPath: 'polygon(0 100%, 5% 60%, 12% 80%, 18% 45%, 25% 70%, 32% 30%, 38% 65%, 45% 25%, 52% 75%, 58% 35%, 65% 80%, 72% 20%, 78% 60%, 85% 40%, 92% 85%, 100% 50%, 100% 100%)'
+                }} 
+              />
+            </motion.div>
 
-          {/* 군중 실루엣 애니메이션 */}
-          <motion.div className="flex justify-center space-x-2 mb-8">
-            {[...Array(12)].map((_, i) => (
+            {/* 대형 교통수단들이 도시를 가로지름 */}
+            <motion.div className="absolute inset-0">
+              {/* 거대한 버스 */}
               <motion.div
-                key={i}
-                className="w-3 h-8 bg-gray-600 rounded-full opacity-70"
+                className="absolute bottom-32 w-32 h-16 bg-yellow-500 rounded-lg shadow-lg"
+                style={{ 
+                  background: 'linear-gradient(45deg, #EAB308, #F59E0B)',
+                  boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
+                }}
                 animate={{
-                  x: [0, Math.random() * 20 - 10, 0],
-                  scaleY: [1, 1.1, 1]
+                  x: [-150, window.innerWidth + 50]
                 }}
                 transition={{
-                  duration: 2 + Math.random() * 2,
+                  duration: 15,
                   repeat: Infinity,
-                  delay: i * 0.1
+                  ease: "linear"
                 }}
-              />
-            ))}
-          </motion.div>
-          
-          <motion.p
-            className="text-xl text-gray-300 font-black-han-sans"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
-          >
-            도시 속 개인의 감정 여행
-          </motion.p>
-        </div>
-      </motion.section>
+              >
+                {/* 버스 창문 */}
+                <div className="flex space-x-2 mt-2 ml-4">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="w-3 h-8 bg-blue-300 opacity-60 rounded-sm" />
+                  ))}
+                </div>
+              </motion.div>
+              
+              {/* 거대한 지하철 */}
+              <motion.div
+                className="absolute bottom-20 w-40 h-12 bg-green-600 rounded-lg shadow-lg"
+                style={{ 
+                  background: 'linear-gradient(45deg, #16A34A, #22C55E)',
+                  boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
+                }}
+                animate={{
+                  x: [window.innerWidth + 50, -200]
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                {/* 지하철 창문 */}
+                <div className="flex space-x-1 mt-2 ml-3">
+                  {[...Array(10)].map((_, i) => (
+                    <div key={i} className="w-2 h-6 bg-blue-200 opacity-70 rounded-sm" />
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
 
-      {/* 섹션 2: 도시의 리듬 - 버스, 지하철, 발걸음 */}
-      <motion.section className="sticky top-0 h-screen flex items-center justify-center">
-        <div className="text-center mt-32">
-          
-          {/* 교통수단 애니메이션 */}
-          <div className="relative w-full max-w-4xl mx-auto h-40 mb-8">
-            {/* 버스 */}
-            <motion.div
-              className="absolute top-0 w-16 h-8 bg-yellow-500 rounded"
-              animate={{
-                x: [0, window.innerWidth - 64, 0]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-            
-            {/* 지하철 */}
-            <motion.div
-              className="absolute top-12 w-20 h-6 bg-green-500 rounded"
-              animate={{
-                x: [window.innerWidth, -80]
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-            
-            {/* 발걸음 애니메이션 */}
-            <div className="absolute bottom-0 flex space-x-4">
-              {[...Array(8)].map((_, i) => (
+            {/* 거대한 군중 실루엣 - 화면 하단 전체 */}
+            <motion.div 
+              className="absolute bottom-0 left-0 right-0 flex justify-center items-end space-x-4 px-8"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 1 }}
+            >
+              {[...Array(24)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="w-2 h-2 bg-white rounded-full"
+                  className="bg-gray-600 rounded-full opacity-80 shadow-lg"
+                  style={{
+                    width: `${12 + Math.random() * 8}px`,
+                    height: `${40 + Math.random() * 30}px`,
+                    background: `linear-gradient(to bottom, #4B5563, #374151)`,
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+                  }}
                   animate={{
-                    scale: [0, 1, 0],
-                    opacity: [0, 1, 0]
+                    x: [0, Math.random() * 40 - 20, 0],
+                    scaleY: [1, 1.1, 1],
+                    scaleX: [1, 0.9, 1]
                   }}
                   transition={{
-                    duration: 1,
+                    duration: 3 + Math.random() * 3,
+                    repeat: Infinity,
+                    delay: i * 0.1,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </motion.div>
+
+            {/* 움직이는 사람들 - 중간 레이어 */}
+            <motion.div className="absolute inset-0">
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={`walking-${i}`}
+                  className="absolute bottom-16"
+                  style={{
+                    left: `${Math.random() * 80 + 10}%`,
+                  }}
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ 
+                    x: [0, 100, 0],
+                    opacity: [0, 1, 1, 0]
+                  }}
+                  transition={{
+                    duration: 8 + Math.random() * 4,
+                    repeat: Infinity,
+                    delay: i * 2,
+                    ease: "linear"
+                  }}
+                >
+                  <div 
+                    className="w-4 h-12 bg-gray-500 rounded-full opacity-60"
+                    style={{
+                      background: 'linear-gradient(to bottom, #6B7280, #4B5563)',
+                      boxShadow: '0 1px 5px rgba(0,0,0,0.2)'
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+            
+            {/* 중앙 텍스트 */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 2 }}
+            >
+              <div className="text-center bg-black bg-opacity-40 p-8 rounded-2xl backdrop-blur-sm">
+                <motion.p
+                  className="text-3xl text-gray-100 font-black-han-sans"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 2.5 }}
+                >
+                  도시 속 개인의 감정 여행
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* 떠다니는 감정 버블들 */}
+            <motion.div className="absolute inset-0 pointer-events-none">
+              {[...Array(15)].map((_, i) => (
+                <motion.div
+                  key={`bubble-${i}`}
+                  className="absolute w-2 h-2 bg-white rounded-full opacity-30"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 70 + 15}%`,
+                  }}
+                  animate={{
+                    y: [0, -20, 0],
+                    opacity: [0.2, 0.6, 0.2],
+                    scale: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 4 + Math.random() * 3,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+        );
+
+      case 1: // 도시의 리듬
+        return (
+          <motion.div
+            key="section-1"
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.2 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* 교통수단 애니메이션 */}
+            <div className="relative w-full max-w-4xl mx-auto h-40 mb-8">
+              {/* 버스 */}
+              <motion.div
+                className="absolute top-0 w-16 h-8 bg-yellow-500 rounded"
+                animate={{
+                  x: [0, 400, 0]
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              
+              {/* 지하철 */}
+              <motion.div
+                className="absolute top-12 w-20 h-6 bg-green-500 rounded"
+                animate={{
+                  x: [400, -80]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              
+              {/* 발걸음 애니메이션 */}
+              <div className="absolute bottom-0 flex space-x-4 left-1/2 transform -translate-x-1/2">
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 h-2 bg-white rounded-full"
+                    animate={{
+                      scale: [0, 1, 0],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      delay: i * 0.1
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            <motion.p
+              className="text-lg text-gray-300 font-black-han-sans"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              반복되는 움직임 속에서 찾는 나만의 템포
+            </motion.p>
+          </motion.div>
+        );
+
+      case 2: // 감정의 흐트러짐
+        return (
+          <motion.div
+            key="section-2"
+            className="text-center relative"
+            initial={{ opacity: 0, rotateY: 90 }}
+            animate={{ opacity: 1, rotateY: 0 }}
+            exit={{ opacity: 0, rotateY: -90 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* 중앙 인물 강조 */}
+            <motion.div
+              className="relative mx-auto mb-8"
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.5 }}
+              transition={{ duration: 1 }}
+            >
+              <div className="w-8 h-16 bg-white rounded-full mx-auto relative">
+                <motion.div
+                  className="absolute inset-0 rounded-full border-4 border-red-400"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                />
+              </div>
+            </motion.div>
+            
+            {/* 감정 파티클 */}
+            <motion.div className="absolute inset-0 pointer-events-none">
+              {[...Array(20)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-red-400 rounded-full"
+                  style={{
+                    left: `${50 + (Math.random() - 0.5) * 60}%`,
+                    top: `${50 + (Math.random() - 0.5) * 60}%`
+                  }}
+                  animate={{
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0],
+                    x: [(Math.random() - 0.5) * 100],
+                    y: [(Math.random() - 0.5) * 100]
+                  }}
+                  transition={{
+                    duration: 3,
                     repeat: Infinity,
                     delay: i * 0.1
                   }}
                 />
               ))}
-            </div>
-          </div>
-          
-          <motion.p
-            className="text-lg text-gray-300 font-black-han-sans"
-            style={{ opacity: section2Progress }}
-          >
-            반복되는 움직임 속에서 찾는 나만의 템포
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* 섹션 3: 감정의 흐트러짐 - 한 사람 강조 + particle/noise */}
-      <motion.section className="sticky top-0 h-screen flex items-center justify-center">
-        <div className="text-center relative mt-32">
-          
-          {/* 중앙 인물 강조 */}
-          <motion.div
-            className="relative mx-auto mb-8"
-            style={{
-              scale: useTransform(section3Progress, [0, 1], [1, 1.5]),
-              opacity: section3Progress
-            }}
-          >
-            <div className="w-8 h-16 bg-white rounded-full mx-auto relative">
-              <motion.div
-                className="absolute inset-0 rounded-full border-4 border-red-400"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 1, 0.5]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity
-                }}
-              />
-            </div>
-          </motion.div>
-          
-          {/* 감정 파티클 */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{ opacity: section3Progress }}
-          >
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-red-400 rounded-full"
-                style={{
-                  left: `${50 + (Math.random() - 0.5) * 60}%`,
-                  top: `${50 + (Math.random() - 0.5) * 60}%`
-                }}
-                animate={{
-                  scale: [0, 1, 0],
-                  opacity: [0, 1, 0],
-                  x: [(Math.random() - 0.5) * 100],
-                  y: [(Math.random() - 0.5) * 100]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: i * 0.1
-                }}
-              />
-            ))}
-          </motion.div>
-          
-          <motion.p
-            className="text-lg text-gray-300 font-black-han-sans"
-            style={{ opacity: section3Progress }}
-          >
-            군중 속에서 일어나는 개인의 감정적 순간
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* 섹션 4: 다시 일상으로 - 군중 속 감정 스며들기 + 색 번짐 */}
-      <motion.section className="sticky top-0 h-screen flex items-center justify-center">
-        <div className="text-center relative mt-32">
-          
-          {/* 색 번짐 효과 */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-radial from-purple-500 via-blue-500 to-transparent opacity-30"
-            style={{
-              scale: useTransform(section4Progress, [0, 1], [0, 2]),
-              opacity: useTransform(section4Progress, [0, 1], [0, 0.6])
-            }}
-          />
-          
-          {/* 군중으로 다시 합쳐지는 애니메이션 */}
-          <motion.div className="flex justify-center space-x-1 mb-8">
-            {[...Array(15)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="w-2 h-6 bg-gradient-to-t from-purple-400 to-blue-400 rounded-full"
-                style={{
-                  opacity: section4Progress,
-                  scale: useTransform(section4Progress, [0, 1], [0.5, 1])
-                }}
-                animate={{
-                  y: [0, -5, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.1
-                }}
-              />
-            ))}
-          </motion.div>
-          
-          <motion.p
-            className="text-lg text-gray-300 font-black-han-sans"
-            style={{ opacity: section4Progress }}
-          >
-            개인의 감정이 집단의 리듬과 하나가 되는 순간
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* 섹션 5: 엔딩 인터랙션 - 감정 선택 */}
-      <motion.section 
-        className="sticky top-0 h-screen flex items-center justify-center"
-      >
-        <div className="text-center">
-          
-          {/* 감정 선택 영역의 제목 */}
-          {showEmotionSelector && (
-            <motion.h2
-              className="text-5xl font-bold mb-12 font-black-han-sans"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+            </motion.div>
+            
+            <motion.p
+              className="text-lg text-gray-300 font-black-han-sans"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
             >
-              당신의 오늘 아침 감정은?
-            </motion.h2>
-          )}
-          
-          {showEmotionSelector && (
+              군중 속에서 일어나는 개인의 감정적 순간
+            </motion.p>
+          </motion.div>
+        );
+
+      case 3: // 다시 일상으로
+        return (
+          <motion.div
+            key="section-3"
+            className="text-center relative"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* 색 번짐 효과 */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-radial from-purple-500 via-blue-500 to-transparent opacity-30"
+              initial={{ scale: 0 }}
+              animate={{ scale: 2, opacity: 0.6 }}
+              transition={{ duration: 2 }}
+            />
+            
+            {/* 군중으로 다시 합쳐지는 애니메이션 */}
+            <motion.div className="flex justify-center space-x-1 mb-8">
+              {[...Array(15)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="w-2 h-6 bg-gradient-to-t from-purple-400 to-blue-400 rounded-full"
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 1, delay: i * 0.05 }}
+                />
+              ))}
+            </motion.div>
+            
+            <motion.p
+              className="text-lg text-gray-300 font-black-han-sans"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              개인의 감정이 집단의 리듬과 하나가 되는 순간
+            </motion.p>
+          </motion.div>
+        );
+
+      case 4: // 감정 선택
+        return (
+          <motion.div
+            key="section-4"
+            className="text-center"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -100 }}
+            transition={{ duration: 0.8 }}
+          >
             <motion.div
               className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 1, delay: 0.3 }}
             >
               {emotions.map((emotion, index) => (
                 <motion.button
@@ -480,7 +580,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
                   onClick={() => handleEmotionSelect(emotion)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                 >
                   <div 
                     className="w-8 h-8 rounded-full mx-auto mb-3"
@@ -491,25 +591,302 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
                 </motion.button>
               ))}
             </motion.div>
-          )}
-          
-          {selectedEmotion && (
+            
+            {selectedEmotion && (
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <p className="text-xl mb-4 font-black-han-sans" style={{ color: selectedEmotion.color }}>
+                  {selectedEmotion.name}을 선택하셨군요.
+                </p>
+                <p className="text-gray-300 font-black-han-sans">
+                  당신의 감정이 도시의 리듬과 어우러져 새로운 이야기를 만들어갑니다.
+                </p>
+              </motion.div>
+            )}
+          </motion.div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  // 감정별 효과 컴포넌트
+  const renderEmotionEffect = () => {
+    if (!emotionEffect) return null;
+
+    switch (emotionEffect) {
+      case '평온함':
+        return (
+          <div className="fixed inset-0 pointer-events-none z-20">
+            {/* 물결 효과 */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute inset-0 border-2 border-blue-300 rounded-full opacity-20"
+                style={{
+                  width: '200vw',
+                  height: '200vw',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                }}
+                initial={{ scale: 0, opacity: 0.4 }}
+                animate={{ 
+                  scale: [0, 1.5, 2],
+                  opacity: [0.4, 0.2, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  delay: i * 0.5,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
+        );
+
+      case '설렘':
+        return (
+          <div className="fixed inset-0 pointer-events-none z-20">
+            {/* 하트 효과 */}
+            {[...Array(12)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-4xl"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  bottom: '-50px',
+                  color: '#F59E0B'
+                }}
+                initial={{ y: 0, opacity: 1, scale: 0.5 }}
+                animate={{ 
+                  y: -window.innerHeight - 100,
+                  opacity: [1, 1, 0],
+                  scale: [0.5, 1, 0.8],
+                  rotate: [0, 10, -5, 0]
+                }}
+                transition={{
+                  duration: 4,
+                  delay: i * 0.2,
+                  ease: "easeOut"
+                }}
+              >
+                ❤️
+              </motion.div>
+            ))}
+          </div>
+        );
+
+      case '불안':
+        return (
+          <div className="fixed inset-0 pointer-events-none z-20">
+            {/* 지그재그 번개 효과 */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 bg-red-400"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 50}%`,
+                  height: '200px',
+                  transformOrigin: 'top center'
+                }}
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ 
+                  scaleY: [0, 1, 0],
+                  opacity: [0, 1, 0],
+                  rotateZ: [0, Math.random() * 30 - 15, 0]
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: i * 0.1,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
+            {/* 화면 진동 효과 */}
             <motion.div
-              className="text-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              className="fixed inset-0 bg-red-900 opacity-10"
+              animate={{
+                x: [0, -2, 2, -1, 1, 0],
+                y: [0, 1, -1, 2, -2, 0]
+              }}
+              transition={{
+                duration: 0.3,
+                repeat: 8,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
+        );
+
+      case '희망':
+        return (
+          <div className="fixed inset-0 pointer-events-none z-20">
+            {/* 별 반짝임 효과 */}
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-2xl"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  color: '#10B981'
+                }}
+                initial={{ scale: 0, opacity: 0, rotate: 0 }}
+                animate={{ 
+                  scale: [0, 1.5, 1, 1.2, 0],
+                  opacity: [0, 1, 0.8, 1, 0],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{
+                  duration: 3,
+                  delay: i * 0.15,
+                  ease: "easeInOut"
+                }}
+              >
+                ✨
+              </motion.div>
+            ))}
+            {/* 빛줄기 효과 */}
+            <motion.div
+              className="fixed inset-0 bg-gradient-to-t from-transparent via-green-200 to-transparent opacity-20"
+              initial={{ y: window.innerHeight }}
+              animate={{ y: -window.innerHeight }}
+              transition={{
+                duration: 2,
+                ease: "easeOut"
+              }}
+            />
+          </div>
+        );
+
+      case '우울':
+        return (
+          <div className="fixed inset-0 pointer-events-none z-20">
+            {/* 빗방울 효과 */}
+            {[...Array(30)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-0.5 bg-blue-400 opacity-60"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  height: `${Math.random() * 40 + 20}px`,
+                  top: '-50px'
+                }}
+                initial={{ y: 0, opacity: 0.6 }}
+                animate={{ 
+                  y: window.innerHeight + 100,
+                  opacity: [0.6, 0.8, 0.2, 0]
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 2,
+                  delay: i * 0.1,
+                  ease: "linear",
+                  repeat: 1
+                }}
+              />
+            ))}
+            {/* 구름 효과 */}
+            <motion.div
+              className="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-600 to-transparent opacity-40"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 0.4 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+            />
+          </div>
+        );
+
+      case '활력':
+        return (
+          <div className="fixed inset-0 pointer-events-none z-20">
+            {/* 폭죽 효과 */}
+            {[...Array(6)].map((_, i) => (
+              <div key={i}>
+                {[...Array(12)].map((_, j) => (
+                  <motion.div
+                    key={`${i}-${j}`}
+                    className="absolute w-2 h-2 bg-orange-400 rounded-full"
+                    style={{
+                      left: `${20 + i * 15}%`,
+                      top: `${30 + (i % 2) * 40}%`,
+                    }}
+                    initial={{ scale: 0, x: 0, y: 0 }}
+                    animate={{
+                      scale: [0, 1, 0.5, 0],
+                      x: Math.cos((j * 30) * Math.PI / 180) * 100,
+                      y: Math.sin((j * 30) * Math.PI / 180) * 100,
+                      opacity: [1, 1, 0.5, 0]
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: i * 0.3,
+                      ease: "easeOut"
+                    }}
+                  />
+                ))}
+              </div>
+            ))}
+            {/* 에너지 파장 */}
+            <motion.div
+              className="fixed inset-0 bg-gradient-radial from-orange-400 via-transparent to-transparent opacity-20"
+              initial={{ scale: 0 }}
+              animate={{ scale: [0, 3, 1.5] }}
+              transition={{ duration: 2, ease: "easeOut" }}
+            />
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <motion.div 
+      ref={containerRef} 
+      className="relative w-full h-[500vh] text-white overflow-hidden"
+      style={{ backgroundColor }}
+    >
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 pointer-events-none"
+        style={{ zIndex: 1 }}
+      />
+
+      {/* 감정 효과 렌더링 */}
+      {renderEmotionEffect()}
+
+      {/* 고정된 중앙 컨테이너 */}
+      <div className="fixed inset-0 flex flex-col items-center justify-center z-10">
+        {/* 제목 */}
+        <div className="mb-16">
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={currentSection}
+              className="text-6xl font-bold font-black-han-sans text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-xl mb-4 font-black-han-sans" style={{ color: selectedEmotion.color }}>
-                {selectedEmotion.name}을 선택하셨군요.
-              </p>
-              <p className="text-gray-300 font-black-han-sans">
-                당신의 감정이 도시의 리듬과 어우러져 새로운 이야기를 만들어갑니다.
-              </p>
-            </motion.div>
-          )}
+              {sectionTitles[currentSection]}
+            </motion.h1>
+          </AnimatePresence>
         </div>
-      </motion.section>
+
+        {/* 섹션별 컨텐츠 */}
+        <div className="flex-1 flex items-center justify-center w-full max-w-6xl px-8">
+          <AnimatePresence mode="wait">
+            {renderSectionContent()}
+          </AnimatePresence>
+        </div>
+      </div>
     </motion.div>
   );
 }
