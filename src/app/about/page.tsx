@@ -73,18 +73,18 @@ export default function AboutPage() {
               className="space-y-6"
             >
               <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                작가소개
+                <span className="font-black-han-sans">작가소개</span>
               </h2>
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  디지털 아트의 새로운 지평을 열어가는 인터랙티브 아티스트입니다. 
-                  전통적인 예술의 경계를 넘어서 기술과 예술의 융합을 통해 
-                  관객과 소통하는 작품을 만들어갑니다.
+                  <span className="font-black-han-sans">디지털 아트의 새로운 지평을 열어가는 인터랙티브 아티스트입니다.</span> 
+                  <span className="font-black-han-sans">전통적인 예술의 경계를 넘어서 기술과 예술의 융합을 통해</span> 
+                  <span className="font-black-han-sans">관객과 소통하는 작품을 만들어갑니다.</span>
                 </p>
                 <p>
-                  웹 기술, 3D 그래픽스, 인터랙티브 미디어를 활용하여 
-                  디지털 시대의 새로운 예술 경험을 제공합니다. 
-                  각 작품은 관객의 참여를 통해 완성되는 살아있는 예술작품입니다.
+                  <span className="font-black-han-sans">웹 기술, 3D 그래픽스, 인터랙티브 미디어를 활용하여</span> 
+                  <span className="font-black-han-sans">디지털 시대의 새로운 예술 경험을 제공합니다.</span> 
+                  <span className="font-black-han-sans">각 작품은 관객의 참여를 통해 완성되는 살아있는 예술작품입니다.</span>
                 </p>
               </div>
             </motion.section>
@@ -98,18 +98,18 @@ export default function AboutPage() {
               className="space-y-6"
             >
               <h2 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">
-                작가의 말
+                <span className="font-black-han-sans">작가의 말</span>
               </h2>
               <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                 <blockquote className="text-gray-200 leading-relaxed text-lg italic">
-                  "예술은 시대와 함께 진화해야 한다고 믿습니다. 
-                  디지털 시대의 예술은 단순히 보는 것에서 그치지 않고, 
-                  관객이 직접 참여하고 상호작용할 수 있어야 합니다.
+                  <span className="font-black-han-sans">"예술은 시대와 함께 진화해야 한다고 믿습니다.</span> 
+                  <span className="font-black-han-sans">디지털 시대의 예술은 단순히 보는 것에서 그치지 않고,</span> 
+                  <span className="font-black-han-sans">관객이 직접 참여하고 상호작용할 수 있어야 합니다.</span>
                   <br /><br />
-                  저의 작품들은 기술을 도구로 사용하되, 
-                  궁극적으로는 인간의 감정과 경험을 다루고자 합니다. 
-                  각각의 인터랙션이 새로운 이야기를 만들어내고, 
-                  그 순간만의 특별한 예술 경험이 탄생하기를 바랍니다."
+                  <span className="font-black-han-sans">저의 작품들은 기술을 도구로 사용하되,</span> 
+                  <span className="font-black-han-sans">궁극적으로는 인간의 감정과 경험을 다루고자 합니다.</span> 
+                  <span className="font-black-han-sans">각각의 인터랙션이 새로운 이야기를 만들어내고,</span> 
+                  <span className="font-black-han-sans">그 순간만의 특별한 예술 경험이 탄생하기를 바랍니다."</span>
                 </blockquote>
                 <cite className="block mt-6 text-right text-purple-300 font-medium">
                   - Interactive Artist
@@ -163,7 +163,7 @@ function IdeaText({ text, delay }: { text: string; delay: number }) {
       className="flex items-center space-x-4"
     >
       <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse" />
-      <span className="text-lg text-gray-300 font-medium">{text}</span>
+      <span className="text-lg text-gray-300 font-medium font-black-han-sans">{text}</span>
     </motion.div>
   );
 }

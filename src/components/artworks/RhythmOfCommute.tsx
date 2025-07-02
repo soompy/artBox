@@ -202,7 +202,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
           <AnimatePresence mode="wait">
             <motion.h1
               key={currentSection}
-              className="text-6xl font-bold"
+              className="text-6xl font-bold font-black-han-sans"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
@@ -258,7 +258,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
           </motion.div>
           
           <motion.p
-            className="text-xl text-gray-300"
+            className="text-xl text-gray-300 font-black-han-sans"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
@@ -321,7 +321,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
           </div>
           
           <motion.p
-            className="text-lg text-gray-300"
+            className="text-lg text-gray-300 font-black-han-sans"
             style={{ opacity: section2Progress }}
           >
             반복되는 움직임 속에서 찾는 나만의 템포
@@ -385,7 +385,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
           </motion.div>
           
           <motion.p
-            className="text-lg text-gray-300"
+            className="text-lg text-gray-300 font-black-han-sans"
             style={{ opacity: section3Progress }}
           >
             군중 속에서 일어나는 개인의 감정적 순간
@@ -429,7 +429,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
           </motion.div>
           
           <motion.p
-            className="text-lg text-gray-300"
+            className="text-lg text-gray-300 font-black-han-sans"
             style={{ opacity: section4Progress }}
           >
             개인의 감정이 집단의 리듬과 하나가 되는 순간
@@ -446,7 +446,7 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
           {/* 감정 선택 영역의 제목 */}
           {showEmotionSelector && (
             <motion.h2
-              className="text-5xl font-bold mb-12"
+              className="text-5xl font-bold mb-12 font-black-han-sans"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -486,8 +486,8 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
                     className="w-8 h-8 rounded-full mx-auto mb-3"
                     style={{ backgroundColor: emotion.color }}
                   />
-                  <h3 className="text-lg font-semibold mb-2">{emotion.name}</h3>
-                  <p className="text-sm text-gray-400">{emotion.description}</p>
+                  <h3 className="text-lg font-semibold mb-2 font-black-han-sans">{emotion.name}</h3>
+                  <p className="text-sm text-gray-400 font-black-han-sans">{emotion.description}</p>
                 </motion.button>
               ))}
             </motion.div>
@@ -500,10 +500,10 @@ export function RhythmOfCommute({ artwork }: RhythmOfCommuteProps) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-xl mb-4" style={{ color: selectedEmotion.color }}>
+              <p className="text-xl mb-4 font-black-han-sans" style={{ color: selectedEmotion.color }}>
                 {selectedEmotion.name}을 선택하셨군요.
               </p>
-              <p className="text-gray-300">
+              <p className="text-gray-300 font-black-han-sans">
                 당신의 감정이 도시의 리듬과 어우러져 새로운 이야기를 만들어갑니다.
               </p>
             </motion.div>

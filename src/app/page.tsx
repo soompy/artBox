@@ -36,9 +36,9 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl md:text-2xl text-muted mb-8 max-w-2xl mx-auto leading-relaxed"
               >
-                디지털 아트와 기술이 만나는 몰입감 있는 전시 공간에서
+                <span className="font-black-han-sans">디지털 아트와 기술이 만나는 몰입감 있는 전시 공간에서</span>
                 <br />
-                새로운 예술 경험을 만나보세요
+                <span className="font-black-han-sans">새로운 예술 경험을 만나보세요</span>
               </motion.p>
               
               <motion.div
@@ -53,7 +53,7 @@ export default function Home() {
                   className="px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl font-semibold text-white gallery-transition hover:shadow-2xl hover:shadow-purple-500/25"
                   onClick={() => document.getElementById('artworks')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  작품 관람하기
+                  <span className="font-black-han-sans">작품 관람하기</span>
                 </motion.button>
                 
                 <motion.button
@@ -61,7 +61,7 @@ export default function Home() {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 glass-effect rounded-2xl font-medium text-white gallery-transition hover:bg-white/5"
                 >
-                  전시 소개
+                  <span className="font-black-han-sans">전시 소개</span>
                 </motion.button>
               </motion.div>
             </motion.div>
@@ -97,7 +97,7 @@ export default function Home() {
                 <span className="cursor-gradient">Featured</span> Artworks
               </h2>
               <p className="text-lg text-muted max-w-2xl mx-auto">
-                인터랙티브 기술과 창의적 아이디어가 결합된 주요 작품들을 만나보세요
+                <span className="font-black-han-sans">인터랙티브 기술과 창의적 아이디어가 결합된 주요 작품들을 만나보세요</span>
               </p>
             </motion.div>
             
@@ -125,9 +125,9 @@ export default function Home() {
                 <span className="cursor-gradient">Experience</span> Digital Art
               </h2>
               <p className="text-lg text-muted mb-8">
-                각 작품은 최신 웹 기술을 활용하여 관람자와 상호작용하며,
+                <span className="font-black-han-sans">각 작품은 최신 웹 기술을 활용하여 관람자와 상호작용하며,</span>
                 <br />
-                전통적인 예술 감상을 넘어선 새로운 경험을 제공합니다.
+                <span className="font-black-han-sans">전통적인 예술 감상을 넘어선 새로운 경험을 제공합니다.</span>
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">

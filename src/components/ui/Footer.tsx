@@ -21,7 +21,7 @@ export default function Footer() {
                 Interactive Art Gallery
               </h3>
             </div>
-            <p className="text-sm text-muted mb-4">
+            <p className="text-sm text-muted mb-4 font-black-han-sans">
               디지털 아트와 기술이 만나는 몰입감 있는 인터랙티브 전시 공간
             </p>
             <p className="text-xs text-white/40">

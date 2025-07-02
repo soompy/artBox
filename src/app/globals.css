@@ -18,6 +18,7 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-black-han-sans: var(--font-black-han-sans), 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
@@ -70,4 +71,8 @@ body {
 
 .float-animation {
   animation: float 3s ease-in-out infinite;
+}
+
+.font-black-han-sans {
+  font-weight: lighter;
 }

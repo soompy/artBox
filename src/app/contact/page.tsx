@@ -48,7 +48,7 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              작품에 대한 문의나 협업 제안이 있으시면 언제든 연락해 주세요.
+              <span className="font-black-han-sans">작품에 대한 문의나 협업 제안이 있으시면 언제든 연락해 주세요.</span>
             </p>
           </motion.section>
 
@@ -62,7 +62,7 @@ export default function ContactPage() {
               className="space-y-8"
             >
               <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">
-                연락처 정보
+                <span className="font-black-han-sans">연락처 정보</span>
               </h2>
 
               {/* 이메일 */}
@@ -143,7 +143,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-white">Working Hours</h3>
                     <p className="text-orange-300">Mon - Fri, 9AM - 6PM KST</p>
-                    <p className="text-sm text-gray-400">보통 24시간 내 답변드립니다</p>
+                    <p className="text-sm text-gray-400 font-black-han-sans">보통 24시간 내 답변드립니다</p>
                   </div>
                 </div>
               </motion.div>
@@ -157,13 +157,13 @@ export default function ContactPage() {
             >
               <div className="bg-gradient-to-br from-gray-900/50 to-black/50 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                 <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  메시지 보내기
+                  <span className="font-black-han-sans">메시지 보내기</span>
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      이름
+                      <span className="font-black-han-sans">이름</span>
                     </label>
                     <input
                       type="text"
@@ -179,7 +179,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      이메일
+                      <span className="font-black-han-sans">이메일</span>
                     </label>
                     <input
                       type="email"
@@ -195,7 +195,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                      제목
+                      <span className="font-black-han-sans">제목</span>
                     </label>
                     <input
                       type="text"
@@ -211,7 +211,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                      메시지
+                      <span className="font-black-han-sans">메시지</span>
                     </label>
                     <textarea
                       id="message"
@@ -231,7 +231,7 @@ export default function ContactPage() {
                     type="submit"
                     className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
                   >
-                    메시지 전송
+                    <span className="font-black-han-sans">메시지 전송</span>
                   </motion.button>
                 </form>
               </div>
