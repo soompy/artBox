@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
+import '@/styles/about.scss';
 
 const ideaTexts = [
   "창의성은 경계를 허무는 것",
@@ -24,13 +25,13 @@ export default function AboutPage() {
   const boxOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <div className="min-h-screen bg-black text-white pb-80">
+    <div className="about-container">
       <Header />
-      <div ref={containerRef} className="container mx-auto px-6 py-20 pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div ref={containerRef} className="about-main">
+        <div className="about-grid">
           
           {/* 좌측 - 상자 이미지와 아이디어 문구들 */}
-          <div className="relative">
+          <div className="left-column">
             <motion.div
               style={{ scale: boxScale, opacity: boxOpacity }}
               className="relative"
@@ -40,21 +41,19 @@ export default function AboutPage() {
                 initial={{ rotateY: -30, rotateX: 10 }}
                 animate={{ rotateY: 0, rotateX: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className="w-80 h-80 mx-auto mb-12 relative perspective-1000"
+                className="art-box-container"
               >
-                <div className="w-full h-full bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500 rounded-2xl shadow-2xl transform-gpu rotate-y-12 rotate-x-6">
-                  <div className="absolute inset-4 bg-black/20 rounded-xl backdrop-blur-sm border border-white/20">
-                    <div className="flex items-center justify-center h-full">
-                      <div className="text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                        ART
-                      </div>
+                <div className="art-box">
+                  <div className="art-box-inner">
+                    <div className="art-text">
+                      ART
                     </div>
                   </div>
                 </div>
               </motion.div>
 
               {/* 아이디어 문구들 */}
-              <div className="space-y-6">
+              <div className="ideas-list">
                 {ideaTexts.map((text, index) => (
                   <IdeaText key={index} text={text} delay={index * 0.3} />
                 ))}
@@ -63,19 +62,19 @@ export default function AboutPage() {
           </div>
 
           {/* 우측 - 작가소개와 작가의 말 */}
-          <div className="space-y-12">
+          <div className="right-column">
             {/* 작가소개 */}
             <motion.section
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="content-section"
             >
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <h2 className="section-title purple-gradient">
                 <span className="font-black-han-sans">작가소개</span>
               </h2>
-              <div className="space-y-4 text-gray-300 leading-relaxed">
+              <div className="section-content">
                 <p>
                   <span className="font-black-han-sans">디지털 아트의 새로운 지평을 열어가는 인터랙티브 아티스트입니다.</span> 
                   <span className="font-black-han-sans">전통적인 예술의 경계를 넘어서 기술과 예술의 융합을 통해</span> 
@@ -95,13 +94,13 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="content-section quote-section"
             >
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">
+              <h2 className="section-title cyan-gradient">
                 <span className="font-black-han-sans">작가의 말</span>
               </h2>
-              <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
-                <blockquote className="text-gray-200 leading-relaxed text-lg italic">
+              <div className="quote-container">
+                <blockquote className="quote-text">
                   <span className="font-black-han-sans">"예술은 시대와 함께 진화해야 한다고 믿습니다.</span> 
                   <span className="font-black-han-sans">디지털 시대의 예술은 단순히 보는 것에서 그치지 않고,</span> 
                   <span className="font-black-han-sans">관객이 직접 참여하고 상호작용할 수 있어야 합니다.</span>
@@ -111,7 +110,7 @@ export default function AboutPage() {
                   <span className="font-black-han-sans">각각의 인터랙션이 새로운 이야기를 만들어내고,</span> 
                   <span className="font-black-han-sans">그 순간만의 특별한 예술 경험이 탄생하기를 바랍니다."</span>
                 </blockquote>
-                <cite className="block mt-6 text-right text-purple-300 font-medium">
+                <cite className="quote-author">
                   - Interactive Artist
                 </cite>
               </div>
@@ -123,19 +122,19 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="space-y-4"
+              className="contact-section"
             >
-              <h3 className="text-2xl font-semibold text-white">Contact</h3>
-              <div className="flex flex-wrap gap-4">
+              <h3 className="section-title">Contact</h3>
+              <div className="contact-buttons">
                 <a 
                   href="mailto:artist@example.com" 
-                  className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105"
+                  className="contact-btn email-btn"
                 >
                   Email
                 </a>
                 <a 
                   href="#" 
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105"
+                  className="contact-btn portfolio-btn"
                 >
                   Portfolio
                 </a>
@@ -160,10 +159,10 @@ function IdeaText({ text, delay }: { text: string; delay: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, delay }}
-      className="flex items-center space-x-4"
+      className="idea-item"
     >
-      <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse" />
-      <span className="text-lg text-gray-300 font-medium font-black-han-sans">{text}</span>
+      <div className="idea-dot" />
+      <span className="idea-text font-black-han-sans">{text}</span>
     </motion.div>
   );
 }

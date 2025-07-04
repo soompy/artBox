@@ -4,28 +4,33 @@ import { motion } from 'framer-motion';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import ArtworkCard from '@/components/ui/ArtworkCard';
+import P5Background from '@/components/ui/P5Background';
+import StarTrail from '@/components/ui/StarTrail';
 import { getAllArtworks } from '@/data/artworks';
+import '@/styles/home.scss';
 
 export default function Home() {
   const allArtworks = getAllArtworks();
 
   return (
-    <div className="relative min-h-screen pb-80">
+    <div className="home-container">
+      <StarTrail className="opacity-80" />
       <Header />
       
-      <main className="pt-20">
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
+      <main>
+        <section className="hero-section">
+          <P5Background variant="particles" className="opacity-40" />
+          <div className="hero-background" />
+          <div className="hero-radial" />
           
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <div className="hero-content">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="cursor-gradient">Interactive</span>
+              <h1>
+                <span className="gradient-text">Interactive</span>
                 <br />
                 <span className="text-white">Art Gallery</span>
               </h1>
@@ -34,23 +39,22 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl text-muted mb-8 max-w-2xl mx-auto leading-relaxed"
+                className="hero-description"
               >
-                <span className="font-black-han-sans">디지털 아트와 기술이 만나는 몰입감 있는 전시 공간에서</span>
-                <br />
-                <span className="font-black-han-sans">새로운 예술 경험을 만나보세요</span>
+                <span className="font-black-han-sans description-line">디지털 아트와 기술이 만나는 몰입감 있는 전시 공간에서</span>
+                <span className="font-black-han-sans description-line">새로운 예술 경험을 만나보세요</span>
               </motion.p>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                className="hero-buttons"
               >
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl font-semibold text-white gallery-transition hover:shadow-2xl hover:shadow-purple-500/25"
+                  className="btn-primary"
                   onClick={() => document.getElementById('artworks')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   <span className="font-black-han-sans">작품 관람하기</span>
@@ -59,7 +63,7 @@ export default function Home() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 glass-effect rounded-2xl font-medium text-white gallery-transition hover:bg-white/5"
+                  className="btn-secondary"
                 >
                   <span className="font-black-han-sans">전시 소개</span>
                 </motion.button>
@@ -76,32 +80,33 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="scroll-indicator"
           >
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
+            <div className="scroll-mouse">
+              <div className="scroll-dot" />
             </div>
           </motion.div>
         </section>
 
-        <section id="artworks" className="py-20 px-6">
-          <div className="max-w-7xl mx-auto">
+        <section id="artworks" className="artworks-section">
+          <P5Background variant="dots" className="opacity-20" />
+          <div className="artworks-container">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="section-header"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                <span className="cursor-gradient">Featured</span> Artworks
+              <h2>
+                <span className="gradient-text">Featured</span> Artworks
               </h2>
-              <p className="text-lg text-muted max-w-2xl mx-auto">
+              <p>
                 <span className="font-black-han-sans">인터랙티브 기술과 창의적 아이디어가 결합된 주요 작품들을 만나보세요</span>
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="artworks-grid">
               {allArtworks.map((artwork, index) => (
                 <ArtworkCard
                   key={artwork.id}
@@ -113,24 +118,156 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 px-6 bg-gradient-to-br from-purple-900/10 to-blue-900/10">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="series-section">
+          <P5Background variant="lines" className="opacity-30" />
+          <div className="series-container">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="section-header"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                <span className="cursor-gradient">Experience</span> Digital Art
+              <h2>
+                <span className="gradient-text">출근의 리듬</span> 시리즈
               </h2>
-              <p className="text-lg text-muted mb-8">
+              <p>
+                <span className="font-black-han-sans">일상의 순간들을 예술로 담아낸 연작 시리즈</span>
+              </p>
+            </motion.div>
+            
+            <div className="series-content">
+              <div className="series-grid">
+                {[
+                  {
+                    title: "출근의 리듬",
+                    subtitle: "The Rhythm of Commute",
+                    status: "완성",
+                    color: "from-emerald-500 to-teal-500",
+                    description: "현재 전시 중",
+                    link: "/artwork/rhythm-of-commute"
+                  },
+                  {
+                    title: "점심의 틈",
+                    subtitle: "Lunch Break Gap",
+                    status: "작업 중",
+                    color: "from-amber-500 to-orange-500",
+                    description: "곧 공개 예정",
+                    link: null
+                  },
+                  {
+                    title: "퇴근의 잔상",
+                    subtitle: "Afterimage of Departure",
+                    status: "기획 중",
+                    color: "from-violet-500 to-purple-500",
+                    description: "2024년 하반기",
+                    link: null
+                  },
+                  {
+                    title: "밤의 공명",
+                    subtitle: "Night Resonance",
+                    status: "예정",
+                    color: "from-indigo-500 to-blue-500",
+                    description: "2025년 상반기",
+                    link: null
+                  }
+                ].map((series, index) => (
+                  <motion.div
+                    key={series.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="series-card"
+                  >
+                    <div className={`card-background ${series.color.includes('emerald') ? 'emerald' : 
+                                                       series.color.includes('amber') ? 'amber' : 
+                                                       series.color.includes('violet') ? 'violet' : 'indigo'}`} />
+                    
+                    <div className="card-header">
+                      <div className="card-meta">
+                        <span className={`status-badge ${series.color.includes('emerald') ? 'emerald' : 
+                                                         series.color.includes('amber') ? 'amber' : 
+                                                         series.color.includes('violet') ? 'violet' : 'indigo'}`}>
+                          {series.status}
+                        </span>
+                        <div className="card-number">
+                          {String(index + 1).padStart(2, '0')}
+                        </div>
+                      </div>
+                      
+                      <h3 className="card-title font-black-han-sans">
+                        {series.title}
+                      </h3>
+                      <p className="card-subtitle">
+                        {series.subtitle}
+                      </p>
+                    </div>
+                    
+                    <div className="card-footer">
+                      <p className="card-description font-black-han-sans">
+                        {series.description}
+                      </p>
+                      
+                      <div className="progress-bar">
+                        <div 
+                          className={`progress-fill ${series.color.includes('emerald') ? 'emerald' : 
+                                                      series.color.includes('amber') ? 'amber' : 
+                                                      series.color.includes('violet') ? 'violet' : 'indigo'}`}
+                          style={{ 
+                            width: series.status === '완성' ? '100%' : 
+                                   series.status === '작업 중' ? '60%' : 
+                                   series.status === '기획 중' ? '30%' : '0%' 
+                          }}
+                        />
+                      </div>
+                    </div>
+                    
+                    {series.link && (
+                      <a 
+                        href={series.link} 
+                        className="absolute inset-0 w-full h-full z-20"
+                        aria-label={`${series.title} 작품 보기`}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="series-connection"
+              >
+                <div className="connection-line" />
+                <div className="connection-dot" />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="experience-section">
+          <P5Background variant="particles" className="opacity-20" />
+          <div className="experience-container">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="section-header"
+            >
+              <h2>
+                <span className="gradient-text">Experience</span> Digital Art
+              </h2>
+              <p>
                 <span className="font-black-han-sans">각 작품은 최신 웹 기술을 활용하여 관람자와 상호작용하며,</span>
                 <br />
                 <span className="font-black-han-sans">전통적인 예술 감상을 넘어선 새로운 경험을 제공합니다.</span>
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              <div className="tech-grid">
                 {[
                   { label: 'GSAP', desc: 'Animation' },
                   { label: 'Three.js', desc: '3D Graphics' },
@@ -143,10 +280,10 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="glass-effect rounded-xl p-4"
+                    className="tech-card"
                   >
-                    <h3 className="font-semibold text-white mb-1">{tech.label}</h3>
-                    <p className="text-sm text-muted">{tech.desc}</p>
+                    <h3>{tech.label}</h3>
+                    <p>{tech.desc}</p>
                   </motion.div>
                 ))}
               </div>

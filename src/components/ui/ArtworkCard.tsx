@@ -2,7 +2,10 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Artwork } from '@/types/artwork';
+import NoiseOverlay from './NoiseOverlay';
+import '@/styles/components.scss';
 
 interface ArtworkCardProps {
   artwork: Artwork;
@@ -10,6 +13,8 @@ interface ArtworkCardProps {
 }
 
 export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -20,9 +25,12 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
         ease: [0.23, 1, 0.32, 1],
       }}
       className="group relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Link href={`/projects/${artwork.slug}`}>
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 backdrop-blur-xl gallery-transition hover:border-white/20 hover:shadow-2xl hover:shadow-purple-500/20">
+          <NoiseOverlay isVisible={isHovered} className="rounded-2xl" />
           <div className="aspect-[4/3] bg-gradient-to-br from-purple-900/20 to-blue-900/20 flex items-center justify-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-blue-500/10" />
             <motion.div
