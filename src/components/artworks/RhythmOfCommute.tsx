@@ -37,6 +37,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
   const [selectedEmotion, setSelectedEmotion] = useState<Emotion | null>(null);
   const [currentSection, setCurrentSection] = useState(0);
   const [emotionEffect, setEmotionEffect] = useState<string | null>(null);
+  const [windowWidth, setWindowWidth] = useState(800);
 
   const [particles, setParticles] = useState<Array<{
     x: number;
@@ -66,6 +67,19 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
       '#111827'  // 끝점 - 회색 유지
     ]
   );
+
+  // 윈도우 크기 추적
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth);
+      window.addEventListener('resize', updateWindowWidth);
+      return () => window.removeEventListener('resize', updateWindowWidth);
+    }
+  }, []);
 
   // 현재 섹션 추적
   useEffect(() => {
@@ -101,10 +115,12 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
   // 파티클 초기화
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const newParticles = [];
     for (let i = 0; i < 50; i++) {
       newParticles.push({
-        x: Math.random() * window.innerWidth,
+        x: Math.random() * windowWidth,
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
@@ -114,7 +130,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
       });
     }
     setParticles(newParticles);
-  }, []);
+  }, [windowWidth]);
 
   // 감정 선택 핸들러
   const handleEmotionSelect = (emotion: Emotion) => {
@@ -216,7 +232,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
                 }}
                 animate={{
-                  x: [-150, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth + 50 : 800]
+                  x: [-150, windowWidth / 2 - 64, windowWidth / 2 - 64, windowWidth + 50]
                 }}
                 transition={{
                   duration: 15,
@@ -266,7 +282,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
                 }}
                 animate={{
-                  x: [-150, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth + 50 : 800]
+                  x: [-150, windowWidth / 2 - 64, windowWidth / 2 - 64, windowWidth + 50]
                 }}
                 transition={{
                   duration: 18,
@@ -319,7 +335,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
                 }}
                 animate={{
-                  x: [typeof window !== 'undefined' ? window.innerWidth + 50 : 800, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, -200]
+                  x: [windowWidth + 50, windowWidth / 2 - 80, windowWidth / 2 - 80, -200]
                 }}
                 transition={{
                   duration: 12,
@@ -344,7 +360,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
                 }}
                 animate={{
-                  x: [typeof window !== 'undefined' ? window.innerWidth + 50 : 800, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, -200]
+                  x: [windowWidth + 50, windowWidth / 2 - 80, windowWidth / 2 - 80, -200]
                 }}
                 transition={{
                   duration: 14,
