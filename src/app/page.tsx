@@ -1,13 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import ArtworkCard from '@/components/ui/ArtworkCard';
-import P5Background from '@/components/ui/P5Background';
-import StarTrail from '@/components/ui/StarTrail';
 import { getAllArtworks } from '@/data/artworks';
 import '@/styles/home.scss';
+
+const P5Background = dynamic(() => import('@/components/ui/P5Background'), {
+  ssr: false
+});
+
+const StarTrail = dynamic(() => import('@/components/ui/StarTrail'), {
+  ssr: false
+});
 
 export default function Home() {
   const allArtworks = getAllArtworks();

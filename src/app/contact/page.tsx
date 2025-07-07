@@ -2,10 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
-import FloatingShapes from '@/components/ui/FloatingShapes';
 import '@/styles/contact.scss';
+
+const FloatingShapes = dynamic(() => import('@/components/ui/FloatingShapes'), {
+  ssr: false
+});
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

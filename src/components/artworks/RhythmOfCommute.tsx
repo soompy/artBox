@@ -216,7 +216,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
                 }}
                 animate={{
-                  x: [-150, window.innerWidth / 2 - 64, window.innerWidth / 2 - 64, window.innerWidth + 50]
+                  x: [-150, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth + 50 : 800]
                 }}
                 transition={{
                   duration: 15,
@@ -266,7 +266,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
                 }}
                 animate={{
-                  x: [-150, window.innerWidth / 2 - 64, window.innerWidth / 2 - 64, window.innerWidth + 50]
+                  x: [-150, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 64 : 400, typeof window !== 'undefined' ? window.innerWidth + 50 : 800]
                 }}
                 transition={{
                   duration: 18,
@@ -319,7 +319,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
                 }}
                 animate={{
-                  x: [window.innerWidth + 50, window.innerWidth / 2 - 80, window.innerWidth / 2 - 80, -200]
+                  x: [typeof window !== 'undefined' ? window.innerWidth + 50 : 800, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, -200]
                 }}
                 transition={{
                   duration: 12,
@@ -344,7 +344,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
                 }}
                 animate={{
-                  x: [window.innerWidth + 50, window.innerWidth / 2 - 80, window.innerWidth / 2 - 80, -200]
+                  x: [typeof window !== 'undefined' ? window.innerWidth + 50 : 800, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 400, -200]
                 }}
                 transition={{
                   duration: 14,
