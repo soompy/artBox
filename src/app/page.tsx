@@ -160,7 +160,7 @@ export default function Home() {
                     subtitle: "Afterimage of Departure",
                     status: "기획 중",
                     color: "from-violet-500 to-purple-500",
-                    description: "2024년 하반기",
+                    description: "2025년 하반기",
                     link: null
                   },
                   {

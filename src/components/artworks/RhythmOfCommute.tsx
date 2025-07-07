@@ -58,9 +58,9 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
     scrollYProgress,
     [0, 0.2, 0.4, 0.6, 0.8, 1],
     [
-      '#000000', // 인트로 - 검은색
+      '#374151', // 인트로 - 새벽 연한 회색
       '#1e3a8a', // 도시의 리듬 - 파란색
-      '#7c2d12', // 감정의 흐트러짐 - 빨간색
+      '#FFF8DC', // 감정의 흐트러짐 - 아이보리색 (대낮)
       '#581c87', // 다시 일상으로 - 보라색
       '#111827', // 엔딩 - 회색
       '#111827'  // 끝점 - 회색 유지
@@ -208,20 +208,21 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
             {/* 대형 교통수단들이 도시를 가로지름 */}
             <motion.div className="absolute inset-0">
-              {/* 거대한 버스 */}
+              {/* 거대한 버스 1 */}
               <motion.div
-                className="absolute bottom-32 w-32 h-16 bg-yellow-500 rounded-lg shadow-lg"
+                className="absolute bottom-60 w-32 h-16 bg-yellow-500 rounded-lg shadow-lg"
                 style={{ 
                   background: 'linear-gradient(45deg, #EAB308, #F59E0B)',
                   boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
                 }}
                 animate={{
-                  x: [-150, window.innerWidth + 50]
+                  x: [-150, window.innerWidth / 2 - 64, window.innerWidth / 2 - 64, window.innerWidth + 50]
                 }}
                 transition={{
                   duration: 15,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1]
                 }}
               >
                 {/* 버스 창문 */}
@@ -230,9 +231,112 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                     <div key={i} className="w-3 h-8 bg-blue-300 opacity-60 rounded-sm" />
                   ))}
                 </div>
+                {/* 버스 바퀴 */}
+                <motion.div
+                  className="absolute -bottom-3 left-4 w-6 h-6 bg-gray-800 rounded-full border-2 border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1]
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-3 right-4 w-6 h-6 bg-gray-800 rounded-full border-2 border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1]
+                  }}
+                />
               </motion.div>
               
-              {/* 거대한 지하철 */}
+              {/* 거대한 버스 2 */}
+              <motion.div
+                className="absolute bottom-80 w-32 h-16 bg-yellow-500 rounded-lg shadow-lg"
+                style={{ 
+                  background: 'linear-gradient(45deg, #EAB308, #F59E0B)',
+                  boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)'
+                }}
+                animate={{
+                  x: [-150, window.innerWidth / 2 - 64, window.innerWidth / 2 - 64, window.innerWidth + 50]
+                }}
+                transition={{
+                  duration: 18,
+                  repeat: Infinity,
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1],
+                  delay: 7
+                }}
+              >
+                {/* 버스 창문 */}
+                <div className="flex space-x-2 mt-2 ml-4">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="w-3 h-8 bg-blue-300 opacity-60 rounded-sm" />
+                  ))}
+                </div>
+                {/* 버스 바퀴 */}
+                <motion.div
+                  className="absolute -bottom-3 left-4 w-6 h-6 bg-gray-800 rounded-full border-2 border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1],
+                    delay: 7
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-3 right-4 w-6 h-6 bg-gray-800 rounded-full border-2 border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1],
+                    delay: 7
+                  }}
+                />
+              </motion.div>
+              
+              {/* 거대한 지하철 1 */}
+              <motion.div
+                className="absolute bottom-40 w-40 h-12 bg-green-600 rounded-lg shadow-lg"
+                style={{ 
+                  background: 'linear-gradient(45deg, #16A34A, #22C55E)',
+                  boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
+                }}
+                animate={{
+                  x: [window.innerWidth + 50, window.innerWidth / 2 - 80, window.innerWidth / 2 - 80, -200]
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1]
+                }}
+              >
+                {/* 지하철 창문 */}
+                <div className="flex space-x-1 mt-2 ml-3">
+                  {[...Array(10)].map((_, i) => (
+                    <div key={i} className="w-2 h-6 bg-blue-200 opacity-70 rounded-sm" />
+                  ))}
+                </div>
+              </motion.div>
+              
+              {/* 거대한 지하철 2 */}
               <motion.div
                 className="absolute bottom-20 w-40 h-12 bg-green-600 rounded-lg shadow-lg"
                 style={{ 
@@ -240,12 +344,14 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
                   boxShadow: '0 4px 20px rgba(34, 197, 94, 0.3)'
                 }}
                 animate={{
-                  x: [window.innerWidth + 50, -200]
+                  x: [window.innerWidth + 50, window.innerWidth / 2 - 80, window.innerWidth / 2 - 80, -200]
                 }}
                 transition={{
-                  duration: 12,
+                  duration: 14,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1],
+                  delay: 5
                 }}
               >
                 {/* 지하철 창문 */}
@@ -259,30 +365,33 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
             {/* 거대한 군중 실루엣 - 화면 하단 전체 */}
             <motion.div 
-              className="absolute bottom-0 left-0 right-0 flex justify-center items-end space-x-4 px-8"
+              className="absolute bottom-0 left-0 right-0 w-full h-32"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.5, delay: 1 }}
             >
-              {[...Array(24)].map((_, i) => (
+              {[...Array(40)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="bg-gray-600 rounded-full opacity-80 shadow-lg"
+                  className="absolute bg-gray-600 rounded-full opacity-80 shadow-lg"
                   style={{
-                    width: `${12 + Math.random() * 8}px`,
-                    height: `${40 + Math.random() * 30}px`,
+                    left: `${Math.random() * 90 + 5}%`,
+                    bottom: `${Math.random() * 40}px`,
+                    width: `${8 + Math.random() * 6}px`,
+                    height: `${30 + Math.random() * 25}px`,
                     background: `linear-gradient(to bottom, #4B5563, #374151)`,
                     boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
                   }}
                   animate={{
-                    x: [0, Math.random() * 40 - 20, 0],
-                    scaleY: [1, 1.1, 1],
-                    scaleX: [1, 0.9, 1]
+                    x: [0, Math.random() * 60 - 30, Math.random() * 40 - 20, 0],
+                    scaleY: [1, 1.2, 0.9, 1.1, 1],
+                    scaleX: [1, 0.8, 1.1, 0.9, 1],
+                    y: [0, -5, 0, -3, 0]
                   }}
                   transition={{
-                    duration: 3 + Math.random() * 3,
+                    duration: 1.5 + Math.random() * 2,
                     repeat: Infinity,
-                    delay: i * 0.1,
+                    delay: i * 0.05,
                     ease: "easeInOut"
                   }}
                 />
@@ -291,30 +400,42 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
             {/* 움직이는 사람들 - 중간 레이어 */}
             <motion.div className="absolute inset-0">
-              {[...Array(8)].map((_, i) => (
+              {[...Array(18)].map((_, i) => (
                 <motion.div
                   key={`walking-${i}`}
-                  className="absolute bottom-16"
+                  className="absolute"
                   style={{
-                    left: `${Math.random() * 80 + 10}%`,
+                    left: `${Math.random() * 95 + 2.5}%`,
+                    bottom: `${Math.random() * 120 + 10}px`,
                   }}
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ 
-                    x: [0, 100, 0],
-                    opacity: [0, 1, 1, 0]
+                    x: [0, 80 + Math.random() * 40, 60 + Math.random() * 50, 0],
+                    y: [0, -2, 0, -1, 0],
+                    opacity: [0, 1, 1, 1, 0]
                   }}
                   transition={{
-                    duration: 8 + Math.random() * 4,
+                    duration: 4 + Math.random() * 3,
                     repeat: Infinity,
-                    delay: i * 2,
-                    ease: "linear"
+                    delay: i * 0.4,
+                    ease: "easeInOut"
                   }}
                 >
-                  <div 
+                  <motion.div 
                     className="w-4 h-12 bg-gray-500 rounded-full opacity-60"
                     style={{
                       background: 'linear-gradient(to bottom, #6B7280, #4B5563)',
                       boxShadow: '0 1px 5px rgba(0,0,0,0.2)'
+                    }}
+                    animate={{
+                      scaleY: [1, 1.1, 0.9, 1.05, 1],
+                      scaleX: [1, 0.95, 1.05, 0.98, 1]
+                    }}
+                    transition={{
+                      duration: 0.8 + Math.random() * 0.4,
+                      repeat: Infinity,
+                      delay: i * 0.1,
+                      ease: "easeInOut"
                     }}
                   />
                 </motion.div>
@@ -328,9 +449,9 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 2 }}
             >
-              <div className="text-center bg-black bg-opacity-40 p-8 rounded-2xl backdrop-blur-sm">
+              <div className="text-center from-slate-600/60 via-gray-500/50 to-sky-600/60 p-8 rounded-2xl">
                 <motion.p
-                  className="text-3xl text-gray-100 font-black-han-sans"
+                  className="text-4xl text-sky-100 font-black-han-sans"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 2.5 }}
@@ -379,29 +500,115 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
           >
             {/* 교통수단 애니메이션 */}
             <div className="relative w-full max-w-4xl mx-auto h-40 mb-8">
-              {/* 버스 */}
+              {/* 버스 1 */}
               <motion.div
-                className="absolute top-0 w-16 h-8 bg-yellow-500 rounded"
+                className="absolute top-10 w-16 h-8 bg-yellow-500 rounded"
                 animate={{
-                  x: [0, 400, 0]
+                  x: [0, 200, 200, 400]
                 }}
                 transition={{
                   duration: 8,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1]
                 }}
-              />
+              >
+                {/* 버스 바퀴 */}
+                <motion.div
+                  className="absolute -bottom-1 left-1 w-3 h-3 bg-gray-800 rounded-full border border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1]
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-1 right-1 w-3 h-3 bg-gray-800 rounded-full border border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1]
+                  }}
+                />
+              </motion.div>
               
-              {/* 지하철 */}
+              {/* 버스 2 */}
               <motion.div
-                className="absolute top-12 w-20 h-6 bg-green-500 rounded"
+                className="absolute top-30 w-16 h-8 bg-yellow-500 rounded"
                 animate={{
-                  x: [400, -80]
+                  x: [0, 200, 200, 400]
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1],
+                  delay: 4
+                }}
+              >
+                {/* 버스 바퀴 */}
+                <motion.div
+                  className="absolute -bottom-1 left-1 w-3 h-3 bg-gray-800 rounded-full border border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1],
+                    delay: 4
+                  }}
+                />
+                <motion.div
+                  className="absolute -bottom-1 right-1 w-3 h-3 bg-gray-800 rounded-full border border-gray-600"
+                  animate={{
+                    rotate: [0, 0, 0, 360]
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear",
+                    times: [0, 0.4, 0.6, 1],
+                    delay: 4
+                  }}
+                />
+              </motion.div>
+              
+              {/* 지하철 1 */}
+              <motion.div
+                className="absolute top-50 w-20 h-6 bg-green-500 rounded"
+                animate={{
+                  x: [400, 200, 200, -80]
                 }}
                 transition={{
                   duration: 6,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1]
+                }}
+              />
+              
+              {/* 지하철 2 */}
+              <motion.div
+                className="absolute top-70 w-20 h-6 bg-green-500 rounded"
+                animate={{
+                  x: [400, 200, 200, -80]
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                  times: [0, 0.4, 0.6, 1],
+                  delay: 3
                 }}
               />
               
@@ -440,7 +647,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
         return (
           <motion.div
             key="section-2"
-            className="text-center relative"
+            className="text-center relative w-full h-full"
             initial={{ opacity: 0, rotateY: 90 }}
             animate={{ opacity: 1, rotateY: 0 }}
             exit={{ opacity: 0, rotateY: -90 }}
@@ -453,54 +660,110 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
               animate={{ scale: 1.5 }}
               transition={{ duration: 1 }}
             >
-              <div className="w-8 h-16 bg-white rounded-full mx-auto relative">
-                <motion.div
-                  className="absolute inset-0 rounded-full border-4 border-red-400"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity
-                  }}
-                />
+              <div className="w-8 h-16 bg-white rounded-full mx-auto relative shadow-lg border-2 border-orange-300">
               </div>
             </motion.div>
             
-            {/* 감정 파티클 */}
+            {/* 꽃 효과 */}
             <motion.div className="absolute inset-0 pointer-events-none">
-              {[...Array(20)].map((_, i) => (
+              {[...Array(25)].map((_, i) => (
                 <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 bg-red-400 rounded-full"
+                  key={`flower-${i}`}
+                  className="absolute text-2xl"
                   style={{
-                    left: `${50 + (Math.random() - 0.5) * 60}%`,
-                    top: `${50 + (Math.random() - 0.5) * 60}%`
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    color: ['#FF8C00', '#FFA500', '#FFB84D', '#FF7F50', '#FF6347'][Math.floor(Math.random() * 5)]
                   }}
+                  initial={{ scale: 0, opacity: 0, rotate: 0 }}
                   animate={{
-                    scale: [0, 1, 0],
-                    opacity: [0, 1, 0],
-                    x: [(Math.random() - 0.5) * 100],
-                    y: [(Math.random() - 0.5) * 100]
+                    scale: [0, 1.2, 1, 1.5, 0],
+                    opacity: [0, 0.8, 1, 0.6, 0],
+                    rotate: [0, 90, 180, 270, 360],
+                    y: [0, -30, -60, -90]
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
-                    delay: i * 0.1
+                    delay: i * 0.2,
+                    ease: "easeOut"
                   }}
-                />
+                >
+                  🌸
+                </motion.div>
+              ))}
+              
+              {[...Array(20)].map((_, i) => (
+                <motion.div
+                  key={`flower2-${i}`}
+                  className="absolute text-xl"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    color: ['#FFD700', '#FFA500', '#FF8C00', '#FF4500'][Math.floor(Math.random() * 4)]
+                  }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{
+                    scale: [0, 1, 0.8, 1.2, 0],
+                    opacity: [0, 1, 0.8, 1, 0],
+                    rotate: [0, -45, 0, 45, 0],
+                    y: [0, -20, -40, -60]
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    delay: i * 0.25,
+                    ease: "easeOut"
+                  }}
+                >
+                  🌺
+                </motion.div>
+              ))}
+              
+              {[...Array(18)].map((_, i) => (
+                <motion.div
+                  key={`flower3-${i}`}
+                  className="absolute text-lg"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    color: ['#FFE4B5', '#FFDEAD', '#F4A460', '#DEB887'][Math.floor(Math.random() * 4)]
+                  }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{
+                    scale: [0, 1.3, 0.9, 1.1, 0],
+                    opacity: [0, 0.9, 1, 0.7, 0],
+                    rotate: [0, 120, 240, 360],
+                    y: [0, -25, -50, -75]
+                  }}
+                  transition={{
+                    duration: 4.5,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                    ease: "easeOut"
+                  }}
+                >
+                  🌼
+                </motion.div>
               ))}
             </motion.div>
+
             
-            <motion.p
-              className="text-lg text-gray-300 font-black-han-sans"
+            <motion.div 
+              className="absolute inset-0 flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              군중 속에서 일어나는 개인의 감정적 순간
-            </motion.p>
+              <motion.p
+                className="text-4xl text-orange-800 font-black-han-sans font-semibold text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+              >
+                군중 속에서 일어나는 개인의 감정적 순간
+              </motion.p>
+            </motion.div>
           </motion.div>
         );
 
@@ -863,7 +1126,7 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
       {renderEmotionEffect()}
 
       {/* 고정된 중앙 컨테이너 */}
-      <div className="fixed inset-0 flex flex-col items-center justify-center z-10">
+      <div className="fixed inset-0 flex flex-col items-center justify-center z-10" style={{ transform: 'translateY(-100px)' }}>
         {/* 제목 */}
         <div className="mb-16">
           <AnimatePresence mode="wait">

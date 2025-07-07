@@ -24,7 +24,7 @@ export default function Footer() {
             디지털 아트와 기술이 만나는 몰입감 있는 인터랙티브 전시 공간
           </p>
           <p className="text-xs text-white/40">
-            © 2024 Interactive Art Gallery. All rights reserved.
+            © 2025 Interactive Art Gallery. All rights reserved.
           </p>
         </div>
       </div>
