@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Artwork } from '@/types/artwork';
+import { audioManager } from '@/utils/audioManager';
 
 interface RhythmOfCommuteProps {
   artwork: Artwork;
@@ -38,6 +39,8 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
   const [currentSection, setCurrentSection] = useState(0);
   const [emotionEffect, setEmotionEffect] = useState<string | null>(null);
   const [windowWidth, setWindowWidth] = useState(800);
+  const [audioInitialized, setAudioInitialized] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
 
   const [particles, setParticles] = useState<Array<{
     x: number;
@@ -113,6 +116,48 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
     return () => window.removeEventListener('resize', updateCanvasSize);
   }, []);
 
+  // 오디오 초기화
+  useEffect(() => {
+    const initAudio = async () => {
+      await audioManager.init();
+      
+      // 합성음 사용으로 오디오 초기화 완료
+      setAudioInitialized(true);
+    };
+    
+    initAudio();
+  }, []);
+  
+  // 섹션별 합성음 재생
+  useEffect(() => {
+    if (!audioInitialized) return;
+    
+    const synthAudioMap = {
+      0: { name: 'morning-ambience', frequency: 220, duration: 5 }, // 아침 - 낮은 A음
+      1: { name: 'city-traffic', frequency: 440, duration: 3 }, // 도시 - 높은 A음
+      2: { name: 'peaceful-nature', frequency: 330, duration: 4 }, // 평온 - E음
+      3: { name: 'evening-crowd', frequency: 294, duration: 3 }, // 저녁 - D음
+      4: { name: 'emotional-ambient', frequency: 523, duration: 2 } // 감정 - 높은 C음
+    };
+    
+    const audioConfig = synthAudioMap[currentSection as keyof typeof synthAudioMap];
+    
+    if (audioConfig && audioConfig.name !== currentAudio) {
+      if (currentAudio) {
+        audioManager.stopAudio(currentAudio);
+      }
+      audioManager.playSynthAudio(audioConfig.name, audioConfig.frequency, audioConfig.duration, 0.1);
+      setCurrentAudio(audioConfig.name);
+    }
+  }, [currentSection, audioInitialized, currentAudio]);
+  
+  // 컴포넌트 언마운트 시 오디오 정리
+  useEffect(() => {
+    return () => {
+      audioManager.stopAllAudio();
+    };
+  }, []);
+
   // 파티클 초기화
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -136,6 +181,11 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
   const handleEmotionSelect = (emotion: Emotion) => {
     setSelectedEmotion(emotion);
     setEmotionEffect(emotion.name);
+    
+    // 감정 선택시 특별 사운드 효과
+    if (audioInitialized) {
+      audioManager.playSynthAudio('emotional-effect', 660, 1, 0.2);
+    }
     
     // 파티클 색상 변경
     setParticles(prev => prev.map(particle => ({
