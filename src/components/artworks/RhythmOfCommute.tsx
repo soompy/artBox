@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Artwork } from '@/types/artwork';
 import { audioManager } from '@/utils/audioManager';
 
@@ -52,24 +52,19 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
     color: string;
   }>>([]);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  // 스크롤 없이 시간 기반 애니메이션 사용
 
-  // 배경색 보간
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1],
-    [
+  // 배경색 설정 (섹션 기반)
+  const getBackgroundColor = () => {
+    const colors = [
       '#374151', // 인트로 - 새벽 연한 회색
       '#1e3a8a', // 도시의 리듬 - 파란색
       '#FFF8DC', // 감정의 흐트러짐 - 아이보리색 (대낮)
       '#581c87', // 다시 일상으로 - 보라색
-      '#111827', // 엔딩 - 회색
-      '#111827'  // 끝점 - 회색 유지
-    ]
-  );
+      '#111827'  // 엔딩 - 회색
+    ];
+    return colors[currentSection] || colors[0];
+  };
 
   // 윈도우 크기 추적
   useEffect(() => {
@@ -84,18 +79,17 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
     return () => window.removeEventListener('resize', updateWindowWidth);
   }, []);
 
-  // 현재 섹션 추적
+  // 자동으로 섹션 변경 (시간 기반)
   useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (progress) => {
-      if (progress < 0.2) setCurrentSection(0);
-      else if (progress < 0.4) setCurrentSection(1);
-      else if (progress < 0.6) setCurrentSection(2);
-      else if (progress < 0.8) setCurrentSection(3);
-      else setCurrentSection(4);
-    });
+    const interval = setInterval(() => {
+      setCurrentSection((prev) => {
+        if (prev >= 4) return 0; // 마지막 섹션에서 처음으로 돌아가기
+        return prev + 1;
+      });
+    }, 8000); // 8초마다 섹션 변경
 
-    return () => unsubscribe();
-  }, [scrollYProgress]);
+    return () => clearInterval(interval);
+  }, []);
 
   // 캔버스 애니메이션
   useEffect(() => {
@@ -1183,8 +1177,8 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
   return (
     <motion.div 
       ref={containerRef} 
-      className="relative w-full h-[500vh] text-white overflow-hidden"
-      style={{ backgroundColor }}
+      className="relative w-full h-screen text-white overflow-hidden"
+      style={{ backgroundColor: getBackgroundColor() }}
     >
       <canvas
         ref={canvasRef}
