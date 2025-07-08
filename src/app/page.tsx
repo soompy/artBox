@@ -62,7 +62,11 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="btn-primary"
-                  onClick={() => document.getElementById('artworks')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => {
+                    if (typeof document !== 'undefined') {
+                      document.getElementById('artworks')?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
                   <span className="font-black-han-sans">작품 관람하기</span>
                 </motion.button>
