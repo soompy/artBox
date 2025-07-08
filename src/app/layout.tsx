@@ -16,6 +16,7 @@ const blackHanSans = Black_Han_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://artbox-lxtk9yrte-suris-projects.vercel.app'),
   title: "Interactive Art Gallery | Digital Art Exhibition",
   description: "몰입감 있는 인터랙티브 웹 아트 전시장. 디지털 아트와 기술이 만나는 공간에서 새로운 예술 경험을 만나보세요.",
   keywords: ["interactive art", "web art", "digital art", "exhibition", "gallery", "인터랙티브 아트", "웹 아트", "디지털 아트"],
@@ -24,24 +25,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://interactive-art-gallery.vercel.app",
+    url: "https://artbox-lxtk9yrte-suris-projects.vercel.app",
     siteName: "Interactive Art Gallery",
     title: "Interactive Art Gallery | Digital Art Exhibition",
     description: "몰입감 있는 인터랙티브 웹 아트 전시장",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Interactive Art Gallery",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Interactive Art Gallery | Digital Art Exhibition",
     description: "몰입감 있는 인터랙티브 웹 아트 전시장",
-    images: ["/images/og-image.jpg"],
   },
   robots: {
     index: true,
