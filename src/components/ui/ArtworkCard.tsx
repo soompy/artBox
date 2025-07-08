@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Artwork } from '@/types/artwork';
 import NoiseOverlay from './NoiseOverlay';
 import '@/styles/components.scss';
+import '@/styles/artwork-card.scss';
 
 interface ArtworkCardProps {
   artwork: Artwork;
@@ -24,7 +25,7 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
         delay: index * 0.1,
         ease: [0.23, 1, 0.32, 1],
       }}
-      className="group relative"
+      className="group relative artwork-card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -43,43 +44,43 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 gallery-transition" />
           </div>
           
-          <div className="p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+          <div className="card-content">
+            <div className="card-badges">
+              <span className="badge year-badge">
                 {artwork.year}
               </span>
               {artwork.featured && (
-                <span className="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-300 border border-yellow-500/30">
+                <span className="badge featured-badge">
                   Featured
                 </span>
               )}
             </div>
             
-            <h3 className="text-xl font-semibold mb-3 cursor-gradient group-hover:text-white gallery-transition">
+            <h3 className="card-title">
               {artwork.title}
             </h3>
             
             {artwork.titleEn && (
-              <p className="text-sm text-muted mb-4 italic">
+              <p className="card-subtitle">
                 {artwork.titleEn}
               </p>
             )}
             
-            <p className="text-sm text-muted line-clamp-2 mb-6">
+            <p className="card-description">
               {artwork.description}
             </p>
             
-            <div className="flex flex-wrap gap-2">
+            <div className="card-technologies">
               {artwork.technologies.slice(0, 3).map((tech, i) => (
                 <span
                   key={i}
-                  className="text-xs px-2 py-1 rounded-full bg-white/5 text-white/70 border border-white/10"
+                  className="tech-tag"
                 >
                   {tech}
                 </span>
               ))}
               {artwork.technologies.length > 3 && (
-                <span className="text-xs px-2 py-1 rounded-full bg-white/5 text-white/70 border border-white/10">
+                <span className="tech-tag">
                   +{artwork.technologies.length - 3}
                 </span>
               )}
