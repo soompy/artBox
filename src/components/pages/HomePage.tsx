@@ -24,7 +24,7 @@ export default function HomePage() {
       <StarTrail className="opacity-80" />
       <Header />
       
-      <main>
+      <main className="flex-1">
         <section className="hero-section">
           <P5Background variant="particles" className="opacity-40" />
           <div className="hero-background" />

@@ -8,7 +8,7 @@ export default function Footer() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.5 }}
-      className="relative w-full border-t border-white/10 bg-black/20 backdrop-blur-xl"
+      className="relative w-full border-t border-white/10 bg-black/20 backdrop-blur-xl mt-auto"
     >
       <div className="w-full px-6 py-12">
         <div className="text-center">
