@@ -43,8 +43,8 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 gallery-transition" />
           </div>
           
-          <div className="p-6">
-            <div className="flex items-center gap-2 mb-2">
+          <div className="p-8">
+            <div className="flex items-center gap-2 mb-3">
               <span className="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
                 {artwork.year}
               </span>
@@ -55,17 +55,17 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
               )}
             </div>
             
-            <h3 className="text-xl font-semibold mb-2 cursor-gradient group-hover:text-white gallery-transition">
+            <h3 className="text-xl font-semibold mb-3 cursor-gradient group-hover:text-white gallery-transition">
               {artwork.title}
             </h3>
             
             {artwork.titleEn && (
-              <p className="text-sm text-muted mb-3 italic">
+              <p className="text-sm text-muted mb-4 italic">
                 {artwork.titleEn}
               </p>
             )}
             
-            <p className="text-sm text-muted line-clamp-2 mb-4">
+            <p className="text-sm text-muted line-clamp-2 mb-6">
               {artwork.description}
             </p>
             
