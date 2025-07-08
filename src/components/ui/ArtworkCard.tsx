@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Artwork } from '@/types/artwork';
 import NoiseOverlay from './NoiseOverlay';
+import RhythmOfCommutePreview from '../preview/RhythmOfCommutePreview';
 import '@/styles/components.scss';
 import '@/styles/artwork-card.scss';
 
@@ -33,15 +34,21 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 backdrop-blur-xl gallery-transition hover:border-white/20 hover:shadow-2xl hover:shadow-purple-500/20">
           <NoiseOverlay isVisible={isHovered} className="rounded-2xl" />
           <div className="aspect-[4/3] bg-gradient-to-br from-purple-900/20 to-blue-900/20 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-blue-500/10" />
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="text-6xl opacity-20 group-hover:opacity-40 gallery-transition"
-            >
-              🎨
-            </motion.div>
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 gallery-transition" />
+            {artwork.slug === 'rhythm-of-the-commute' ? (
+              <RhythmOfCommutePreview className="w-full h-full" />
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-blue-500/10" />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-6xl opacity-20 group-hover:opacity-40 gallery-transition"
+                >
+                  🎨
+                </motion.div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 gallery-transition" />
+              </>
+            )}
           </div>
           
           <div className="card-content">
