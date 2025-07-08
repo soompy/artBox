@@ -73,15 +73,15 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
   // 윈도우 크기 추적
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const updateWindowWidth = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    if (typeof window !== 'undefined') {
-      setWindowWidth(window.innerWidth);
-      window.addEventListener('resize', updateWindowWidth);
-      return () => window.removeEventListener('resize', updateWindowWidth);
-    }
+    setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', updateWindowWidth);
+    return () => window.removeEventListener('resize', updateWindowWidth);
   }, []);
 
   // 현재 섹션 추적
@@ -99,6 +99,8 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
   // 캔버스 애니메이션
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -118,6 +120,8 @@ export function RhythmOfCommute({ }: RhythmOfCommuteProps) {
 
   // 오디오 초기화
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const initAudio = async () => {
       await audioManager.init();
       

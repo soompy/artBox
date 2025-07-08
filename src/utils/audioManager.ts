@@ -6,6 +6,7 @@ export class AudioManager {
   private isInitialized = false;
 
   async init() {
+    if (typeof window === 'undefined') return;
     if (this.isInitialized) return;
     
     try {
@@ -101,6 +102,7 @@ export class AudioManager {
 
   // 합성음 생성 및 재생
   playSynthAudio(name: string, frequency: number, duration: number = 2, volume: number = 0.1): void {
+    if (typeof window === 'undefined') return;
     if (!this.audioContext) return;
     
     // 기존 합성음 정지

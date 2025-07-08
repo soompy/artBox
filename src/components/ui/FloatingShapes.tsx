@@ -17,7 +17,7 @@ export default function FloatingShapes({ className = '' }: FloatingShapesProps) 
     const sketch = (p: p5) => {
       let shapes: Shape[] = [];
       let mouseTrail: { x: number; y: number; time: number }[] = [];
-      let noiseOffset = 0;
+      const noiseOffset = 0;
 
       // 파스텔 컬러 팔레트 (아이보리, 핑크, 하늘색)
       const pastelColors = [
@@ -225,7 +225,7 @@ export default function FloatingShapes({ className = '' }: FloatingShapesProps) 
           shapes.push(new Shape(p.random(p.width), p.random(p.height)));
         }
         
-        noiseOffset += 0.005;
+        // noiseOffset += 0.005; // 사용되지 않음
       };
 
       p.windowResized = () => {
