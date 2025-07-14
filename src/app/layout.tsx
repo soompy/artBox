@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Black_Han_Sans } from "next/font/google";
 import "./globals.css";
-import PerformanceInit from "@/components/PerformanceInit";
+import dynamic from "next/dynamic";
+
+const PerformanceInit = dynamic(() => import("@/components/PerformanceInit"), {
+  ssr: false
+});
 
 const inter = Inter({
   variable: "--font-inter",
