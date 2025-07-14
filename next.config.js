@@ -15,10 +15,8 @@ const nextConfig = {
   },
   transpilePackages: ['framer-motion'],
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'p5', 'three']
   },
-  swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
   },
