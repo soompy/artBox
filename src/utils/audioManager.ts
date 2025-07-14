@@ -3,6 +3,7 @@ export class AudioManager {
   private audioBuffers: Map<string, AudioBuffer> = new Map();
   private audioSources: Map<string, AudioBufferSourceNode> = new Map();
   private gainNodes: Map<string, GainNode> = new Map();
+  private cleanupTimeouts: Map<string, NodeJS.Timeout> = new Map();
   private isInitialized = false;
 
   async init() {
@@ -108,6 +109,11 @@ export class AudioManager {
     // 기존 합성음 정지
     this.stopAudio(name);
     
+    // 기존 cleanup timeout 정리
+    if (this.cleanupTimeouts.has(name)) {
+      clearTimeout(this.cleanupTimeouts.get(name)!);
+    }
+    
     const oscillator = this.audioContext.createOscillator();
     const gainNode = this.audioContext.createGain();
     
@@ -129,10 +135,23 @@ export class AudioManager {
     oscillator.stop(this.audioContext.currentTime + duration);
     
     // 자동으로 정리
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       this.audioSources.delete(name);
       this.gainNodes.delete(name);
+      this.cleanupTimeouts.delete(name);
     }, duration * 1000);
+    
+    this.cleanupTimeouts.set(name, timeoutId);
+  }
+
+  // 전체 정리 메서드 추가
+  cleanup(): void {
+    this.stopAllAudio();
+    this.cleanupTimeouts.forEach((timeoutId) => {
+      clearTimeout(timeoutId);
+    });
+    this.cleanupTimeouts.clear();
+    this.audioBuffers.clear();
   }
 }
 
