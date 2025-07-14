@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Black_Han_Sans } from "next/font/google";
 import "./globals.css";
+import PerformanceInit from "@/components/PerformanceInit";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark">
       <body className={`${inter.variable} ${blackHanSans.variable} font-sans antialiased`}>
+        <PerformanceInit />
         <div className="min-h-screen bg-background text-foreground flex flex-col">
           <div className="flex-1">
             {children}
