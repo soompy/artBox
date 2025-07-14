@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Artwork } from '@/types/artwork';
+import { webglManager } from '@/utils/webglManager';
 
 interface LunchBreakProps {
   artwork: Artwork;
@@ -135,40 +136,17 @@ export function LunchBreak({ artwork }: LunchBreakProps) {
     }
   `;
 
-  // 셰이더 컴파일 함수
-  const compileShader = (gl: WebGLRenderingContext, type: number, source: string) => {
-    const shader = gl.createShader(type);
-    if (!shader) return null;
-    
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
-    
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      console.error('Shader compilation error:', gl.getShaderInfoLog(shader));
-      gl.deleteShader(shader);
-      return null;
-    }
-    
-    return shader;
-  };
+  // 마우스 움직임 핸들러 최적화
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    setMousePos({
+      x: e.clientX / windowWidth,
+      y: e.clientY / (typeof window !== 'undefined' ? window.innerHeight : 800)
+    });
+  }, [windowWidth]);
 
-  // 프로그램 생성 함수
-  const createProgram = (gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
-    const program = gl.createProgram();
-    if (!program) return null;
-    
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error('Program linking error:', gl.getProgramInfoLog(program));
-      gl.deleteProgram(program);
-      return null;
-    }
-    
-    return program;
-  };
+  const handleResize = useCallback(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   // WebGL 초기화
   useEffect(() => {
@@ -194,15 +172,12 @@ export function LunchBreak({ artwork }: LunchBreakProps) {
     updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
 
-    // 셰이더 컴파일
-    const vertexShader = compileShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-    const fragmentShader = compileShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
-
-    if (!vertexShader || !fragmentShader) return;
-
-    // 프로그램 생성
-    const program = createProgram(gl, vertexShader, fragmentShader);
+    // WebGL 매니저를 사용하여 셰이더 프로그램 생성/캐싱
+    const program = webglManager.getOrCreateShaderProgram(gl, vertexShaderSource, fragmentShaderSource);
     if (!program) return;
+
+    // 컨텍스트 등록
+    webglManager.registerContext('lunch-break', gl);
 
     programRef.current = program;
 
@@ -282,22 +257,13 @@ export function LunchBreak({ artwork }: LunchBreakProps) {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
+      // WebGL 리소스 정리
+      webglManager.cleanup('lunch-break');
     };
   }, [mousePos]);
 
   // 마우스 움직임 추적 및 윈도우 크기 추적
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight
-      });
-    };
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
     setWindowWidth(window.innerWidth);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
@@ -306,7 +272,7 @@ export function LunchBreak({ artwork }: LunchBreakProps) {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [handleMouseMove, handleResize]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-orange-300 via-amber-300 to-yellow-300">
