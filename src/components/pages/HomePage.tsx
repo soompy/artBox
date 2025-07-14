@@ -161,10 +161,10 @@ export default function HomePage() {
                   {
                     title: "점심의 틈",
                     subtitle: "Lunch Break Gap",
-                    status: "작업 중",
+                    status: "완성",
                     color: "from-amber-500 to-orange-500",
-                    description: "곧 공개 예정",
-                    link: null
+                    description: "현재 전시 중",
+                    link: "/projects/lunch-break"
                   },
                   {
                     title: "퇴근의 잔상",
