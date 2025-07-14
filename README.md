@@ -100,7 +100,8 @@ src/
      id: 'unique-id',
      slug: 'artwork-slug',
      title: '작품 제목',
-     year: 2025,
+     year: 
+     ,
      description: '작품 설명',
      technologies: ['GSAP', 'Three.js'],
      // ...
