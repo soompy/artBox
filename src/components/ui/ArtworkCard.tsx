@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Artwork } from '@/types/artwork';
 import NoiseOverlay from './NoiseOverlay';
 import RhythmOfCommutePreview from '../preview/RhythmOfCommutePreview';
+import LunchBreakPreview from '../preview/LunchBreakPreview';
 import '@/styles/components.scss';
 import '@/styles/artwork-card.scss';
 
@@ -36,6 +37,8 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
           <div className="aspect-[4/3] bg-gradient-to-br from-purple-900/20 to-blue-900/20 flex items-center justify-center relative overflow-hidden">
             {artwork.slug === 'rhythm-of-the-commute' ? (
               <RhythmOfCommutePreview className="w-full h-full" />
+            ) : artwork.slug === 'lunch-break' ? (
+              <LunchBreakPreview className="w-full h-full" />
             ) : (
               <>
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-blue-500/10" />
