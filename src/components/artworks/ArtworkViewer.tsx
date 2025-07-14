@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Artwork } from '@/types/artwork';
 import { RhythmOfCommute } from './RhythmOfCommute';
+import { LunchBreak } from './LunchBreak';
 import '@/styles/projects.scss';
 
 interface ArtworkViewerProps {
@@ -12,6 +13,7 @@ interface ArtworkViewerProps {
 
 const ArtworkComponents: Record<string, React.ComponentType<{ artwork: Artwork }>> = {
   'rhythm-of-the-commute': RhythmOfCommute,
+  'lunch-break': LunchBreak,
 };
 
 export default function ArtworkViewer({ artwork }: ArtworkViewerProps) {
