@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { useMemo, useCallback } from 'react';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import ArtworkCard from '@/components/ui/ArtworkCard';
@@ -9,15 +10,25 @@ import { getAllArtworks } from '@/data/artworks';
 import '@/styles/home.scss';
 
 const P5Background = dynamic(() => import('@/components/ui/P5Background'), {
-  ssr: false
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-800/20 w-full h-full rounded" />
 });
 
 const StarTrail = dynamic(() => import('@/components/ui/StarTrail'), {
-  ssr: false
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-900/10 w-full h-full" />
 });
 
 export default function HomePage() {
-  const allArtworks = getAllArtworks();
+  // 작품 데이터를 메모화하여 불필요한 재계산 방지
+  const allArtworks = useMemo(() => getAllArtworks(), []);
+  
+  // 스크롤 핸들러를 useCallback으로 최적화
+  const handleScrollToArtworks = useCallback(() => {
+    if (typeof document !== 'undefined') {
+      document.getElementById('artworks')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
   return (
     <div className="home-container">
@@ -62,11 +73,7 @@ export default function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="btn-primary"
-                  onClick={() => {
-                    if (typeof document !== 'undefined') {
-                      document.getElementById('artworks')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={handleScrollToArtworks}
                 >
                   <span className="font-black-han-sans">작품 관람하기</span>
                 </motion.button>
