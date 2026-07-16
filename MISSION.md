@@ -1,10 +1,10 @@
-# MomentTune ArtBox Mission
+# MomentTune ArtBox 미션
 
-artBox is not an interactive art gallery.
+artBox는 인터랙티브 아트 갤러리가 아닙니다.
 
-artBox is a content platform for creating MomentTune's emotional experiences.
+artBox는 MomentTune의 감정 경험을 만드는 콘텐츠 플랫폼입니다.
 
-Every implementation must follow these principles:
+모든 구현은 아래 원칙을 따릅니다.
 
 - Emotion First
 - Experience over Feature
@@ -17,106 +17,106 @@ Every implementation must follow these principles:
 - Recommendation Ready
 - AI Personalization Ready
 
-Every artwork must be more than a visual effect. It must be an experience designed to guide a user's emotional shift.
+모든 작품은 단순한 시각 효과가 아니라 사용자의 감정 변화를 유도하는 경험이어야 합니다.
 
-All future content must be metadata-driven so it can connect to the MomentTune Recommendation Engine.
+향후 모든 콘텐츠는 MomentTune Recommendation Engine과 연결될 수 있도록 Metadata 기반으로 설계합니다.
 
-## Product Definition
+## 제품 정의
 
-ArtBox is the interactive content engine of MomentTune.
+ArtBox는 MomentTune의 인터랙티브 콘텐츠 엔진입니다.
 
-It turns emotional context into sensory experiences: visuals, sound, motion, touch, rhythm, and feedback. The platform does not optimize for passive viewing. It optimizes for emotional transition.
+사용자의 감정 맥락을 시각, 소리, 움직임, 터치, 리듬, 피드백으로 번역합니다. ArtBox는 수동 감상을 최적화하지 않습니다. 감정 전환을 최적화합니다.
 
-The core question for every content decision is:
+모든 콘텐츠 의사결정의 핵심 질문은 다음입니다.
 
-> What emotional state does this experience help the user move from, and what state does it help them move toward?
+> 이 경험은 사용자를 어떤 감정 상태에서 어떤 감정 상태로 이동시키는가?
 
-## Implementation Principles
+## 구현 원칙
 
 ### Emotion First
 
-Start with the user's emotional state before selecting technology, visuals, or features.
+기술, 효과, 기능을 정하기 전에 사용자의 감정 상태를 먼저 정의합니다.
 
-Every content item must define source emotion, target emotion, emotional goal, and expected feeling after the session.
+모든 콘텐츠는 시작 감정, 목표 감정, 감정 목표, 세션 후 기대 감정을 가져야 합니다.
 
 ### Experience over Feature
 
-Features exist only when they improve the emotional experience.
+기능은 감정 경험을 개선할 때만 존재합니다.
 
-Do not add controls, effects, settings, or animations unless they help the user feel more grounded, focused, comforted, energized, creative, or aware.
+사용자가 더 안정되고, 집중하고, 위로받고, 활력을 얻고, 창의적으로 느끼도록 돕지 않는 기능은 추가하지 않습니다.
 
 ### Calm before Complexity
 
-Default to calm and understandable interactions.
+기본값은 차분하고 이해하기 쉬운 상호작용입니다.
 
-Complex interactions are allowed only when the user's target state benefits from them, such as creativity, release, or energy.
+복잡한 인터랙션은 창의성, 해소, 에너지처럼 목표 감정이 그것을 필요로 할 때만 허용합니다.
 
 ### Beautiful Interaction
 
-Interaction should feel responsive, gentle, and intentional.
+상호작용은 반응적이고 부드럽고 의도적으로 느껴져야 합니다.
 
-The user should feel that the content is listening to them, not demanding performance from them.
+사용자는 콘텐츠가 자신에게 요구하는 것이 아니라, 자신을 듣고 있다고 느껴야 합니다.
 
 ### Performance Matters
 
-Emotional experiences collapse when the interface stutters, lags, or leaks memory.
+지연, 끊김, 메모리 누수는 감정 경험을 무너뜨립니다.
 
-Every artwork must clean up animation frames, event listeners, audio nodes, WebGL resources, and timers.
+모든 콘텐츠는 animation frame, event listener, audio node, WebGL resource, timer를 반드시 정리해야 합니다.
 
 ### Accessibility Matters
 
-ArtBox must work across sensory preferences, motion sensitivity, device constraints, and input methods.
+ArtBox는 다양한 감각 선호, 모션 민감도, 기기 환경, 입력 방식을 가진 사용자가 접근할 수 있어야 합니다.
 
-Every experience must support sound-off usage, reduced motion, clear exit controls, and mobile-friendly interaction.
+모든 경험은 sound-off, reduced motion, 명확한 exit, 모바일 친화적 인터랙션을 지원해야 합니다.
 
 ### Mobile First
 
-Most emotional check-ins happen in short everyday moments.
+감정 체크인은 짧은 일상 순간에 자주 일어납니다.
 
-Every artwork must work on mobile before it is optimized for desktop.
+모든 콘텐츠는 데스크톱 최적화 이전에 모바일에서 먼저 성립해야 합니다.
 
 ### Reusable Content Engine
 
-ArtBox content must be registered through a shared schema and rendered through a reusable shell.
+ArtBox 콘텐츠는 공통 schema에 등록되고 재사용 가능한 shell에서 렌더링되어야 합니다.
 
-Avoid one-off routing, one-off controls, and one-off metadata structures.
+일회성 routing, 일회성 control, 일회성 metadata 구조를 만들지 않습니다.
 
 ### Recommendation Ready
 
-Every artwork must include recommendation metadata.
+모든 콘텐츠는 추천 metadata를 포함해야 합니다.
 
-At minimum:
+최소 필드:
 
-- Emotion tags
-- Stress fit
-- Focus fit
-- Sleep fit
-- Duration
-- Difficulty
-- Interaction type
-- Recommendation weight
-- Best time of day when relevant
+- emotion tag
+- stress fit
+- focus fit
+- sleep fit
+- duration
+- difficulty
+- interaction type
+- recommendation weight
+- 필요 시 best time of day
 
 ### AI Personalization Ready
 
-Future AI personalization should be able to adjust content selection and runtime parameters.
+향후 AI 개인화는 콘텐츠 선택과 runtime parameter를 조정할 수 있어야 합니다.
 
-Artwork metadata and runtime config should make room for motion intensity, sound intensity, color palette, session duration, interaction mode, accessibility mode, and user preference signals.
+Artwork metadata와 runtime config는 motion intensity, sound intensity, color palette, session duration, interaction mode, accessibility mode, user preference signal을 수용해야 합니다.
 
-## Non-Negotiables
+## 절대 기준
 
-- No artwork ships without emotional intent.
-- No artwork ships without metadata.
-- No artwork ships without mobile support.
-- No artwork ships without accessibility support.
-- No artwork ships without cleanup.
-- No artwork ships if it breaks existing content.
-- No artwork ships only because it looks impressive.
+- 감정 의도가 없는 콘텐츠는 출시하지 않습니다.
+- metadata가 없는 콘텐츠는 출시하지 않습니다.
+- 모바일을 지원하지 않는 콘텐츠는 출시하지 않습니다.
+- 접근성을 지원하지 않는 콘텐츠는 출시하지 않습니다.
+- cleanup이 없는 콘텐츠는 출시하지 않습니다.
+- 기존 콘텐츠를 깨뜨리는 변경은 출시하지 않습니다.
+- 보기만 멋진 효과는 ArtBox 콘텐츠가 아닙니다.
 
 ## North Star
 
-ArtBox should help the user leave in a better emotional state than when they entered.
+ArtBox는 사용자가 들어왔을 때보다 더 나은 감정 상태로 나가도록 도와야 합니다.
 
-The desired user response is simple:
+우리가 원하는 사용자 반응은 단순합니다.
 
-> I feel a little better.
+> 조금 나아졌다.

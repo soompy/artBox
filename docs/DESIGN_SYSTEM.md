@@ -1,6 +1,6 @@
 # MomentTune ArtBox Design System
 
-The ArtBox design system exists to support emotional change through calm, beautiful, accessible interaction.
+ArtBox 디자인 시스템은 차분하고 아름답고 접근 가능한 상호작용을 통해 감정 변화를 지원하기 위해 존재합니다.
 
 ## Color Token
 
@@ -83,28 +83,28 @@ Scale:
 
 ## Interaction
 
-- One primary action per screen.
-- All interactions should have gentle feedback.
-- Hover must never be the only interaction.
-- Touch, mouse, and keyboard states must be considered.
+- 한 화면에는 하나의 primary action만 둡니다.
+- 모든 interaction은 부드러운 feedback을 가져야 합니다.
+- hover가 유일한 interaction이면 안 됩니다.
+- touch, mouse, keyboard state를 모두 고려합니다.
 
 ## Button
 
-- Minimum touch target: 44px.
-- Primary button for the main action.
-- Icon buttons for Pause, Sound, Exit.
-- Buttons must have visible focus states.
+- 최소 touch target: 44px
+- primary button은 핵심 행동에만 사용합니다.
+- Pause, Sound, Exit는 icon button으로 제공합니다.
+- 모든 button은 visible focus state를 가져야 합니다.
 
 ## Card
 
-- Use cards for content entries only.
-- Do not nest cards.
-- Border radius: 8px.
-- Show title, emotional shift, duration, interaction type, and difficulty.
+- card는 content entry에만 사용합니다.
+- card 안에 card를 중첩하지 않습니다.
+- border radius는 8px을 기본으로 합니다.
+- title, emotional shift, duration, interaction type, difficulty를 표시합니다.
 
 ## Artwork Layout
 
-Artwork content should use a full viewport layout:
+Artwork는 full viewport layout을 기본으로 합니다.
 
 ```txt
 ArtworkShell
@@ -117,7 +117,7 @@ ArtworkShell
 
 ## Gallery Layout
 
-Gallery should be emotion-first:
+Gallery는 emotion-first 탐색 구조를 사용합니다.
 
 ```txt
 Emotional entry
@@ -128,7 +128,7 @@ Content cards
 
 ## Dark Theme
 
-Dark theme is default for immersion.
+Dark theme은 몰입형 경험의 기본값입니다.
 
 ```css
 [data-theme="dark"] {
@@ -140,7 +140,7 @@ Dark theme is default for immersion.
 
 ## Light Theme
 
-Light theme supports daytime, nature, and creativity content.
+Light theme은 daytime, nature, creativity 콘텐츠에 사용합니다.
 
 ```css
 [data-theme="light"] {
@@ -152,16 +152,16 @@ Light theme supports daytime, nature, and creativity content.
 
 ## Accessibility
 
-- WCAG AA contrast.
-- Reduced motion support.
-- Sound optional.
-- WebGL fallback.
-- Keyboard focus support.
-- Color is never the only indicator.
+- WCAG AA contrast
+- reduced motion 지원
+- sound optional
+- WebGL fallback
+- keyboard focus 지원
+- 색상만으로 의미 전달 금지
 
 ## Glassmorphism
 
-Use glass only for supporting overlays and controls.
+Glass는 supporting overlay와 control에만 사용합니다.
 
 ```css
 :root {
@@ -173,7 +173,7 @@ Use glass only for supporting overlays and controls.
 
 ## Gradient
 
-Gradients must match emotional purpose.
+Gradient는 감정 목적과 일치해야 합니다.
 
 ```css
 :root {

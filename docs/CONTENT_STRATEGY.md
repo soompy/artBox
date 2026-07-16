@@ -1,16 +1,16 @@
 # MomentTune ArtBox Content Strategy
 
-ArtBox content is organized by emotional function, not by medium.
+ArtBox 콘텐츠는 매체가 아니라 감정 기능을 기준으로 분류합니다.
 
 ## Calm
 
-Purpose: stabilize anxiety, tension, or overload.
+목적: 불안, 긴장, 과부하 상태를 안정시킵니다.
 
-Effect: slower thinking, lower tension, safer emotional state.
+효과: 생각의 속도 감소, 긴장 완화, 안전감 회복.
 
-Recommended situations: anxiety, stress, after conflict, evening decompression.
+추천 상황: 불안, 스트레스, 갈등 이후, 저녁 회복.
 
-Representative content:
+대표 콘텐츠:
 
 - Soft Light Field
 - Still Water
@@ -18,13 +18,13 @@ Representative content:
 
 ## Focus
 
-Purpose: gather scattered attention.
+목적: 흩어진 주의를 하나의 리듬으로 모읍니다.
 
-Effect: mental clarity, task readiness, reduced distraction.
+효과: 정신적 정돈감, 업무 준비, 산만함 감소.
 
-Recommended situations: before work, study, creative execution, context switching.
+추천 상황: 업무 전, 학습 전, 전환이 필요한 순간.
 
-Representative content:
+대표 콘텐츠:
 
 - Focus Pulse
 - Line Alignment
@@ -32,13 +32,13 @@ Representative content:
 
 ## Breathing
 
-Purpose: connect visual rhythm to breath.
+목적: 호흡 리듬과 시각 경험을 연결합니다.
 
-Effect: nervous system regulation, slower pace, body awareness.
+효과: 신경계 안정, 속도 감소, 신체 감각 인식.
 
-Recommended situations: before presentation, panic rise, sleep transition.
+추천 상황: 발표 전, 불안 상승, 수면 전.
 
-Representative content:
+대표 콘텐츠:
 
 - Breath Orb
 - Inhale Exhale Wave
@@ -46,13 +46,13 @@ Representative content:
 
 ## Sleep
 
-Purpose: lower stimulation and prepare the user for rest.
+목적: 자극을 낮추고 수면 준비 상태로 전환합니다.
 
-Effect: reduced mental speed, darker sensory tone, gentle closure.
+효과: 사고 속도 완화, 어두운 감각 톤, 하루의 부드러운 종료.
 
-Recommended situations: bedtime, late-night overthinking, fatigue.
+추천 상황: 취침 전, 늦은 밤 과생각, 피로.
 
-Representative content:
+대표 콘텐츠:
 
 - Night Drift
 - Moon Breathing
@@ -60,13 +60,13 @@ Representative content:
 
 ## Creativity
 
-Purpose: unlock expression and playful momentum.
+목적: 표현과 놀이의 에너지를 깨웁니다.
 
-Effect: idea flow, light energy, creative confidence.
+효과: 아이디어 흐름, 가벼운 활력, 창작 자신감.
 
-Recommended situations: creative block, ideation, mood lift.
+추천 상황: 창작 막힘, 아이데이션, 기분 전환.
 
-Representative content:
+대표 콘텐츠:
 
 - Idea Sparks
 - Color Improvisation
@@ -74,13 +74,13 @@ Representative content:
 
 ## Nature
 
-Purpose: bring restorative natural rhythm into a digital space.
+목적: 자연의 회복 리듬을 디지털 공간으로 가져옵니다.
 
-Effect: relief, groundedness, sensory softness.
+효과: 안정감, 접지감, 감각 피로 완화.
 
-Recommended situations: screen fatigue, indoor work, emotional dryness.
+추천 상황: 화면 피로, 실내 업무, 정서적 건조함.
 
-Representative content:
+대표 콘텐츠:
 
 - Digital Forest
 - Rain Room
@@ -88,13 +88,13 @@ Representative content:
 
 ## Meditation
 
-Purpose: help users observe thoughts and emotions.
+목적: 생각과 감정을 관찰하게 돕습니다.
 
-Effect: self-awareness, distance from thoughts, reflective calm.
+효과: 자기 인식, 생각과 거리두기, 반성적 안정.
 
-Recommended situations: emotional check-in, morning or evening reflection.
+추천 상황: 감정 점검, 아침/저녁 회고.
 
-Representative content:
+대표 콘텐츠:
 
 - Emotion Mirror
 - Thought Clouds
@@ -102,13 +102,13 @@ Representative content:
 
 ## Interactive Drawing
 
-Purpose: express and release emotion through movement.
+목적: 움직임을 통해 감정을 표현하고 해소합니다.
 
-Effect: emotional expression, relief, tactile engagement.
+효과: 감정 표현, 해소감, 촉각적 몰입.
 
-Recommended situations: frustration, blocked feelings, nonverbal reflection.
+추천 상황: 답답함, 말로 표현하기 어려운 감정, 창의적 놀이.
 
-Representative content:
+대표 콘텐츠:
 
 - Mood Brush
 - Release Lines
@@ -116,13 +116,13 @@ Representative content:
 
 ## Music Reactive
 
-Purpose: use sound and rhythm to shift emotional energy.
+목적: 사운드와 리듬으로 감정 에너지를 조율합니다.
 
-Effect: immersion, energy regulation, rhythm alignment.
+효과: 몰입, 활력 조절, 리듬 동기화.
 
-Recommended situations: mood lift, focus, release, sensory reset.
+추천 상황: 기분 전환, 집중, 해소, 감각 리셋.
 
-Representative content:
+대표 콘텐츠:
 
 - Sound Bloom
 - Pulse Room
@@ -130,13 +130,13 @@ Representative content:
 
 ## Generative Art
 
-Purpose: create adaptive, unique visual states from emotion and context.
+목적: 감정과 맥락에서 생성되는 고유한 장면을 제공합니다.
 
-Effect: curiosity, immersion, personal resonance.
+효과: 호기심, 몰입, 개인적 공명.
 
-Recommended situations: reflection, inspiration, ambient reset.
+추천 상황: 반성, 영감, ambient reset.
 
-Representative content:
+대표 콘텐츠:
 
 - Emotion Particles
 - Generative Garden
@@ -144,11 +144,11 @@ Representative content:
 
 ## Recommendation Map
 
-| Current State | Desired Shift | Categories |
+| 현재 상태 | 원하는 변화 | 추천 카테고리 |
 | --- | --- | --- |
-| Anxious | Calm | Calm, Breathing, Nature |
-| Distracted | Focus | Focus, Breathing, Generative Art |
-| Tired | Restored | Sleep, Calm, Nature |
-| Low energy | Energized | Creativity, Music Reactive |
-| Lonely | Comforted | Meditation, Nature, Calm |
-| Blocked | Creative | Interactive Drawing, Generative Art |
+| 불안 | 안정 | Calm, Breathing, Nature |
+| 산만함 | 집중 | Focus, Breathing, Generative Art |
+| 피로 | 회복 | Sleep, Calm, Nature |
+| 무기력 | 활력 | Creativity, Music Reactive |
+| 외로움 | 위로 | Meditation, Nature, Calm |
+| 막힘 | 창의성 | Interactive Drawing, Generative Art |

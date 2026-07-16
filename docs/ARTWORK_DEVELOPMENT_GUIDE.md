@@ -1,6 +1,16 @@
 # ArtBox Artwork Development Guide
 
-Every new Artwork must implement the shared interface and pass the release checklist.
+모든 새로운 Artwork는 shared interface를 구현하고 release checklist를 통과해야 합니다.
+
+## New Content Self Check
+
+새로운 콘텐츠를 만들 때마다 구현자는 먼저 아래 세 가지 질문에 답해야 합니다.
+
+- [ ] 이 콘텐츠는 어떤 감정 상태를 위한 것인가?
+- [ ] 사용자가 어떤 행동을 하게 되는가?
+- [ ] MomentTune 추천 엔진이 언제 이 콘텐츠를 추천해야 하는가?
+
+이 세 질문에 명확히 답하지 못하면 Artwork 구현을 시작하지 않습니다.
 
 ## Artwork Interface
 
@@ -18,70 +28,73 @@ export interface Artwork {
 
 ## Interface Checklist
 
-- [ ] `init()` is implemented.
-- [ ] `destroy()` is implemented.
-- [ ] `update(deltaTime)` is implemented.
-- [ ] `pause()` is implemented.
-- [ ] `resume()` is implemented.
-- [ ] `resize(width, height)` is implemented.
-- [ ] `dispose()` is implemented.
-- [ ] Methods are safe when called more than once.
+- [ ] `init()`을 구현했습니다.
+- [ ] `destroy()`를 구현했습니다.
+- [ ] `update(deltaTime)`을 구현했습니다.
+- [ ] `pause()`를 구현했습니다.
+- [ ] `resume()`을 구현했습니다.
+- [ ] `resize(width, height)`를 구현했습니다.
+- [ ] `dispose()`를 구현했습니다.
+- [ ] 각 method는 여러 번 호출되어도 안전합니다.
 
 ## Recommendation Metadata Checklist
 
+- [ ] MomentTune 추천 엔진이 이 콘텐츠를 추천해야 하는 상황을 설명했습니다.
 - [ ] `baseWeight`
 - [ ] `emotionMatchWeight`
 - [ ] `contextWeight`
 - [ ] `personalizationWeight`
 - [ ] `freshnessWeight`
 - [ ] `recommendedFor`
-- [ ] `notRecommendedFor` when needed
+- [ ] 필요 시 `notRecommendedFor`
 - [ ] `bestTimeOfDay`
-- [ ] `weatherFit` when relevant
+- [ ] 관련 있는 경우 `weatherFit`
 - [ ] `repeatCooldownHours`
 
 ## Emotional Metadata Checklist
 
-- [ ] Source emotion
-- [ ] Target emotion
-- [ ] Emotional goal
-- [ ] Expected feeling after
-- [ ] Stress fit
-- [ ] Focus fit
-- [ ] Sleep fit
-- [ ] Energy fit when relevant
+- [ ] 이 콘텐츠가 대상으로 하는 감정 상태를 설명했습니다.
+- [ ] source emotion
+- [ ] target emotion
+- [ ] emotional goal
+- [ ] expected feeling after
+- [ ] stress fit
+- [ ] focus fit
+- [ ] sleep fit
+- [ ] 관련 있는 경우 energy fit
 
 ## Preview Checklist
 
-- [ ] Thumbnail exists.
-- [ ] Cover exists.
-- [ ] Preview component exists.
-- [ ] Preview matches the emotional tone.
-- [ ] Preview is lighter than the full artwork.
-- [ ] Preview does not autoplay loud audio.
+- [ ] 사용자가 콘텐츠 안에서 하게 되는 주요 행동이 preview에서도 암시됩니다.
+- [ ] thumbnail이 있습니다.
+- [ ] cover가 있습니다.
+- [ ] preview component가 있습니다.
+- [ ] preview가 실제 감정 톤을 반영합니다.
+- [ ] preview는 본편보다 가볍게 렌더링됩니다.
+- [ ] preview는 큰 소리를 autoplay하지 않습니다.
 
 ## Mobile Checklist
 
-- [ ] Works at 320px width.
-- [ ] Supports touch.
-- [ ] Does not rely on hover.
-- [ ] Handles orientation change.
-- [ ] Keeps controls within safe areas.
-- [ ] Maintains at least 30fps on mobile.
+- [ ] 320px 너비에서 작동합니다.
+- [ ] touch를 지원합니다.
+- [ ] hover에 의존하지 않습니다.
+- [ ] orientation change를 처리합니다.
+- [ ] control은 safe area 안에 있습니다.
+- [ ] mobile에서 최소 30fps를 유지합니다.
 
 ## Accessibility Checklist
 
-- [ ] Sound optional.
-- [ ] Reduced motion supported.
-- [ ] No rapid flashing.
-- [ ] Keyboard or alternate controls supported.
-- [ ] Pause available.
-- [ ] Exit available.
-- [ ] WebGL fallback available.
+- [ ] sound optional
+- [ ] reduced motion 지원
+- [ ] 빠른 flashing 없음
+- [ ] keyboard 또는 대체 control 지원
+- [ ] pause 가능
+- [ ] exit 가능
+- [ ] WebGL fallback 가능
 
 ## Performance Score
 
-Minimum score: 80 / 100.
+최소 점수: 80 / 100
 
 | Category | Points |
 | --- | ---: |
@@ -95,12 +108,13 @@ Minimum score: 80 / 100.
 
 ## Final Merge Checklist
 
-- [ ] Interface implemented.
-- [ ] Recommendation metadata exists.
-- [ ] Emotional metadata exists.
-- [ ] Preview exists.
-- [ ] Mobile support verified.
-- [ ] Accessibility support verified.
-- [ ] Performance score is 80 or higher.
-- [ ] `npm run build` passes.
-- [ ] Existing content still works.
+- [ ] New Content Self Check 3개 질문에 답했습니다.
+- [ ] Interface 구현
+- [ ] Recommendation metadata 존재
+- [ ] Emotional metadata 존재
+- [ ] Preview 존재
+- [ ] Mobile support 확인
+- [ ] Accessibility support 확인
+- [ ] Performance score 80 이상
+- [ ] `npm run build` 통과
+- [ ] 기존 콘텐츠 정상 작동

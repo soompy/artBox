@@ -1,8 +1,12 @@
 # ArtBox Artwork Schema
 
-An Artwork is an Interactive Wellness Content Unit.
+Artwork는 전시용 작품이 아니라 Interactive Wellness Content Unit입니다.
 
-It must include creative metadata, emotional intent, recommendation metadata, runtime configuration, accessibility requirements, and analytics settings.
+따라서 creative metadata, emotional intent, recommendation metadata, runtime configuration, accessibility requirement, analytics setting을 모두 포함해야 합니다.
+
+## Content Engine ERD / Architecture 이미지
+
+![ArtBox Content Engine ERD와 Architecture](assets/content-engine-architecture.png)
 
 ## TypeScript Schema
 
@@ -145,23 +149,23 @@ export interface ArtworkSchema {
 
 ## Required MVP Fields
 
-- `title`
-- `slug`
-- `description`
-- `sourceEmotion`
-- `targetEmotion`
-- `stress_level`
-- `focus_level`
-- `sleep_level`
-- `color_palette`
-- `duration`
-- `interaction_type`
-- `difficulty`
-- `animation_engine`
-- `audio`
-- `thumbnail`
-- `cover`
-- `tags`
-- `recommendation`
-- `createdAt`
-- `updatedAt`
+- title
+- slug
+- description
+- sourceEmotion
+- targetEmotion
+- stress_level
+- focus_level
+- sleep_level
+- color_palette
+- duration
+- interaction_type
+- difficulty
+- animation_engine
+- audio
+- thumbnail
+- cover
+- tags
+- recommendation
+- createdAt
+- updatedAt

@@ -1,6 +1,10 @@
 # MomentTune ArtBox Recommendation Engine
 
-ArtBox recommendations connect MomentTune signals to interactive content.
+ArtBox 추천은 MomentTune의 사용자 상태 신호를 인터랙티브 콘텐츠로 연결합니다.
+
+## 연결 구조 이미지
+
+![MomentTune와 ArtBox 연결 구조](assets/momenttune-artbox-connection.png)
 
 ## Data Flow
 
@@ -13,7 +17,6 @@ flowchart TD
     A --> A5["Mood"]
     A --> A6["Weather"]
     A --> A7["Time"]
-
     A1 --> B["Analysis"]
     A2 --> B
     A3 --> B
@@ -21,39 +24,24 @@ flowchart TD
     A5 --> B
     A6 --> B
     A7 --> B
-
-    B --> C["User State"]
-    C --> C1["Current Emotion"]
-    C --> C2["Energy"]
-    C --> C3["Stress Load"]
-    C --> C4["Recovery Need"]
-    C --> C5["Context"]
-
-    C --> D["Recommendation"]
-    D --> D1["Emotion Match"]
-    D --> D2["Context Fit"]
-    D --> D3["Difficulty Fit"]
-    D --> D4["Duration Fit"]
-    D --> D5["Preference Fit"]
-
-    D --> E["Interactive Content"]
-    E --> F["Feedback"]
-    F --> G["Personalization Loop"]
-    G --> D
+    B --> C["Recommendation"]
+    C --> D["Interactive Content"]
+    D --> E["Feedback"]
+    E --> C
 ```
 
 ## Scoring Inputs
 
-- Emotion match
-- Stress fit
-- Focus fit
-- Sleep fit
-- Energy fit
-- Time of day
-- Weather context
-- User preference
-- Completion history
-- Freshness
+- emotion match
+- stress fit
+- focus fit
+- sleep fit
+- energy fit
+- time of day
+- weather context
+- user preference
+- completion history
+- freshness
 
 ## Score Formula
 
@@ -69,29 +57,29 @@ recommendationScore =
 
 ## Feedback Signals
 
-- Session started
-- Session completed
-- Session exited early
-- Duration
-- Interaction count
-- Sound usage
-- Before mood
-- After mood
-- User rating
-- Physiological change when available
+- session started
+- session completed
+- session exited early
+- duration
+- interaction count
+- sound usage
+- before mood
+- after mood
+- user rating
+- available physiological change
 
 ## Recommendation Contract
 
-Every content item must provide:
+모든 콘텐츠는 아래 값을 제공해야 합니다.
 
-- Source emotion
-- Target emotion
-- Category
-- Duration
-- Difficulty
-- Interaction type
-- Stress fit
-- Focus fit
-- Sleep fit
-- Recommendation weight
-- Accessibility support
+- source emotion
+- target emotion
+- category
+- duration
+- difficulty
+- interaction type
+- stress fit
+- focus fit
+- sleep fit
+- recommendation weight
+- accessibility support
