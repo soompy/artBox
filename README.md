@@ -1,10 +1,20 @@
-# Interactive Art Gallery
+# MomentTune ArtBox
 
-> 디지털 아트와 기술이 만나는 몰입감 있는 인터랙티브 웹 아트 전시장
+> MomentTune의 감정 경험을 만드는 인터랙티브 웰니스 콘텐츠 플랫폼
+
+## Mission
+
+artBox는 인터랙티브 아트 갤러리가 아닙니다.
+
+artBox는 MomentTune의 감정 경험을 만드는 콘텐츠 플랫폼입니다.
+
+모든 작품은 단순한 시각 효과가 아니라 사용자의 감정 변화를 유도하는 경험이어야 하며, 향후 MomentTune Recommendation Engine과 연결될 수 있도록 Metadata 기반으로 설계합니다.
+
+자세한 제품 미션은 [MISSION.md](MISSION.md)를 기준으로 합니다.
 
 ## 🎨 프로젝트 소개
 
-Interactive Art Gallery는 현대적인 웹 기술을 활용하여 인터랙티브 아트 작품들을 전시하는 온라인 갤러리입니다. 전통적인 갤러리 관람을 넘어서 관람자가 직접 작품과 상호작용할 수 있는 새로운 예술 경험을 제공합니다.
+MomentTune ArtBox는 사용자의 감정 상태에 맞는 인터랙티브 콘텐츠를 제공하는 웰니스 콘텐츠 플랫폼입니다. 시각, 사운드, 움직임, 터치, 리듬을 통해 사용자가 자신의 감정을 인식하고 더 나은 상태로 이동하도록 돕습니다.
 
 ### ✨ 주요 특징
 
