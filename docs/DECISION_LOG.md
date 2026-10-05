@@ -70,6 +70,90 @@ Impact:
 - PR에는 대상 감정 상태, 사용자 핵심 행동, 추천 조건을 포함해야 합니다.
 - 세 질문에 답하지 못하는 콘텐츠는 merge할 수 없습니다.
 
+## 2026-07-16: MVP Integration Boundary (D-1)
+
+Decision:
+
+MVP는 사용자의 mood 자기입력과 내부 metadata 기반 추천만으로 동작합니다. MomentTune의 웨어러블/생체신호(HR, HRV, Sleep, Stress 등) 실연동은 Phase 4로 유보합니다.
+
+Rationale:
+
+Recommendation Ready 원칙은 "지금 연동"이 아니라 "연동 가능하게 설계"를 뜻합니다. mood 자기입력만으로도 핵심 감정 루프(input -> recommend -> session -> feedback)를 검증할 수 있고, 데이터 계약과 프라이버시 범위를 MVP에서 분리해 범위 폭주를 막습니다. 기존 ROADMAP Phase 3/4, SERVICE_DEFINITION MVP와 일치합니다.
+
+Alternatives Considered:
+
+얇은 목업 API로 추천 진입만 시연 - 통합을 조기에 보여줄 수 있으나 MVP 검증에는 불필요.
+
+Impact:
+
+- MVP는 로그인/웨어러블 연동 없이 동작합니다.
+- 모든 콘텐츠 metadata는 Phase 4 실연동을 대비해 RECOMMENDATION_ENGINE contract를 충족합니다.
+
+Owner: 이수민
+
+## 2026-07-16: MVP Primary User (D-2)
+
+Decision:
+
+MVP 1차 사용자군은 기존 SERVICE_DEFINITION대로 MomentTune 사용자(감정 기반 콘텐츠 경험을 원하는 사용자)를 유지합니다. 단 MVP는 mood 자기입력으로 동작하므로 사용자 식별 및 데이터 연동 없이도 검증 가능합니다.
+
+Rationale:
+
+기존 SERVICE_DEFINITION이 Primary user를 MomentTune 사용자로 이미 확정했고 이를 임의로 뒤집지 않습니다. 초기 분석에서 제안했던 "독립 방문자 1차"는 기술적 독립성(D-1)으로 이미 확보되므로 audience 정의까지 바꿀 필요가 없습니다.
+
+Alternatives Considered:
+
+독립 갤러리 방문자를 1차로 설정(초기 권장안) - 콘텐츠 자체 가치를 더 깨끗이 분리 검증할 수 있으나 기존 확정 결정과 충돌하고 D-1로 이미 독립성이 확보되어 미채택.
+
+Impact:
+
+- 테스트 사용자 모집, 카피, 온보딩은 MomentTune 사용자 맥락을 기준으로 합니다.
+- 독립 방문자도 secondary로 계속 고려합니다(브리프 7절 유지).
+
+Owner: 이수민
+
+## 2026-07-16: MVP Content Scope (D-3)
+
+Decision:
+
+MVP 콘텐츠는 기존 MVP 카테고리(Calm, Focus, Breathing)를 유지하고, 브리프의 "5~8개" 기준을 충족하기 위해 카테고리당 2개씩 총 6개를 대표 콘텐츠로 확정합니다.
+
+Rationale:
+
+기존 SERVICE_DEFINITION과 ROADMAP이 MVP 범위를 Calm/Focus/Breathing 3개 감정 기능으로 이미 좁혔고, 브리프 10절은 5~8개 콘텐츠를 요구합니다. 3 카테고리 x 2개 = 6개가 두 기준을 동시에 만족하며 범위를 넓히기보다 대표 경험을 깊게 설계하는 원칙에 부합합니다.
+
+Alternatives Considered:
+
+브리프 8절 5개 상태 각 1개 + 불안 1개(총 6개, 초기 권장안) - 상태 커버리지는 넓으나 기존 3-카테고리 MVP 범위와 충돌. 5개(최소)/8개(상태별 편차) 안도 검토했으나 6개로 균형.
+
+Impact:
+
+- MVP 후보(CONTENT_STRATEGY 기준): Calm = Still Water, Soft Light Field / Focus = Focus Pulse, 90 Second Reset / Breathing = Breath Orb, Four Count Light. 구체 선정은 MVP_CONTENT_CATALOG에서 확정합니다.
+- Sleep/Creativity/Nature 등 나머지 카테고리는 Phase 2 이후로 둡니다.
+
+Owner: 이수민
+
+## 2026-07-16: MVP Success Metrics (D-4)
+
+Decision:
+
+MVP 1차 성공 지표는 완료율과 전후 기분 개선(감정 개선률)으로, 2차 지표는 재사용률로 정합니다. 모바일 완료율을 필수 병행 지표로 둡니다.
+
+Rationale:
+
+브리프 10절은 단순 방문 수 이상(완료율, 전후 기분, 재사용)을 요구하고 기존 SERVICE_DEFINITION/PRODUCT_BOOK metrics(시작률, 완료율, 감정 개선률, 모바일 완료율, 반복 사용률)와 일치합니다. Mobile First가 필수 요건이므로 모바일 완료율을 분리 관찰합니다.
+
+Alternatives Considered:
+
+재사용/재방문을 1차 지표로 - 반복성이 핵심 가설이나 초기에는 진입, 완료, 기분 전환 검증이 우선이라 2차로 배치.
+
+Impact:
+
+- MEASUREMENT_PLAN은 세션 시작, 완료, before/after mood, 재사용, 모바일 완료를 계측합니다.
+- 분석 이벤트는 RECOMMENDATION_ENGINE Feedback Signals와 정렬합니다.
+
+Owner: 이수민
+
 ## Template
 
 향후 결정은 아래 형식으로 기록합니다.
