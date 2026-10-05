@@ -1,6 +1,7 @@
 class WebGLManager {
   private static instance: WebGLManager;
-  private shaderCache: Map<string, WebGLProgram> = new Map();
+  /** 프로그램은 만든 컨텍스트에서만 쓸 수 있다 — 컨텍스트마다 따로 캐싱한다 */
+  private shaderCache: Map<WebGLRenderingContext, Map<string, WebGLProgram>> = new Map();
   private contexts: Map<string, WebGLRenderingContext> = new Map();
 
   static getInstance(): WebGLManager {
@@ -17,16 +18,22 @@ class WebGLManager {
     fragmentSource: string
   ): WebGLProgram | null {
     const key = `${vertexSource}-${fragmentSource}`;
-    
-    if (this.shaderCache.has(key)) {
-      return this.shaderCache.get(key)!;
+    let cache = this.shaderCache.get(gl);
+    if (!cache) {
+      cache = new Map();
+      this.shaderCache.set(gl, cache);
+    }
+
+    const cached = cache.get(key);
+    if (cached && gl.isProgram(cached)) {
+      return cached;
     }
 
     const program = this.createProgram(gl, vertexSource, fragmentSource);
     if (program) {
-      this.shaderCache.set(key, program);
+      cache.set(key, program);
     }
-    
+
     return program;
   }
 
@@ -83,29 +90,23 @@ class WebGLManager {
     this.contexts.set(id, gl);
   }
 
-  // 리소스 정리
+  // 리소스 정리 — 지운 프로그램은 캐시에서도 뺀다(지운 프로그램을 다시 꺼내 쓰면 화면이 검게 된다)
   cleanup(contextId?: string): void {
-    if (contextId && this.contexts.has(contextId)) {
-      const gl = this.contexts.get(contextId)!;
-      
-      // 해당 컨텍스트의 프로그램들 정리
-      this.shaderCache.forEach((program, key) => {
+    const release = (gl: WebGLRenderingContext) => {
+      this.shaderCache.get(gl)?.forEach((program) => {
         if (gl.isProgram(program)) {
           gl.deleteProgram(program);
         }
       });
-      
+      this.shaderCache.delete(gl);
+    };
+
+    if (contextId) {
+      const gl = this.contexts.get(contextId);
+      if (gl) release(gl);
       this.contexts.delete(contextId);
     } else {
-      // 모든 리소스 정리
-      this.contexts.forEach((gl) => {
-        this.shaderCache.forEach((program) => {
-          if (gl.isProgram(program)) {
-            gl.deleteProgram(program);
-          }
-        });
-      });
-      
+      this.contexts.forEach(release);
       this.shaderCache.clear();
       this.contexts.clear();
     }
@@ -115,7 +116,7 @@ class WebGLManager {
   monitorMemory(): void {
     if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
       const monitor = () => {
-        console.log('WebGL Cache Size:', this.shaderCache.size);
+        console.log('WebGL Cache Contexts:', this.shaderCache.size);
         console.log('WebGL Contexts:', this.contexts.size);
         
         if ((window as any).performance?.memory) {
