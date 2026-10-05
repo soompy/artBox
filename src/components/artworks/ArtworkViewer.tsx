@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Artwork } from '@/types/artwork';
@@ -18,6 +19,11 @@ const ArtworkComponents: Record<string, React.ComponentType<{ artwork: Artwork }
 
 export default function ArtworkViewer({ artwork }: ArtworkViewerProps) {
   const ArtworkComponent = ArtworkComponents[artwork.slug];
+  // 모먼트튠 앱에서 열면(?from=momenttune) 갤러리 길잡이를 숨기고 작품만 보여 준다
+  const [fromApp, setFromApp] = useState(false);
+  useEffect(() => {
+    setFromApp(new URLSearchParams(window.location.search).get('from') === 'momenttune');
+  }, []);
 
   if (!ArtworkComponent) {
     return (
@@ -41,6 +47,7 @@ export default function ArtworkViewer({ artwork }: ArtworkViewerProps) {
 
   return (
     <div className="artwork-viewer">
+      {!fromApp && (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -57,7 +64,9 @@ export default function ArtworkViewer({ artwork }: ArtworkViewerProps) {
           <span className="nav-text font-black-han-sans">갤러리</span>
         </Link>
       </motion.div>
+      )}
 
+      {!fromApp && (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -72,6 +81,7 @@ export default function ArtworkViewer({ artwork }: ArtworkViewerProps) {
           <p className="artwork-year">{artwork.year}</p>
         </div>
       </motion.div>
+      )}
 
       <ArtworkComponent artwork={artwork} />
     </div>
