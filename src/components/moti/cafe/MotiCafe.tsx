@@ -1,11 +1,12 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { EndScreen } from '../EndScreen';
 import { Layer, inRect, rectStyle, type Rect } from '../Layer';
 import { RETURN_URL, appStoreLink, openedFromApp } from '../links';
 import { SoundToggle } from '../SoundToggle';
+import { useReduceMotion } from '../useReduceMotion';
 import { useSession } from '../useSession';
 import { Rain, type RainHandle } from './Rain';
 import {
@@ -60,7 +61,7 @@ const UMBRELLA_IN_WINDOW = {
  * 지금은 그림 자리를 회색 빈 상자로 잡아 둔 틀이다. 그림이 오면 scene.ts 의 LAYERS 에 src 만 채운다.
  */
 export function MotiCafe() {
-  const reduceMotion = useReducedMotion() ?? false;
+  const reduceMotion = useReduceMotion();
   const { elapsed, progress, finished, finish, replay, runId, pausedRef } = useSession();
 
   const rainRef = useRef<RainHandle>(null);
