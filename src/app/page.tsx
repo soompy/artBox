@@ -1,19 +1,17 @@
-'use client';
+import Link from 'next/link';
 
-import dynamic from 'next/dynamic';
+// momenttune.com/moti/ — 입구의 첫 작품(카페)으로 보낸다.
+// 옛 갤러리 홈 · /projects · /about · /contact 는 입구에서 쓰지 않아 src/app/_gallery/ 로 옮겼다(밑줄 폴더는 라우팅·정적 export 에서 빠진다).
 
-const HomePage = dynamic(() => import('@/components/pages/HomePage'), {
-  ssr: false,
-  loading: () => (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-white font-black-han-sans text-xl">갤러리를 준비하고 있습니다...</p>
-      </div>
-    </div>
-  )
-});
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export default function Home() {
-  return <HomePage />;
+  return (
+    <main className="min-h-screen flex items-center justify-center px-4">
+      <meta httpEquiv="refresh" content={`0;url=${BASE_PATH}/cafe`} />
+      <Link href="/cafe" className="underline underline-offset-4">
+        모티의 쉬는 날 · 창가 자리로 가기
+      </Link>
+    </main>
+  );
 }

@@ -1,11 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Artwork } from '@/types/artwork';
-import { RhythmOfCommute } from './RhythmOfCommute';
 import { LunchBreak } from './LunchBreak';
+
+// «출근의 리듬»(1,200여 줄)은 그 작품을 열 때만 내려받는다
+const RhythmOfCommute = dynamic(
+  () => import('./RhythmOfCommute').then((m) => m.RhythmOfCommute),
+  { ssr: false }
+);
 import '@/styles/projects.scss';
 
 interface ArtworkViewerProps {

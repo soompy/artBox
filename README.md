@@ -71,27 +71,29 @@ npm install
 npm run dev
 ```
 
-개발 서버가 실행되면 [http://localhost:3000](http://localhost:3000)에서 프로젝트를 확인할 수 있습니다.
+개발 서버가 실행되면 [http://localhost:3000/moti/cafe](http://localhost:3000/moti/cafe) 에서 카페 작품을 확인할 수 있습니다(`basePath: '/moti'`).
 
 ### 빌드 및 배포
 
 ```bash
-# 프로덕션 빌드
+# 정적 빌드 — 결과는 out/ (momenttune.com/moti/ 에 그대로 올린다)
 npm run build
-
-# 프로덕션 서버 실행
-npm start
 ```
+
+- `next.config.js` 의 `output: 'export'` · `basePath: '/moti'` — 서버 없이 정적 파일만 나온다(`next start` 는 쓰지 않는다)
+- `out/cafe.html` → `momenttune.com/moti/cafe`. 호스트가 `.html` 없는 주소를 해당 파일로 열어 줘야 한다(Cloudflare Pages 는 기본 동작)
+- 배포는 창업자 승인(브리프 §5-6)
 
 ## 📁 프로젝트 구조
 
 ```
 src/
-├── app/                    # Next.js 13+ App Router
-│   ├── projects/[slug]/   # 동적 작품 페이지
-│   ├── globals.css        # 전역 스타일
-│   ├── layout.tsx         # 루트 레이아웃
-│   └── page.tsx          # 홈페이지
+├── app/                    # Next.js App Router (basePath /moti)
+│   ├── cafe/page.tsx      # /moti/cafe — 카페 작품
+│   ├── _gallery/          # 옛 갤러리(홈 · projects · about · contact) — 라우팅·export 에서 빠짐
+│   ├── globals.css        # 전역 스타일(종이톤)
+│   ├── layout.tsx         # 루트 레이아웃 · 한국어 메타
+│   └── page.tsx           # /moti/ → /moti/cafe 로 보냄
 ├── components/
 │   ├── artworks/         # 작품별 컴포넌트
 │   └── ui/               # 공통 UI 컴포넌트

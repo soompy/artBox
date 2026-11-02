@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #f5f5f5;
-  --accent: #ffffff;
-  --muted: #404040;
-  --border: #262626;
+  /* 따뜻한 종이톤(브리프 §3-1) — 어두운 갤러리 톤에서 바꿈 */
+  --background: #f6efe3;
+  --foreground: #3b2f25;
+  --accent: #c8743a;
+  --muted: #8a7b6c;
+  --border: #e2d6c3;
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
@@ -17,7 +17,8 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* 원격 서체 호출 없음 — Inter 는 next/font 가 함께 내보내고, 한글은 기기 서체 */
+  --font-sans: var(--font-inter), system-ui, -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   --font-black-han-sans: var(--font-black-han-sans), 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -45,8 +46,8 @@ body {
 }
 
 ::selection {
-  background: rgba(102, 126, 234, 0.3);
-  color: var(--accent);
+  background: rgba(200, 116, 58, 0.25);
+  color: var(--foreground);
 }
 
 .cursor-gradient {
