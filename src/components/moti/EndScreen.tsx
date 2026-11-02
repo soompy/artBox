@@ -54,7 +54,7 @@ export function EndScreen({ reduceMotion, art, message, suggestion, primary, onR
       transition={{ duration: 1.6, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
       onPointerDown={(e) => e.stopPropagation()}
     >
-      <div className="mx-6 flex w-full max-w-sm flex-col items-center text-center text-[#3d3029]">
+      <div className="flex w-full max-w-sm flex-col items-center px-6 text-center text-[#3d3029]">
         {art}
         <h2 id="end-message" ref={headingRef} tabIndex={-1} className="mt-6 text-2xl focus:outline-none">
           {message}
