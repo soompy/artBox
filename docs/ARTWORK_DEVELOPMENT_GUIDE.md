@@ -6,11 +6,11 @@
 
 새로운 콘텐츠를 만들 때마다 구현자는 먼저 아래 세 가지 질문에 답해야 합니다.
 
-- [ ] 이 콘텐츠는 어떤 감정 상태를 위한 것인가?
-- [ ] 사용자가 어떤 행동을 하게 되는가?
-- [ ] MomentTune 추천 엔진이 언제 이 콘텐츠를 추천해야 하는가?
+- [ ] 어떤 공간에서 모티가 무엇을 즐기는 장면인가?
+- [ ] 사용자는 어떤 손짓을 할 수 있는가?
+- [ ] 끝 화면은 «쉴 곳 지도» 의 어떤 장소 종류로 이어지는가?
 
-이 세 질문에 명확히 답하지 못하면 Artwork 구현을 시작하지 않습니다.
+이 세 질문에 명확히 답하지 못하면 Artwork 구현을 시작하지 않습니다. 기준은 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md).
 
 ## Artwork Interface
 
@@ -37,31 +37,25 @@ export interface Artwork {
 - [ ] `dispose()`를 구현했습니다.
 - [ ] 각 method는 여러 번 호출되어도 안전합니다.
 
-## Recommendation Metadata Checklist
+## Metadata Checklist
 
-- [ ] MomentTune 추천 엔진이 이 콘텐츠를 추천해야 하는 상황을 설명했습니다.
-- [ ] `baseWeight`
-- [ ] `emotionMatchWeight`
-- [ ] `contextWeight`
-- [ ] `personalizationWeight`
-- [ ] `freshnessWeight`
-- [ ] `recommendedFor`
-- [ ] 필요 시 `notRecommendedFor`
-- [ ] `bestTimeOfDay`
-- [ ] 관련 있는 경우 `weatherFit`
-- [ ] `repeatCooldownHours`
+[`ARTWORK_SCHEMA.md`](ARTWORK_SCHEMA.md) 의 필수 필드를 채웁니다.
 
-## Emotional Metadata Checklist
+- [ ] `space` · `slug`(주소 `/moti/<slug>`)
+- [ ] `scene.summary`(화면 읽기용 한 문장) · `scene.layers` · `scene.taps`
+- [ ] `ending`(끝 문구 · 장소 제안 · 버튼 · App Store 캠페인 `ct`)
+- [ ] `share`(한국어 OG 제목·설명·이미지)
+- [ ] 감정 점수 · 목표 감정 · 추천 가중치 · 분석 설정을 넣지 않았습니다
 
-- [ ] 이 콘텐츠가 대상으로 하는 감정 상태를 설명했습니다.
-- [ ] source emotion
-- [ ] target emotion
-- [ ] emotional goal
-- [ ] expected feeling after
-- [ ] stress fit
-- [ ] focus fit
-- [ ] sleep fit
-- [ ] 관련 있는 경우 energy fit
+## MomentTune 원칙 Checklist
+
+브리프 §2 를 지킵니다.
+
+- [ ] 비의료 — 화면·제목·설명·OG 어디에도 효능·감정 전환 문구가 없습니다
+- [ ] 게이미피케이션 없음 — 점수 · 횟수 · 연속 · 보상 · 새로 열리는 것이 없습니다
+- [ ] 모티는 쉬는 날을 즐기고 있습니다 — 지친 모티를 돌보는 구도 · 힘든 표정이 없습니다
+- [ ] 개인정보 — 분석 스크립트 · 쿠키 · localStorage 기록 · 외부 폰트 호출이 없습니다. 링크에 상태·건강 값이 없습니다
+- [ ] 안전 — 빠른 깜빡임 · 번쩍임 · 화면 진동이 없습니다
 
 ## Preview Checklist
 
@@ -69,7 +63,7 @@ export interface Artwork {
 - [ ] thumbnail이 있습니다.
 - [ ] cover가 있습니다.
 - [ ] preview component가 있습니다.
-- [ ] preview가 실제 감정 톤을 반영합니다.
+- [ ] preview가 실제 장면의 톤을 반영합니다.
 - [ ] preview는 본편보다 가볍게 렌더링됩니다.
 - [ ] preview는 큰 소리를 autoplay하지 않습니다.
 
@@ -110,8 +104,8 @@ export interface Artwork {
 
 - [ ] New Content Self Check 3개 질문에 답했습니다.
 - [ ] Interface 구현
-- [ ] Recommendation metadata 존재
-- [ ] Emotional metadata 존재
+- [ ] Metadata Checklist 통과
+- [ ] MomentTune 원칙 Checklist 통과
 - [ ] Preview 존재
 - [ ] Mobile support 확인
 - [ ] Accessibility support 확인

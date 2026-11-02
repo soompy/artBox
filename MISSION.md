@@ -1,122 +1,86 @@
 # MomentTune ArtBox 미션
 
-artBox는 인터랙티브 아트 갤러리가 아닙니다.
+artBox 는 MomentTune 앱(집)으로 들어오는 **설치 없는 웹 입구**입니다. 독립 제품이 아닙니다.
 
-artBox는 MomentTune의 감정 경험을 만드는 콘텐츠 플랫폼입니다.
+작품마다 수달 캐릭터 **«모티» 가 주인공으로 한 공간을 즐기는 장면**을 보여 줍니다. 사용자는 링크 하나로 들어와 모티 곁에 2분 같이 앉아 있다가, 끝 화면에서 «이번 주말, 이런 곳 하나» 로 MomentTune «쉴 곳 지도» 에 이어집니다.
 
-모든 구현은 아래 원칙을 따릅니다.
-
-- Emotion First
-- Experience over Feature
-- Calm before Complexity
-- Beautiful Interaction
-- Performance Matters
-- Accessibility Matters
-- Mobile First
-- Reusable Content Engine
-- Recommendation Ready
-- AI Personalization Ready
-
-모든 작품은 단순한 시각 효과가 아니라 사용자의 감정 변화를 유도하는 경험이어야 합니다.
-
-향후 모든 콘텐츠는 MomentTune Recommendation Engine과 연결될 수 있도록 Metadata 기반으로 설계합니다.
+지금 만드는 작품과 세부 기준은 [`docs/MOTI_CAFE_BRIEF.md`](docs/MOTI_CAFE_BRIEF.md) 를 따릅니다. 이 문서와 브리프가 다르면 브리프가 이깁니다.
 
 ## 제품 정의
 
-ArtBox는 MomentTune의 인터랙티브 콘텐츠 엔진입니다.
+- **한 문장 · 한 장면 · 한 번의 클릭** — 설치·가입·입력 없이 링크를 누르면 바로 장면이 열립니다
+- **공간 = «쉴 곳 지도» 의 장소 종류** — 카페 · 전시 · 산책 · 서점 · 공원 · 마켓. 첫 작품은 카페 «모티의 쉬는 날 · 창가 자리»
+- **보는 쉼 + 작은 손짓 하나** — 사용자는 곁에 앉아 같이 쉽니다. 두드리면 장면이 조금 반응할 뿐, 해내야 할 일은 없습니다
+- **끝은 앱으로** — 작품의 목적은 «쉬는 날 뭘 하지» 에 장소 하나를 건네는 것입니다
 
-사용자의 감정 맥락을 시각, 소리, 움직임, 터치, 리듬, 피드백으로 번역합니다. ArtBox는 수동 감상을 최적화하지 않습니다. 감정 전환을 최적화합니다.
+## 지키는 것 (MomentTune 원칙)
 
-모든 콘텐츠 의사결정의 핵심 질문은 다음입니다.
+### 비의료
 
-> 이 경험은 사용자를 어떤 감정 상태에서 어떤 감정 상태로 이동시키는가?
+진단·치료·효능을 말하지 않습니다. 화면·제목·설명·OG·SNS 어디에도 «힐링 · 치유 · 마음이 편해져요 · 감정 전환 · 안정시킨다 · 명상» 같은 말을 쓰지 않습니다. 한 일만 말합니다 — «모티랑 2분» · «잠깐 같이 앉아 있었네요».
 
-## 구현 원칙
+### 게이미피케이션 없음
 
-### Emotion First
+점수 · 횟수 · 연속 · 보상 · 성장 · 먹이 · 모으기 도감을 만들지 않습니다. 키우기 게임이 아닙니다.
 
-기술, 효과, 기능을 정하기 전에 사용자의 감정 상태를 먼저 정의합니다.
+### 쉬는 날을 즐기는 모티
 
-모든 콘텐츠는 시작 감정, 목표 감정, 감정 목표, 세션 후 기대 감정을 가져야 합니다.
+모티는 공간을 즐기고 있습니다. 지친 모티를 사용자가 돌보는 구도, 힘든 표정은 쓰지 않습니다.
 
-### Experience over Feature
+### 개인정보
 
-기능은 감정 경험을 개선할 때만 존재합니다.
+분석 스크립트 · 쿠키 · localStorage 기록 · 외부 폰트 호출을 쓰지 않습니다. 링크에 상태·건강 값을 붙이지 않습니다. 기분 전후 비교 · 심박·HRV 연동을 하지 않습니다.
 
-사용자가 더 안정되고, 집중하고, 위로받고, 활력을 얻고, 창의적으로 느끼도록 돕지 않는 기능은 추가하지 않습니다.
+### 안전
+
+빠른 깜빡임 · 번쩍임 · 화면 진동을 쓰지 않습니다.
+
+## 만드는 원칙
 
 ### Calm before Complexity
 
-기본값은 차분하고 이해하기 쉬운 상호작용입니다.
-
-복잡한 인터랙션은 창의성, 해소, 에너지처럼 목표 감정이 그것을 필요로 할 때만 허용합니다.
+기본값은 차분하고 이해하기 쉬운 장면입니다. 첫 3초 안에 무엇을 보고 있는지 알 수 있어야 합니다.
 
 ### Beautiful Interaction
 
-상호작용은 반응적이고 부드럽고 의도적으로 느껴져야 합니다.
-
-사용자는 콘텐츠가 자신에게 요구하는 것이 아니라, 자신을 듣고 있다고 느껴야 합니다.
+손짓에 대한 반응은 부드럽고 의도적이어야 합니다. 같은 곳을 여러 번 두드려도 새로 열리는 것은 없습니다.
 
 ### Performance Matters
 
-지연, 끊김, 메모리 누수는 감정 경험을 무너뜨립니다.
+지연, 끊김, 발열, 메모리 누수는 장면을 무너뜨립니다.
 
-모든 콘텐츠는 animation frame, event listener, audio node, WebGL resource, timer를 반드시 정리해야 합니다.
+모든 작품은 animation frame, event listener, audio node, WebGL resource, timer 를 반드시 정리합니다. 화면을 숨기면 멈추고 돌아오면 이어집니다.
 
 ### Accessibility Matters
 
-ArtBox는 다양한 감각 선호, 모션 민감도, 기기 환경, 입력 방식을 가진 사용자가 접근할 수 있어야 합니다.
-
-모든 경험은 sound-off, reduced motion, 명확한 exit, 모바일 친화적 인터랙션을 지원해야 합니다.
+모든 작품은 소리 없이 성립하고(소리는 기본 꺼짐), 움직임 줄이기 · 키보드 · 화면 읽기 · 언제든 나가기를 지원합니다.
 
 ### Mobile First
 
-감정 체크인은 짧은 일상 순간에 자주 일어납니다.
+링크는 휴대폰에서 열립니다. 모든 작품은 세로 화면에서 먼저 성립해야 합니다.
 
-모든 콘텐츠는 데스크톱 최적화 이전에 모바일에서 먼저 성립해야 합니다.
+### Reusable Shell
 
-### Reusable Content Engine
-
-ArtBox 콘텐츠는 공통 schema에 등록되고 재사용 가능한 shell에서 렌더링되어야 합니다.
-
-일회성 routing, 일회성 control, 일회성 metadata 구조를 만들지 않습니다.
-
-### Recommendation Ready
-
-모든 콘텐츠는 추천 metadata를 포함해야 합니다.
-
-최소 필드:
-
-- emotion tag
-- stress fit
-- focus fit
-- sleep fit
-- duration
-- difficulty
-- interaction type
-- recommendation weight
-- 필요 시 best time of day
-
-### AI Personalization Ready
-
-향후 AI 개인화는 콘텐츠 선택과 runtime parameter를 조정할 수 있어야 합니다.
-
-Artwork metadata와 runtime config는 motion intensity, sound intensity, color palette, session duration, interaction mode, accessibility mode, user preference signal을 수용해야 합니다.
+작품은 같은 틀(120초 흐름 · 진행선 · 나가기 · 끝 화면 · 빗소리 같은 선택 소리)을 공유합니다. 작품마다 일회성 컨트롤·라우팅을 만들지 않습니다.
 
 ## 절대 기준
 
-- 감정 의도가 없는 콘텐츠는 출시하지 않습니다.
-- metadata가 없는 콘텐츠는 출시하지 않습니다.
-- 모바일을 지원하지 않는 콘텐츠는 출시하지 않습니다.
-- 접근성을 지원하지 않는 콘텐츠는 출시하지 않습니다.
-- cleanup이 없는 콘텐츠는 출시하지 않습니다.
-- 기존 콘텐츠를 깨뜨리는 변경은 출시하지 않습니다.
-- 보기만 멋진 효과는 ArtBox 콘텐츠가 아닙니다.
+- 효능·감정 전환 문구가 있는 작품은 출시하지 않습니다.
+- 점수·횟수·보상이 있는 작품은 출시하지 않습니다.
+- 분석 스크립트·쿠키가 있는 작품은 출시하지 않습니다.
+- 모바일을 지원하지 않는 작품은 출시하지 않습니다.
+- 접근성을 지원하지 않는 작품은 출시하지 않습니다.
+- cleanup 이 없는 작품은 출시하지 않습니다.
+- 배포는 창업자 승인 뒤에만 합니다.
 
 ## North Star
 
-ArtBox는 사용자가 들어왔을 때보다 더 나은 감정 상태로 나가도록 도와야 합니다.
+링크를 연 사람이 끝 화면까지 모티 곁에 앉아 있고, «이번 주말, 이런 곳 하나» 를 따라 MomentTune 으로 넘어오는 것.
 
-우리가 원하는 사용자 반응은 단순합니다.
+우리가 원하는 반응은 단순합니다.
 
-> 조금 나아졌다.
+> 또 열어 볼 것 같아.
+
+---
+
+이전 미션(감정 전환 · 추천 엔진 · AI 개인화)은 보류했습니다 — [`docs/parked/README.md`](docs/parked/README.md).

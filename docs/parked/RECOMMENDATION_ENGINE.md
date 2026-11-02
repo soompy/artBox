@@ -1,10 +1,12 @@
 # MomentTune ArtBox Recommendation Engine
 
+> **보류(PARK) · 2026-11-02** — 지금 쓰지 않는 문서다. 이유와 다시 꺼낼 조건은 [`README.md`](README.md). 현재 기준은 [`../MOTI_CAFE_BRIEF.md`](../MOTI_CAFE_BRIEF.md).
+
 ArtBox 추천은 MomentTune의 사용자 상태 신호를 인터랙티브 콘텐츠로 연결합니다.
 
 ## 연결 구조 이미지
 
-![MomentTune와 ArtBox 연결 구조](assets/momenttune-artbox-connection.png)
+![MomentTune와 ArtBox 연결 구조](../assets/momenttune-artbox-connection.png)
 
 ## Data Flow
 

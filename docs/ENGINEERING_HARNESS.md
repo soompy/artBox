@@ -10,9 +10,9 @@
 
 새 콘텐츠는 구현 전에 반드시 아래 질문에 답해야 합니다.
 
-- 이 콘텐츠는 어떤 감정 상태를 위한 것인가?
-- 사용자가 어떤 행동을 하게 되는가?
-- MomentTune 추천 엔진이 언제 이 콘텐츠를 추천해야 하는가?
+- 어떤 공간에서 모티가 무엇을 즐기는 장면인가?
+- 사용자는 어떤 손짓을 할 수 있는가?
+- 끝 화면은 «쉴 곳 지도» 의 어떤 장소 종류로 이어지는가?
 
 이 답변은 config, 문서, PR 설명 중 최소 한 곳에 명시되어야 합니다.
 
@@ -21,7 +21,7 @@
 ```txt
 src/
   app/
-    content/[slug]/page.tsx
+    cafe/page.tsx              # basePath '/moti' → /moti/cafe
   components/
     content/
       ContentViewer.tsx
@@ -36,12 +36,8 @@ src/
         Artwork.test.tsx
   data/
     artworks.ts
-    categories.ts
-    emotion-tags.ts
   types/
     artwork.ts
-    recommendation.ts
-    analytics.ts
   engines/
     canvas/
     webgl/
@@ -54,7 +50,7 @@ src/
 
 - TypeScript를 사용합니다.
 - `any`는 피합니다.
-- artwork rendering과 recommendation, analytics를 분리합니다.
+- artwork rendering과 공통 틀(진행선 · 나가기 · 끝 화면 · 소리 버튼)을 분리합니다.
 - registry 밖에서 slug를 하드코딩하지 않습니다.
 - browser API는 guard 후 사용합니다.
 - 모든 artwork는 resource cleanup을 수행합니다.
@@ -66,17 +62,16 @@ Artwork component는 rendering과 local interaction만 담당합니다.
 금지:
 
 - 라우팅 처리
-- 글로벌 추천 계산
 - 공통 컨트롤 소유
-- 글로벌 오디오 정책 변경
-- 공유 이벤트 레이어 없이 analytics 직접 호출
+- 글로벌 오디오 정책 변경(소리는 기본 꺼짐 · 누른 뒤에만 재생)
+- 분석 스크립트 · 쿠키 · localStorage 기록 · 외부 폰트 호출
 
 ## Animation Rule
 
 - `requestAnimationFrame`을 사용합니다.
 - pause와 resume을 지원합니다.
 - reduced motion을 지원합니다.
-- 빠른 플래시를 피합니다.
+- 빠른 깜빡임 · 번쩍임 · 화면 진동을 쓰지 않습니다.
 - 매 프레임 React state 업데이트를 피합니다.
 
 ## Performance Rule
@@ -97,10 +92,9 @@ Artwork component는 rendering과 local interaction만 담당합니다.
 
 ## Naming Rule
 
-- Slug: `calm-flow`
-- Component: `CalmFlow`
-- Config: `calmFlowConfig`
-- Event: `content_started`, `content_completed`, `content_exited`
+- Slug: `cafe` (주소 `/moti/cafe`)
+- Component: `MotiCafe`
+- Config: `motiCafeConfig`
 
 ## Testing Rule
 
@@ -124,7 +118,7 @@ Branch naming:
 
 Commit naming:
 
-- `feat: add calm flow content`
+- `feat: add moti cafe scene`
 - `fix: cleanup webgl resources`
 - `docs: add design system`
 
@@ -133,10 +127,10 @@ Commit naming:
 모든 PR은 아래를 포함합니다.
 
 - Summary
-- 대상 감정 상태
-- 사용자 핵심 행동
-- MomentTune 추천 조건
-- Emotional goal
+- 공간과 모티의 장면
+- 사용자 손짓
+- 끝 화면이 이어지는 장소 종류
+- MomentTune 원칙(브리프 §2) 확인
 - Content 또는 engine changes
 - Interaction type
 - Rendering engine
@@ -150,10 +144,12 @@ Commit naming:
 아래 항목은 merge를 막습니다.
 
 - build 실패
-- 대상 감정 상태가 불명확함
-- 사용자 핵심 행동이 불명확함
-- 추천 조건이 불명확함
+- 장면 · 손짓 · 끝 화면 연결이 불명확함
 - metadata 누락
+- 효능·감정 전환 문구
+- 점수 · 횟수 · 보상
+- 분석 스크립트 · 쿠키 · 외부 폰트 호출
+- 빠른 깜빡임 · 번쩍임 · 화면 진동
 - cleanup 누락
 - mobile broken
 - reduced motion 미지원
@@ -164,9 +160,9 @@ Commit naming:
 
 모든 콘텐츠는 아래를 문서화합니다.
 
-- 목적
-- 감정 전환
-- 추천 metadata
+- 공간과 장면
+- 손짓과 반응
+- 끝 화면 연결
 - interaction type
 - duration
 - difficulty
