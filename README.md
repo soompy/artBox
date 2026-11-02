@@ -80,6 +80,8 @@ npm run build
 
 정적 파일로 내보내므로(`output: 'export'`) `npm start` 는 쓰지 않습니다. 올릴 곳은 `momenttune.com/moti/…` 이고, **배포는 창업자 승인 뒤**에 합니다(브리프 §5-6).
 
+Vercel(`artbox-sage.vercel.app`)은 **확인용 프리뷰**입니다. Vercel 빌드에서는 `/moti` 없이 루트에서 열리고(예: `/cafe`), 검색에 올리지 않습니다(`noindex`). PR 마다 프리뷰 주소가 생겨 휴대폰으로 확인할 수 있습니다.
+
 ## 📁 프로젝트 구조
 
 ```

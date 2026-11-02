@@ -1,5 +1,5 @@
-/** next.config.js 의 basePath 와 같게 — <img> 같은 일반 주소에는 basePath 가 붙지 않는다 */
-export const BASE_PATH = '/moti';
+/** next.config.js 의 basePath — momenttune.com 은 '/moti', Vercel 프리뷰는 ''. <img> 같은 일반 주소에는 basePath 가 붙지 않는다 */
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '/moti';
 
 /** public/ 아래 파일 주소 */
 export function asset(path: string): string {
