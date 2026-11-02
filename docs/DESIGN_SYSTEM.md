@@ -1,6 +1,8 @@
 # MomentTune ArtBox Design System
 
-ArtBox 디자인 시스템은 차분하고 아름답고 접근 가능한 상호작용을 통해 감정 변화를 지원하기 위해 존재합니다.
+ArtBox 디자인 시스템은 모티가 주인공인 장면을 차분하고 아름답고 접근 가능하게 보여 주기 위해 존재합니다.
+
+> 작품 장면은 **따뜻한 종이톤**이 기본입니다(브리프 §3-1). 아래 다크 토큰은 기존 갤러리 화면용이며, 종이톤 토큰은 빌드 손보기(브리프 §5-2) 때 이 문서에 추가합니다.
 
 ## Color Token
 
@@ -19,6 +21,8 @@ ArtBox 디자인 시스템은 차분하고 아름답고 접근 가능한 상호�
 ```
 
 ## Emotional Colors
+
+> **보류(PARK)** — 보류한 감정 기능 카테고리([`parked/README.md`](parked/README.md))에 묶인 색입니다. 모티 작품에는 쓰지 않습니다.
 
 ```css
 :root {
@@ -100,7 +104,7 @@ Scale:
 - card는 content entry에만 사용합니다.
 - card 안에 card를 중첩하지 않습니다.
 - border radius는 8px을 기본으로 합니다.
-- title, emotional shift, duration, interaction type, difficulty를 표시합니다.
+- title, 공간, duration, 손짓 종류를 표시합니다.
 
 ## Artwork Layout
 
@@ -112,23 +116,16 @@ ArtworkShell
   Top controls
   Optional metadata panel
   Interaction layer
-  Feedback checkout
+  Ending screen
 ```
 
 ## Gallery Layout
 
-Gallery는 emotion-first 탐색 구조를 사용합니다.
-
-```txt
-Emotional entry
-Recommended content
-Category sections
-Content cards
-```
+입구(`/moti/…`)에서는 갤러리 홈을 쓰지 않습니다. 링크는 작품 장면으로 바로 열립니다(브리프 §5-2).
 
 ## Dark Theme
 
-Dark theme은 몰입형 경험의 기본값입니다.
+Dark theme은 기존 갤러리 화면용입니다. 모티 작품 장면의 기본값이 아닙니다.
 
 ```css
 [data-theme="dark"] {
@@ -140,7 +137,7 @@ Dark theme은 몰입형 경험의 기본값입니다.
 
 ## Light Theme
 
-Light theme은 daytime, nature, creativity 콘텐츠에 사용합니다.
+Light theme은 모티 작품의 끝 화면과 컨트롤에 사용합니다(종이톤 장면 위).
 
 ```css
 [data-theme="light"] {
@@ -173,7 +170,7 @@ Glass는 supporting overlay와 control에만 사용합니다.
 
 ## Gradient
 
-Gradient는 감정 목적과 일치해야 합니다.
+Gradient는 장면의 톤과 일치해야 합니다.
 
 ```css
 :root {

@@ -2,100 +2,71 @@
 
 ## Project Vision
 
-MomentTune ArtBox는 사용자의 감정 상태에 맞는 인터랙티브 콘텐츠를 제공하는 Interactive Wellness Content Platform입니다.
+MomentTune ArtBox 는 MomentTune 앱(집)으로 들어오는 **설치 없는 웹 입구**입니다.
 
-ArtBox는 작품을 전시하는 장소가 아니라 감정을 경험으로 바꾸는 플랫폼입니다. 시각, 소리, 움직임, 터치, 리듬을 통해 사용자가 자신의 상태를 인식하고 더 나은 감정 상태로 이동하도록 돕습니다.
+작품마다 수달 캐릭터 «모티» 가 한 공간을 즐기는 장면을 보여 줍니다. 사용자는 곁에 앉아 같이 쉬고(보는 쉼 + 작은 손짓 하나), 끝에서 «이번 주말, 이런 곳 하나» 로 MomentTune «쉴 곳 지도» 에 이어집니다.
 
 ## Mission
 
-짧고 아름다운 인터랙티브 경험을 통해 사용자의 감정 인식, 감정 조율, 감정 회복을 돕습니다.
+«쉬는 날 뭘 하지» 에 링크 하나 · 장면 하나 · 장소 하나로 답합니다.
 
 ## Core Value
 
-- Emotional Awareness: 사용자가 현재 감정을 판단 없이 알아차리도록 돕습니다.
-- Interactive Healing: 터치, 모션, 사운드, 리듬을 감정 조율 도구로 사용합니다.
-- Personal Resonance: 사용자의 지금 순간에 맞는 콘텐츠를 제공합니다.
-- Gentle Technology: 기술은 전면에 드러나지 않고 감정 경험을 지지합니다.
-- Daily Wellness: 일상의 짧은 틈에서 감정 회복을 가능하게 합니다.
+- **한 문장 · 한 장면 · 한 번의 클릭**: 설치 · 가입 · 입력 없이 바로 열립니다.
+- **우리 캐릭터 모티**: 남의 장면을 따라 하지 않고 모티가 즐기는 공간으로 만듭니다.
+- **같이 앉아 있기**: 해내야 할 일 · 점수 · 보상이 없습니다.
+- **장소로 이어짐**: 끝 화면이 실제로 가 볼 만한 곳으로 이어집니다.
+- **기록하지 않음**: 쿠키 · 분석 스크립트 · 기분 기록이 없습니다.
 
 ## Why This Project Exists
 
-대부분의 디지털 콘텐츠는 사용자의 주의를 붙잡는 데 최적화되어 있습니다. ArtBox는 사용자의 주의를 다시 자기 자신에게 돌려주는 경험을 만듭니다.
+MomentTune 앱은 공개 한 달 동안 사람을 거의 모으지 못했습니다(광고 클릭 696 → 설치 1). 2026-10 말 화제가 된 웹 가상 사찰 «산사» 는 설치 없는 링크 · 한 장면 · 말 없는 함께 있음으로 사람을 모았습니다.
 
-사용자는 불안, 피로, 산만함, 외로움, 과자극 상태를 느끼지만 무엇을 해야 할지 모를 때가 많습니다. ArtBox는 감정 선택, 콘텐츠 진입, 인터랙션, 피드백이라는 짧은 루프를 통해 낮은 진입 장벽의 감정 리셋을 제공합니다.
+그래서 **«앱은 집, 설치 없는 웹 입구는 따로»**. 입구는 산사를 따라 하지 않고 모티로 만듭니다. 배경 전체는 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md) §1.
 
-## Long-term Vision: 3년
+## 작품 계획
 
-### Year 1: Emotional Content Lab
-
-- 감정 기반 콘텐츠 카테고리 정의
-- metadata-driven content engine 구축
-- Calm, Focus, Breathing, Sleep, Creativity, Nature, Meditation, Drawing, Music Reactive, Generative Art 프로토타입 출시
-- 세션 피드백과 기본 추천 metadata 수집
-
-### Year 2: Personalized Wellness Experience
-
-- MomentTune 사용자 상태 데이터와 ArtBox 연결
-- mood, time, weather, stress, sleep, HR, HRV 기반 개인화
-- completion, interaction, before/after feedback으로 추천 개선
-
-### Year 3: Wellness Content Platform
-
-- creator-ready content format 제공
-- 브랜드 웰니스, 교육, 감정 프로그램으로 확장
-- AI 기반 개인화와 adaptive content parameter 구축
+- 첫 작품: **카페 «모티의 쉬는 날 · 창가 자리»** — 비 오는 날 카페 창가에서 코코아를 마시는 모티
+- 다음 작품: «쉴 곳 지도» 의 다른 장소 종류 — 전시 · 산책 · 서점 · 공원 · 마켓. 주소는 `momenttune.com/moti/<공간>`
+- «작품이 매일 바뀐다» 는 약속하지 않습니다(1인 제작 부담)
 
 ## Brand Identity
 
-ArtBox는 감정을 조율하는 부드러운 인터랙티브 공간입니다.
+MomentTune 의 이름을 답니다. 문체는 MomentTune `docs/marketing/VOICE.md` 를 따릅니다.
+
+| 쓰는 말 | 쓰지 않는 말 |
+|---|---|
+| 모티의 쉬는 날 · 모티랑 2분 · 창가 자리 · 잠깐 같이 앉아 있기 | 힐링 · 치유 · 마음이 편해져요 · 불안·긴장이 풀려요 · 감정 전환 · 안정시킨다 · 평온함을 선사 · 명상 |
 
 Brand keywords:
 
-- Emotional
-- Immersive
 - Gentle
-- Reflective
-- Adaptive
-- Sensory
-- Wellness
-- Poetic Technology
+- Warm
+- Playful(게임이 아니라 장난스러운 손짓)
+- Paper texture
+- Quiet company
 
 ## Design Philosophy
 
-- 감정이 먼저이고 UI는 그 다음입니다.
+- 장면이 먼저이고 UI 는 그 다음입니다.
 - 기본값은 차분해야 합니다.
-- 몰입 중에는 UI를 최소화합니다.
-- 장식보다 아름다운 상호작용을 우선합니다.
-- 접근성과 성능은 감정 경험의 일부입니다.
-
-## Emotional Experience
-
-ArtBox 경험은 감정 전환을 기준으로 설계합니다.
-
-- 불안에서 안정으로
-- 산만함에서 집중으로
-- 피로에서 회복으로
-- 무기력에서 활력으로
-- 외로움에서 위로로
-- 막힘에서 창의성으로
+- 장면 중에는 UI 를 최소화합니다(진행선 · 소리 버튼 · 나가기).
+- 장식보다 손짓에 대한 반응을 우선합니다.
+- 접근성과 성능은 장면의 일부입니다.
+- 그림 결은 MomentTune 모티 자산과 같게 — 색연필·크레용 질감 · 따뜻한 종이톤.
 
 ## Success Metrics
 
-- 세션 시작률
-- 세션 완료율
-- before/after mood improvement
-- 재방문율
-- 추천 콘텐츠 클릭률
-- 모바일 완료율
-- 접근성 모드 사용률
-- 평균 performance score
+숫자 기준 없이 «재기만» 합니다(브리프 §6).
 
-## Future Roadmap
+- `?from=` 별 방문(서버 요청 수)
+- 끝 화면 도달(서버 로그 합계)
+- App Store 캠페인 `ct=artbox_cafe` 조회·다운로드
+- 직접 물어본 «또 열어 볼 것 같나»
+- 모바일 · 접근성 · 성능 점검 통과
 
-- metadata-driven content registry
-- recommendation scoring model
-- runtime content configuration
-- MomentTune integration
-- AI personalization
-- creator tooling
-- emotional wellness program
+## 하지 않는 것
+
+브리프 §7 — 먹이·성장·매일 오기·모으기 도감 · 말풍선 대화 · 효과·감정 전환 문구 · 기분 전후 비교 · 심박·HRV · AI 개인화 · 분석 스크립트·쿠키 · artBox 자체 추천 엔진 · 후원 버튼 · 제휴 연락.
+
+이전 비전(Interactive Healing · 감정 조율·회복 · HR·HRV 개인화 · Wellness Content Platform)은 [`parked/README.md`](parked/README.md) 에 보류했습니다.

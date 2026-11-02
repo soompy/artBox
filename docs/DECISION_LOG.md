@@ -4,6 +4,8 @@
 
 ## 2026-07-16: Product Repositioning
 
+> **상태: 보류(PARK) · 2026-11-02** — artBox 는 «감정 경험 콘텐츠 플랫폼» 이 아니라 MomentTune 의 웹 입구다. «mood shift» 지표는 쓰지 않는다. [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
+
 Decision:
 
 ArtBox는 더 이상 Interactive Art Gallery로 정의하지 않습니다. ArtBox는 MomentTune 감정 경험을 위한 interactive content platform입니다.
@@ -20,6 +22,8 @@ Impact:
 
 ## 2026-07-16: Metadata-Driven Content
 
+> **상태: 일부 보류 · 2026-11-02** — 메타데이터 등록은 유지한다. 단 emotion · stress · focus · sleep · 추천 가중치는 넣지 않는다([`ARTWORK_SCHEMA.md`](ARTWORK_SCHEMA.md)). [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
+
 Decision:
 
 모든 미래 콘텐츠는 metadata를 통해 등록합니다.
@@ -34,6 +38,8 @@ Impact:
 - recommendation readiness가 release requirement가 됩니다.
 
 ## 2026-07-16: Mobile and Accessibility as Requirements
+
+> **상태: 유효** — 브리프 §3-6 과 같다.
 
 Decision:
 
@@ -51,6 +57,8 @@ Impact:
 - unsupported rendering environment에는 fallback이 필요합니다.
 
 ## 2026-07-16: New Content Self Check
+
+> **상태: 대체 · 2026-11-02** — 세 질문은 «어떤 공간에서 모티가 무엇을 즐기나 · 사용자의 손짓 · 끝 화면이 이어지는 장소 종류» 로 바뀌었다([`ARTWORK_DEVELOPMENT_GUIDE.md`](ARTWORK_DEVELOPMENT_GUIDE.md)). [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
 
 Decision:
 
@@ -71,6 +79,8 @@ Impact:
 - 세 질문에 답하지 못하는 콘텐츠는 merge할 수 없습니다.
 
 ## 2026-07-16: MVP Integration Boundary (D-1)
+
+> **상태: 보류(PARK) · 2026-11-02** — mood 입력 · 추천 · 생체신호 연동을 하지 않는다(브리프 §2-4 · §7). [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
 
 Decision:
 
@@ -93,6 +103,8 @@ Owner: 이수민
 
 ## 2026-07-16: MVP Primary User (D-2)
 
+> **상태: 대체 · 2026-11-02** — 입구의 1차 사용자는 설치 없이 링크로 들어오는 사람이다(브리프 §1). 기존 MomentTune 사용자는 `?from=momenttune` 로 연다. [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
+
 Decision:
 
 MVP 1차 사용자군은 기존 SERVICE_DEFINITION대로 MomentTune 사용자(감정 기반 콘텐츠 경험을 원하는 사용자)를 유지합니다. 단 MVP는 mood 자기입력으로 동작하므로 사용자 식별 및 데이터 연동 없이도 검증 가능합니다.
@@ -114,6 +126,8 @@ Owner: 이수민
 
 ## 2026-07-16: MVP Content Scope (D-3)
 
+> **상태: 보류(PARK) · 2026-11-02** — 첫 작품은 카페 «모티의 쉬는 날 · 창가 자리» 하나다. Calm · Focus · Breathing 6개는 만들지 않는다. [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
+
 Decision:
 
 MVP 콘텐츠는 기존 MVP 카테고리(Calm, Focus, Breathing)를 유지하고, 브리프의 "5~8개" 기준을 충족하기 위해 카테고리당 2개씩 총 6개를 대표 콘텐츠로 확정합니다.
@@ -134,6 +148,8 @@ Impact:
 Owner: 이수민
 
 ## 2026-07-16: MVP Success Metrics (D-4)
+
+> **상태: 보류(PARK) · 2026-11-02** — 기분 전후 비교 · 감정 개선률을 재지 않는다. 숫자 기준 없이 방문 · 끝 화면 도달 · App Store 캠페인만 잰다(브리프 §6). [2026-11-02 항목](#2026-11-02-artbox-는-momenttune-의-웹-입구--작품은-모티가-주인공인-공간)
 
 Decision:
 

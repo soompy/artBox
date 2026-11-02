@@ -1,54 +1,35 @@
 # MomentTune ArtBox Roadmap
 
-## Phase 1: Repositioning
+순서와 세부는 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md) §5 를 따릅니다.
 
-- product language를 gallery에서 content platform으로 전환합니다.
-- mission과 documentation을 정립합니다.
-- content schema를 정의합니다.
-- engineering harness를 정의합니다.
-- 기존 artwork를 emotional intent 기준으로 재해석합니다.
+## Phase 1: 자리 바꾸기 (그림 없이 지금)
 
-## Phase 2: Content Engine Foundation
+- 문서 정리 — MomentTune 원칙과 충돌하는 표현을 지우거나 보류로 뗀다
+- 빌드 손보기 — `output: 'export'` · `basePath: '/moti'` · 외부 폰트 호출 제거 · 안 쓰는 의존성 정리 · `ignoreBuildErrors` 끄기 · 한국어 메타·OG · 종이톤
+- 카페 작품 틀 — 회색 빈 상자로 장면 레이어 · 두드림 네 곳 · 비·김 · 120초 흐름 · 빗소리 버튼 · 끝 화면 · 접근성
 
-- metadata-driven content registry 구축
-- content category와 emotion tag 추가
-- shared ContentShell과 ContentViewer 생성
-- content item별 dynamic loading 적용
-- preview component contract 추가
+## Phase 2: 카페 작품 완성
 
-## Phase 3: MVP Emotional Loop
+- 그림 7장 — 창업자
+- 그림 끼우기 · WebP 굽기 · 첫 로드 무게 재기
+- 실제 아이폰 Safari 에서 발열·끊김 확인
+- 빗소리 파일 고르기(라이선스·출처 기록) — 창업자
 
-- mood input 추가
-- metadata 기반 content recommendation
-- Calm, Focus, Breathing 세션 출시
-- session feedback 추가
-- completion과 before/after mood 추적
+## Phase 3: 입구 열기 (창업자 승인)
 
-## Phase 4: Recommendation Integration
+- `momenttune.com/moti/cafe` 에 올리기 — momenttune-web 레포 · Cloudflare 경로 설정
+- 창업자 개인 스레드 글 · 15초 화면 녹화(`?from=threads` · `?from=insta`)
+- 숫자 기준 없이 재기 — `?from=` 별 방문 · 끝 화면 도달 · `ct=artbox_cafe` 캠페인 · 주변에 직접 묻기
 
-- HR, HRV, Sleep, Stress, Mood, Weather, Time 입력 연결
-- recommendation scoring 구현
-- context와 preference weighting 추가
-- analytics를 content ranking으로 feedback
+## Phase 4: 다음 공간
 
-## Phase 5: Personalization
-
-- AI-adjusted runtime parameter 추가
-- duration, intensity, color, sound, interaction mode 개인화
-- user preference profile 구축
-- adaptive content variant 추가
-
-## Phase 6: Platform Expansion
-
-- creator-ready content template 생성
-- metadata와 accessibility validation tool 추가
-- emotional wellness program 출시
-- enterprise와 education use case 지원
+- 카페 결과를 보고 다음 공간을 정한다 — 전시 · 산책 · 서점 · 공원 · 마켓
+- 같은 틀로 `/moti/<공간>` 추가
 
 ## Near-Term Priorities
 
-1. artwork data에서 content schema로 전환
-2. route와 data inconsistency 수정
-3. reusable content viewer 생성
-4. 기존 콘텐츠에 recommendation metadata 추가
-5. mobile과 accessibility check 추가
+1. 문서 정리(브리프 §5-1)
+2. 빌드 손보기(§5-2)
+3. 카페 작품 틀(§5-3)
+
+이전 로드맵 Phase 3~6(mood input · before/after mood 추적 · HR·HRV 연동 · recommendation scoring · AI 개인화 · wellness program)은 [`parked/README.md`](parked/README.md) 에 보류했습니다.
