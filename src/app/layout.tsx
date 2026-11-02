@@ -38,6 +38,8 @@ export const metadata: Metadata = {
     title: "모티의 쉬는 날",
     description: "모티가 좋아하는 곳에 2분 같이 앉아 있어요. 설치 없이 링크 하나로.",
   },
+  // Vercel 은 확인용 프리뷰 — 검색에 올리지 않는다
+  ...(process.env.VERCEL ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function RootLayout({
