@@ -194,6 +194,27 @@ Impact:
 
 Owner: 이수민
 
+## 2026-11-02: 문서 정리(브리프 §5-1)
+
+Decision:
+
+위 결정에 맞춰 `MISSION.md` · `README.md` · `docs/SERVICE_DEFINITION.md` · `PRODUCT_BOOK.md` · `CONTENT_STRATEGY.md` · `EXPERIENCE_PRINCIPLES.md` · `ROADMAP.md` · `ARTWORK_SCHEMA.md` · `ARTWORK_DEVELOPMENT_GUIDE.md` · `ENGINEERING_HARNESS.md` · `DESIGN_SYSTEM.md` 와 `src/data/artworks.ts` 의 «점심의 틈» 설명을 고쳐 쓴다. 효과를 약속하는 표현은 지우고, 기분 전후 비교 · 생체 신호 연동 · AI 개인화 · 자체 추천 엔진 · 감정 메타데이터는 [`parked/`](parked/README.md) 로 뗀다(`RECOMMENDATION_ENGINE.md` 와 이전 스키마는 문서째 옮김). 이 로그의 과거 항목은 지우지 않고 «상태» 줄만 단다. (#5)
+
+Rationale:
+
+브리프 §2(MomentTune 원칙)와 기존 문서가 어긋나 있으면, 다음 작업자(사람이든 AI 든)가 옛 문서를 보고 효과 문구나 기분 기록을 다시 넣을 수 있다.
+
+Alternatives Considered:
+
+- 같은 정리를 다른 세션이 따로 올린 #4(`docs/PARKED.md` · P-1~P-6) — #5 가 먼저 머지되고 범위(개발 가이드·하네스·디자인 시스템 본문)가 넓어 닫았다. 이 항목은 #4 의 기록을 #5 기준으로 옮긴 것이다
+
+Impact:
+
+- 보류한 것을 다시 꺼내려면 이 로그에 새 결정이 먼저다
+- 다음 작업은 브리프 §5-2 빌드 손보기(#6) → §5-3 카페 작품 틀
+
+Owner: 이수민
+
 ## Template
 
 향후 결정은 아래 형식으로 기록합니다.

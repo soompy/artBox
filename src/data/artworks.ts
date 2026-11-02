@@ -41,6 +41,25 @@ export const artworks: Artwork[] = [
       mobileOptimized: true,
     },
   },
+  // 감정 점수·기분 목표 값을 넣지 않는다(브리프 §5-3) — 주소는 /moti/cafe
+  {
+    id: '3',
+    slug: 'cafe',
+    title: '모티의 쉬는 날 · 창가 자리',
+    year: 2026,
+    description: '비 오는 날, 카페 창가에서 코코아를 마시는 모티 곁에 2분 같이 앉아 있어요.',
+    keywords: ['모티', '모먼트튠', '카페', '창가 자리', '비 오는 날', '쉬는 날'],
+    technologies: ['Canvas', 'Framer Motion'],
+    thumbnail: '/artworks/moti-cafe/cafe-og.webp', // 그림이 오면 만든다(브리프 §3-6)
+    featured: false,
+    status: 'development',
+    metadata: {
+      duration: 120,
+      interactive: true,
+      soundEnabled: false, // 빗소리는 기본 꺼짐 · 파일 미정
+      mobileOptimized: true,
+    },
+  },
 ];
 
 export const getFeaturedArtworks = (): Artwork[] => {
