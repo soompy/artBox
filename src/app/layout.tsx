@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Black_Han_Sans } from "next/font/google";
 import "./globals.css";
-import ClientOnly from "@/components/ClientOnly";
-import PerformanceInit from "@/components/PerformanceInit";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,36 +15,28 @@ const blackHanSans = Black_Han_Sans({
   display: "swap",
 });
 
+// 메타 주소는 Vercel 프리뷰가 아니라 momenttune.com — basePath('/moti')는 메타 주소에 붙지 않으니 경로에 직접 쓴다
 export const metadata: Metadata = {
-  metadataBase: new URL('https://artbox-lxtk9yrte-suris-projects.vercel.app'),
-  title: "Interactive Art Gallery | Digital Art Exhibition",
-  description: "몰입감 있는 인터랙티브 웹 아트 전시장. 디지털 아트와 기술이 만나는 공간에서 새로운 예술 경험을 만나보세요.",
-  keywords: ["interactive art", "web art", "digital art", "exhibition", "gallery", "인터랙티브 아트", "웹 아트", "디지털 아트"],
-  authors: [{ name: "Interactive Art Gallery" }],
-  creator: "Interactive Art Gallery",
+  metadataBase: new URL("https://momenttune.com"),
+  title: {
+    default: "모티의 쉬는 날 | 모먼트튠",
+    template: "%s | 모먼트튠",
+  },
+  description: "모티가 좋아하는 곳에 2분 같이 앉아 있어요. 설치 없이 링크 하나로.",
+  authors: [{ name: "모먼트튠" }],
+  creator: "모먼트튠",
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://artbox-lxtk9yrte-suris-projects.vercel.app",
-    siteName: "Interactive Art Gallery",
-    title: "Interactive Art Gallery | Digital Art Exhibition",
-    description: "몰입감 있는 인터랙티브 웹 아트 전시장",
+    url: "/moti",
+    siteName: "모먼트튠",
+    title: "모티의 쉬는 날",
+    description: "모티가 좋아하는 곳에 2분 같이 앉아 있어요. 설치 없이 링크 하나로.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Interactive Art Gallery | Digital Art Exhibition",
-    description: "몰입감 있는 인터랙티브 웹 아트 전시장",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    title: "모티의 쉬는 날",
+    description: "모티가 좋아하는 곳에 2분 같이 앉아 있어요. 설치 없이 링크 하나로.",
   },
 };
 
@@ -56,11 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="dark">
+    <html lang="ko">
       <body className={`${inter.variable} ${blackHanSans.variable} font-sans antialiased`}>
-        <ClientOnly>
-          <PerformanceInit />
-        </ClientOnly>
         <div className="min-h-screen bg-background text-foreground flex flex-col">
           <div className="flex-1">
             {children}

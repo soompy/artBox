@@ -39,9 +39,7 @@ artBox 는 MomentTune 앱(집)으로 들어오는 **설치 없는 웹 입구**�
 - **Tailwind CSS** - 유틸리티 우선 CSS 프레임워크
 
 ### Animation & Interactive
-- **GSAP** - 고성능 애니메이션 라이브러리
 - **Framer Motion** - React 애니메이션 라이브러리
-- **Three.js** - 3D 그래픽스
 - **p5.js** - 창의적 코딩 라이브러리
 
 ### Development
@@ -77,9 +75,10 @@ npm run dev
 # 프로덕션 빌드
 npm run build
 
-# 프로덕션 서버 실행
-npm start
+# 결과는 out/ — 정적 파일. 주소는 basePath '/moti' 기준(예: out/cafe.html → /moti/cafe)
 ```
+
+정적 파일로 내보내므로(`output: 'export'`) `npm start` 는 쓰지 않습니다. 올릴 곳은 `momenttune.com/moti/…` 이고, **배포는 창업자 승인 뒤**에 합니다(브리프 §5-6).
 
 ## 📁 프로젝트 구조
 
@@ -113,7 +112,7 @@ src/
      year: 
      ,
      description: '작품 설명',
-     technologies: ['GSAP', 'Three.js'],
+     technologies: ['WebGL', 'Canvas'],
      // ...
    }
    ```
@@ -137,13 +136,9 @@ src/
 ## 🎯 추천 라이브러리 및 Best Practices
 
 ### 애니메이션
-- **GSAP**: 복잡한 타임라인 애니메이션
 - **Framer Motion**: React 컴포넌트 애니메이션
-- **Lenis**: 부드러운 스크롤 경험
 
 ### 3D & Canvas
-- **Three.js**: 3D 씬 구축
-- **R3F (React Three Fiber)**: React와 Three.js 통합
 - **p5.js**: 창의적 코딩과 제너러티브 아트
 
 ### 성능 최적화

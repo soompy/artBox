@@ -111,27 +111,6 @@ class WebGLManager {
       this.contexts.clear();
     }
   }
-
-  // 메모리 사용량 모니터링 (개발 환경에서만)
-  monitorMemory(): void {
-    if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
-      const monitor = () => {
-        console.log('WebGL Cache Contexts:', this.shaderCache.size);
-        console.log('WebGL Contexts:', this.contexts.size);
-        
-        if ((window as any).performance?.memory) {
-          const memory = (window as any).performance.memory;
-          console.log('Memory Usage:', {
-            used: Math.round(memory.usedJSHeapSize / 1024 / 1024) + 'MB',
-            total: Math.round(memory.totalJSHeapSize / 1024 / 1024) + 'MB',
-            limit: Math.round(memory.jsHeapSizeLimit / 1024 / 1024) + 'MB'
-          });
-        }
-      };
-      
-      setInterval(monitor, 10000); // 10초마다 모니터링
-    }
-  }
 }
 
 export const webglManager = WebGLManager.getInstance();

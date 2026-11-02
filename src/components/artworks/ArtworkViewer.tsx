@@ -2,10 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Artwork } from '@/types/artwork';
-import { RhythmOfCommute } from './RhythmOfCommute';
 import { LunchBreak } from './LunchBreak';
+
+// 1,200줄짜리 작품이라 열 때만 불러온다
+const RhythmOfCommute = dynamic(() => import('./RhythmOfCommute').then((m) => m.RhythmOfCommute), {
+  ssr: false,
+});
 import '@/styles/projects.scss';
 
 interface ArtworkViewerProps {
