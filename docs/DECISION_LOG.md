@@ -173,7 +173,7 @@ Alternatives Considered:
 Impact:
 
 - 위 2026-07-16 항목의 «success metric 은 mood shift» · «metadata 에 emotion·stress 필드» · 아래 측정 항목의 «before/after mood» 는 **MomentTune 비의료 원칙과 충돌해 보류**한다 — 기분 전후 비교 · 심박·HRV · 효능 문구를 쓰지 않는다(브리프 §2)
-- 호스팅은 Vercel 이 아니라 `momenttune.com/art/…`(브리프 §2-6)
+- 호스팅은 Vercel 이 아니라 `momenttune.com/moti/…` — 카페는 `/moti/cafe`, 다음 작품도 `/moti/<공간>`(브리프 §2-6)
 - 작업 순서: 문서 정리 → 빌드 손보기 → 카페 작품 틀(회색 상자) → 그림(창업자) → 배포(창업자 승인)
 
 Owner: 이수민
