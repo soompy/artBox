@@ -1,19 +1,12 @@
-'use client';
+import Link from 'next/link';
 
-import dynamic from 'next/dynamic';
-
-const HomePage = dynamic(() => import('@/components/pages/HomePage'), {
-  ssr: false,
-  loading: () => (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white mx-auto mb-4"></div>
-        <p className="text-white font-black-han-sans text-xl">갤러리를 준비하고 있습니다...</p>
-      </div>
-    </div>
-  )
-});
-
+// 입구에는 갤러리 홈이 없다 — /moti 는 지금 작품(카페)으로 보낸다.
+// 정적 파일이라 서버 리디렉트가 없다: meta refresh(JS 없이도) + 링크
 export default function Home() {
-  return <HomePage />;
+  return (
+    <main className="min-h-screen flex items-center justify-center px-6 text-center">
+      <meta httpEquiv="refresh" content="0; url=/moti/cafe" />
+      <Link href="/cafe">모티의 쉬는 날 · 창가 자리</Link>
+    </main>
+  );
 }
