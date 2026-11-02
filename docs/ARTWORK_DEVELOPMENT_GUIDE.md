@@ -1,5 +1,7 @@
 # ArtBox Artwork Development Guide
 
+> **2026-11-02 안내:** 이 문서의 «대상 감정 상태 · 추천 조건 · 감정 메타데이터» 관련 기준은 보류(PARK)되었다 — [`PARKED.md`](PARKED.md) · 정본 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md). 본문 정리는 브리프 §5-3 에서 한다.
+
 모든 새로운 Artwork는 shared interface를 구현하고 release checklist를 통과해야 합니다.
 
 ## New Content Self Check

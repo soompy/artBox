@@ -18,6 +18,8 @@ Impact:
 - 모든 미래 콘텐츠는 emotional intent와 recommendation metadata를 포함해야 합니다.
 - success metric은 passive view보다 mood shift와 completion을 우선합니다.
 
+> → 2026-11-02 보류(PARK): 브리프 §2 와 충돌. «감정 변화가 핵심 가치» · «emotional intent 필수» · «mood shift 지표» 를 쓰지 않는다. artBox 의 자리는 «MomentTune 의 웹 입구», 작품은 «모티가 주인공인 공간»(아래 2026-11-02 항목). [`PARKED.md`](PARKED.md) P-1 · P-2
+
 ## 2026-07-16: Metadata-Driven Content
 
 Decision:
@@ -32,6 +34,8 @@ Impact:
 
 - schema-compliant metadata가 없는 콘텐츠는 출시할 수 없습니다.
 - recommendation readiness가 release requirement가 됩니다.
+
+> → 2026-11-02 보류(PARK): 브리프 §2 · §5-3 · §7 과 충돌. 메타데이터 등록 자체는 유지하되, emotion · stress · focus · sleep 같은 상태 값과 추천 가중치는 넣지 않는다(artBox 자체 추천 엔진 ✗). [`PARKED.md`](PARKED.md) P-4
 
 ## 2026-07-16: Mobile and Accessibility as Requirements
 
@@ -49,6 +53,8 @@ Impact:
 - reduced motion을 지원해야 합니다.
 - Exit와 Pause control은 항상 가능해야 합니다.
 - unsupported rendering environment에는 fallback이 필요합니다.
+
+> → 2026-11-02 유지: 결정 내용(모바일 · 접근성 필수)은 브리프 §3-6 과 맞아 그대로 둔다. 근거 문장의 «감정 지원» 표현만 더는 쓰지 않는다(브리프 §2)
 
 ## 2026-07-16: New Content Self Check
 
@@ -69,6 +75,8 @@ Impact:
 - 콘텐츠 구현 전 self check가 필수 gate가 됩니다.
 - PR에는 대상 감정 상태, 사용자 핵심 행동, 추천 조건을 포함해야 합니다.
 - 세 질문에 답하지 못하는 콘텐츠는 merge할 수 없습니다.
+
+> → 2026-11-02 보류(PARK): 브리프 §2 와 충돌. «어떤 감정 상태를 위한 것인가» · «추천 엔진이 언제 추천하는가» 질문을 쓰지 않는다. 지금 기준은 `EXPERIENCE_PRINCIPLES.md` 의 «내보내기 전 확인». [`PARKED.md`](PARKED.md) P-4
 
 ## 2026-07-16: MVP Integration Boundary (D-1)
 
@@ -91,6 +99,8 @@ Impact:
 
 Owner: 이수민
 
+> → 2026-11-02 보류(PARK): 브리프 §2 와 충돌. mood 자기입력 · HR/HRV/Sleep/Stress 연동(Phase 4 포함) · RECOMMENDATION_ENGINE contract 를 쓰지 않는다. «로그인/웨어러블 없이 동작» 만 남는다. [`PARKED.md`](PARKED.md) P-3 · P-4
+
 ## 2026-07-16: MVP Primary User (D-2)
 
 Decision:
@@ -111,6 +121,8 @@ Impact:
 - 독립 방문자도 secondary로 계속 고려합니다(브리프 7절 유지).
 
 Owner: 이수민
+
+> → 2026-11-02 대체: 브리프 §1 과 충돌. artBox 가 웹 입구가 되면서 1차 사용자는 **링크로 처음 들어온 사람**(MomentTune 을 아직 모르는 사람)이다. 앱 사용자는 `?from=momenttune` 으로 들어오는 경우만. `SERVICE_DEFINITION.md` Target User
 
 ## 2026-07-16: MVP Content Scope (D-3)
 
@@ -133,6 +145,8 @@ Impact:
 
 Owner: 이수민
 
+> → 2026-11-02 보류(PARK): 브리프 §2 와 충돌. 감정 기능 카테고리(Calm/Focus/Breathing …)로 작품을 나누지 않는다. 작품은 공간(카페 · 전시 · 산책 · 서점 · 공원 · 마켓)으로 나누고 첫 작품은 카페 한 점. [`PARKED.md`](PARKED.md) P-1 · `CONTENT_STRATEGY.md`
+
 ## 2026-07-16: MVP Success Metrics (D-4)
 
 Decision:
@@ -153,6 +167,8 @@ Impact:
 - 분석 이벤트는 RECOMMENDATION_ENGINE Feedback Signals와 정렬합니다.
 
 Owner: 이수민
+
+> → 2026-11-02 보류(PARK): 브리프 §2 와 충돌. 전후 기분 비교 · 감정 개선률 · 클라이언트 분석 이벤트를 쓰지 않는다. 재는 것은 브리프 §6(`?from=` 별 서버 요청 수 · 끝 화면 요청 수 · App Store 캠페인)뿐. [`PARKED.md`](PARKED.md) P-2
 
 ## 2026-11-02: artBox 는 MomentTune 의 웹 입구 · 작품은 모티가 주인공인 공간
 
@@ -175,6 +191,23 @@ Impact:
 - 위 2026-07-16 항목의 «success metric 은 mood shift» · «metadata 에 emotion·stress 필드» · 아래 측정 항목의 «before/after mood» 는 **MomentTune 비의료 원칙과 충돌해 보류**한다 — 기분 전후 비교 · 심박·HRV · 효능 문구를 쓰지 않는다(브리프 §2)
 - 호스팅은 Vercel 이 아니라 `momenttune.com/moti/…` — 카페는 `/moti/cafe`, 다음 작품도 `/moti/<공간>`(브리프 §2-6)
 - 작업 순서: 문서 정리 → 빌드 손보기 → 카페 작품 틀(회색 상자) → 그림(창업자) → 배포(창업자 승인)
+
+Owner: 이수민
+
+## 2026-11-02: 문서 정리(브리프 §5-1)
+
+Decision:
+
+위 결정에 맞춰 `MISSION.md` · `README.md` · `docs/SERVICE_DEFINITION.md` · `PRODUCT_BOOK.md` · `CONTENT_STRATEGY.md` · `EXPERIENCE_PRINCIPLES.md` · `ROADMAP.md` · `ARTWORK_SCHEMA.md` · `RECOMMENDATION_ENGINE.md` 와 `src/data/artworks.ts` 의 작품 설명 문자열을 고쳐 쓴다. 효과를 약속하는 표현은 지우고, 기분 전후 비교 · 생체 신호 연동 · AI 개인화 · 자체 추천 엔진 · 감정 메타데이터는 [`PARKED.md`](PARKED.md) 로 뗀다. 이 로그의 과거 항목은 지우지 않고 «→ 2026-11-02 …» 표시만 단다.
+
+Rationale:
+
+브리프 §2(MomentTune 원칙)와 기존 문서가 어긋나 있으면, 다음 작업자(사람이든 AI 든)가 옛 문서를 보고 효과 문구나 기분 기록을 다시 넣을 수 있다.
+
+Impact:
+
+- 다음은 브리프 §5-2 «빌드 손보기»
+- `ENGINEERING_HARNESS.md` · `ARTWORK_DEVELOPMENT_GUIDE.md` · `DESIGN_SYSTEM.md` 는 이번 대상 목록 밖이라 맨 위에 보류 안내 한 줄만 달았다 — 본문 정리는 §5-3 카페 작품 틀을 만들 때
 
 Owner: 이수민
 

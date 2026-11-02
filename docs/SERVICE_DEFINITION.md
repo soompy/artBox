@@ -1,109 +1,61 @@
 # MomentTune ArtBox Service Definition
 
+> 2026-11-02 고쳐 씀 — 정본은 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md). 그 전 정의(감정 상태 맞춤 추천 서비스 · 감정 입력 → 추천 → 피드백 루프 · 생체 신호/AI 개인화 확장)는 [`PARKED.md`](PARKED.md) P-1~P-6 으로 뗐다.
+
 ## Service Definition
 
-ArtBox는 사용자의 감정 상태에 맞는 짧은 인터랙티브 세션을 추천하고 렌더링하는 감정 웰니스 콘텐츠 서비스입니다.
+ArtBox 는 MomentTune 앱으로 들어오는 **설치 없는 웹 입구**입니다. 링크 하나로 열리는 짧은 작품에서 모티가 한 공간을 즐기고, 방문자는 곁에 잠깐 앉아 있다가 끝 화면에서 MomentTune «쉴 곳 지도» 로 넘어갑니다.
 
-핵심 산출물은 작품 감상이 아닙니다. 핵심 산출물은 감정 전환입니다.
+ArtBox 는 독립 제품이 아닙니다. 추천 · 기록 · 계정은 모두 MomentTune 앱의 몫입니다.
 
 ## Problem
 
-사용자는 불안, 피로, 산만함, 외로움, 과자극을 느끼지만, 대부분의 디지털 제품은 더 많은 주의를 요구합니다.
-
-기존 웰니스 경험은 때로 너무 수동적이거나, 너무 의료적이거나, 너무 길거나, 너무 일반적입니다.
+MomentTune 앱은 공개 한 달 동안 사람을 거의 모으지 못했습니다(광고 클릭 696 → 설치 1). 광고 → 홈페이지 → App Store → 설치 → 온보딩으로 이어지는 길이 길었고, **한 문장 · 한 장면 · 한 번의 클릭**이 없었습니다.
 
 ## Solution
 
-ArtBox는 사용자의 감정 상태와 맥락에 맞는 metadata-driven interactive content를 제공합니다.
+설치 없이 열리는 «모티의 쉬는 날» 작품 한 점.
 
 서비스 흐름:
 
-1. 사용자의 상태를 이해합니다.
-2. 감정 목적에 맞는 콘텐츠 세션을 추천합니다.
-3. 짧은 인터랙티브 경험을 렌더링합니다.
-4. 피드백을 수집합니다.
-5. 다음 추천을 개선합니다.
+1. 링크를 연다(SNS · 친구 공유).
+2. 모티가 한 공간을 즐기는 장면이 2분 흐른다. 방문자는 두드려서 작은 반응을 본다.
+3. 끝 화면: «잠깐 같이 앉아 있었네요» → «이번 주말, 이런 카페 하나 어때요?» → [쉴 곳 지도에서 카페 보기](App Store 캠페인 링크).
 
 ## Target User
 
-Primary user:
-
-- 감정 기반 콘텐츠 경험을 원하는 MomentTune 사용자
-- 하루 중 짧은 웰니스 순간이 필요한 사용자
-- 긴 명상이나 텍스트보다 감각적, 시각적, 인터랙티브 경험을 선호하는 사용자
-
-Secondary user:
-
-- 감정 리셋이 필요한 창작자
-- 집중과 회복이 필요한 학생과 직장인
-- 디지털 웰니스와 인터랙티브 미디어에 관심 있는 사용자
-
-## JTBD
-
-감정적으로 흐트러졌을 때, 나는 현재 상태에 맞는 짧은 인터랙티브 경험을 통해 더 안정되고 집중되거나 회복된 상태로 돌아가고 싶다.
-
-## User Value
-
-- 빠른 감정 리셋
-- 낮은 인지 부담
-- 아름다운 감각적 상호작용
-- 추천을 통한 개인적 관련성
-- 부드러운 피드백 루프
+- 링크로 처음 들어온 사람 — MomentTune 을 아직 모른다
+- 쉬는 날 «뭘 하지» 를 고민하는 사람(MomentTune 이 겨냥하는 결핍)
+- 앱에서 들어온 MomentTune 사용자(`?from=momenttune`) — 끝 화면에서 앱으로 돌아간다
 
 ## User Story
 
-잠들기 전 불안을 느끼는 사용자가 MomentTune ArtBox를 열고 자신의 감정을 확인합니다. ArtBox는 Calm 또는 Breathing 세션을 추천합니다. 사용자는 2분 동안 부드러운 시각 경험과 상호작용하고, 세션 후 더 안정된 상태를 기록합니다.
+친구가 보낸 링크를 연다. 비 오는 카페 창가에서 모티가 코코아를 마시고 있다. 유리창을 두드리자 빗방울이 흘러내린다. 2분 뒤 모티가 꾸벅 졸고, «이번 주말, 이런 카페 하나 어때요?» 가 뜬다. 쉴 곳 지도를 열어 본다.
 
 ## Feature Priority
 
-### P0
+### P0 (카페 작품)
 
-- 감정 입력
-- 콘텐츠 metadata schema
-- 추천 가능한 콘텐츠 목록
-- interactive content viewer
-- 모바일 지원
-- sound optional mode
-- session feedback
+- 장면 레이어 · 2분 흐름(`SESSION_SECONDS = 120`)
+- 두드림 네 곳
+- 빗소리 버튼(기본 꺼짐)
+- 끝 화면 · 친구에게 공유 · 한 번 더 앉아 있기
+- 모바일 · 접근성(reduced motion · 키보드 · 화면 읽기)
+- `momenttune.com/moti/cafe` 정적 배포
 
 ### P1
 
-- recommendation scoring
-- runtime configuration
-- accessibility settings
-- content preview
-- analytics events
+- 다음 공간(`/moti/<공간>` — 예: 서점)
+- 한국어 메타 · OG 이미지
 
-### P2
+## 하지 않는 것
 
-- AI personalization
-- adaptive content parameters
-- creator content format
-- program-based wellness journey
+브리프 §7 그대로 — 효과 문구 · 기분 전후 비교 · 심박/HRV · AI 개인화 · 분석 스크립트/쿠키 · artBox 자체 추천 엔진 · 게이미피케이션.
 
-## MVP
+## 재는 것
 
-MVP는 핵심 루프를 검증해야 합니다.
+숫자 기준 없이 «재기만» 합니다(브리프 §6).
 
-Emotion input -> recommended content -> interactive session -> feedback
-
-MVP 카테고리:
-
-- Calm
-- Focus
-- Breathing
-
-MVP 지표:
-
-- 시작률
-- 완료율
-- 감정 개선률
-- 모바일 완료율
-- 반복 사용률
-
-## Future Expansion
-
-- HR, HRV, Sleep, Stress, Weather, Time 기반 추천
-- AI 기반 motion, sound, palette, duration 조정
-- 감정 인터랙티브 콘텐츠 creator ecosystem
-- B2B wellness와 education program
+- 방문: `?from=` 별 서버 요청 수
+- 끝까지: 끝 화면 자원 요청 수
+- 넘어감: App Store Connect 캠페인 `ct=artbox_cafe` 의 페이지 조회 · 다운로드

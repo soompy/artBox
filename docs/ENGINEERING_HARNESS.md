@@ -1,5 +1,7 @@
 # ArtBox Engineering Harness
 
+> **2026-11-02 안내:** 이 문서의 «대상 감정 상태 · 추천 조건 · 감정 메타데이터» 관련 기준은 보류(PARK)되었다 — [`PARKED.md`](PARKED.md) · 정본 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md). 본문 정리는 브리프 §5-3 에서 한다.
+
 ## Goal
 
 새로운 콘텐츠를 추가해도 기존 플랫폼은 절대 깨지지 않아야 합니다.
@@ -165,7 +167,7 @@ Commit naming:
 모든 콘텐츠는 아래를 문서화합니다.
 
 - 목적
-- 감정 전환
+- 장면(모티 · 공간 · 한 일)
 - 추천 metadata
 - interaction type
 - duration

@@ -1,54 +1,27 @@
 # MomentTune ArtBox Roadmap
 
-## Phase 1: Repositioning
+> 2026-11-02 고쳐 씀 — 정본은 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md) §5. 그 전 로드맵의 Phase 3~6(기분 입력 · before/after 추적 · 생체 신호 연동 · AI 개인화 · 플랫폼 확장)은 [`PARKED.md`](PARKED.md) P-2~P-6 으로 뗐다.
 
-- product language를 gallery에서 content platform으로 전환합니다.
-- mission과 documentation을 정립합니다.
-- content schema를 정의합니다.
-- engineering harness를 정의합니다.
-- 기존 artwork를 emotional intent 기준으로 재해석합니다.
+## 지금: 첫 작품 «모티의 쉬는 날 · 창가 자리»(카페)
 
-## Phase 2: Content Engine Foundation
+그림 없이 지금 할 수 있는 것:
 
-- metadata-driven content registry 구축
-- content category와 emotion tag 추가
-- shared ContentShell과 ContentViewer 생성
-- content item별 dynamic loading 적용
-- preview component contract 추가
+1. **문서 정리** — MomentTune 원칙(브리프 §2)과 충돌하는 표현을 지우거나 보류로 뗀다
+2. **빌드 손보기** — `momenttune.com/moti/…` 정적 배포(`output: 'export'` · `basePath: '/moti'`) · 원격 폰트 제거 · 안 쓰는 의존성 정리 · 한국어 메타/OG · 종이톤
+3. **카페 작품 틀** — 회색 빈 상자로 장면 레이어 · 두드림 네 곳 · 비/김 · 120초 흐름 · 빗소리 버튼 · 끝 화면 · 접근성
 
-## Phase 3: MVP Emotional Loop
+그 뒤:
 
-- mood input 추가
-- metadata 기반 content recommendation
-- Calm, Focus, Breathing 세션 출시
-- session feedback 추가
-- completion과 before/after mood 추적
+4. **그림 7장** — 창업자
+5. 그림 끼우기 · WebP 굽기 · 무게 재기 · 실제 아이폰 Safari 에서 발열 · 끊김 확인
+6. **`momenttune.com/moti/cafe` 에 올리기** — 배포는 창업자 승인
+7. 창업자 개인 스레드 글 · 15초 화면 녹화 — 발신은 창업자
 
-## Phase 4: Recommendation Integration
+## 다음
 
-- HR, HRV, Sleep, Stress, Mood, Weather, Time 입력 연결
-- recommendation scoring 구현
-- context와 preference weighting 추가
-- analytics를 content ranking으로 feedback
+- 카페를 재 본 뒤(브리프 §6) 다음 공간을 정한다 — `momenttune.com/moti/<공간>`(서점 · 전시 · 산책 · 공원 · 마켓 중)
+- 작품 틀(시간 · 끝 화면 · 소리 버튼)을 다음 공간에서 그대로 다시 쓴다
 
-## Phase 5: Personalization
+## 하지 않는 것
 
-- AI-adjusted runtime parameter 추가
-- duration, intensity, color, sound, interaction mode 개인화
-- user preference profile 구축
-- adaptive content variant 추가
-
-## Phase 6: Platform Expansion
-
-- creator-ready content template 생성
-- metadata와 accessibility validation tool 추가
-- emotional wellness program 출시
-- enterprise와 education use case 지원
-
-## Near-Term Priorities
-
-1. artwork data에서 content schema로 전환
-2. route와 data inconsistency 수정
-3. reusable content viewer 생성
-4. 기존 콘텐츠에 recommendation metadata 추가
-5. mobile과 accessibility check 추가
+브리프 §7 — 효과 문구 · 기분 전후 비교 · 심박/HRV · AI 개인화 · 분석 스크립트/쿠키 · Vercel 호스팅 · artBox 자체 추천 엔진 · 게이미피케이션 · «작품이 매일 바뀐다» 약속.

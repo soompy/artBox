@@ -1,101 +1,73 @@
 # MomentTune ArtBox Product Book
 
+> 2026-11-02 고쳐 씀 — 정본은 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md). 그 전 비전(«감정 콘텐츠 플랫폼» 정의 · 3년 로드맵의 생체 신호/AI 개인화 · 감정 전후 지표)은 [`PARKED.md`](PARKED.md) 로 뗐다.
+
 ## Project Vision
 
-MomentTune ArtBox는 사용자의 감정 상태에 맞는 인터랙티브 콘텐츠를 제공하는 Interactive Wellness Content Platform입니다.
+MomentTune ArtBox 는 **MomentTune 앱으로 들어오는 설치 없는 웹 입구**입니다.
 
-ArtBox는 작품을 전시하는 장소가 아니라 감정을 경험으로 바꾸는 플랫폼입니다. 시각, 소리, 움직임, 터치, 리듬을 통해 사용자가 자신의 상태를 인식하고 더 나은 감정 상태로 이동하도록 돕습니다.
+작품마다 수달 캐릭터 «모티» 가 주인공으로 한 공간을 즐기는 장면을 보여 주고, 방문자는 곁에 잠깐 앉아 같이 쉽니다. 공간은 MomentTune «쉴 곳 지도» 의 장소 종류와 같고, 끝 화면이 «이번 주말, 이런 곳 하나» 로 앱에 이어집니다.
 
 ## Mission
 
-짧고 아름다운 인터랙티브 경험을 통해 사용자의 감정 인식, 감정 조율, 감정 회복을 돕습니다.
+링크 하나 · 장면 하나 · 클릭 하나로, «쉬는 날 뭘 하지» 를 고민하는 사람을 MomentTune 쉴 곳 지도까지 데려옵니다.
 
 ## Core Value
 
-- Emotional Awareness: 사용자가 현재 감정을 판단 없이 알아차리도록 돕습니다.
-- Interactive Healing: 터치, 모션, 사운드, 리듬을 감정 조율 도구로 사용합니다.
-- Personal Resonance: 사용자의 지금 순간에 맞는 콘텐츠를 제공합니다.
-- Gentle Technology: 기술은 전면에 드러나지 않고 감정 경험을 지지합니다.
-- Daily Wellness: 일상의 짧은 틈에서 감정 회복을 가능하게 합니다.
+- 모티의 쉬는 날: 우리 캐릭터가 주인공인, 우리만의 장면
+- 곁에 앉아 같이 쉬기: 보는 쉼과 작은 손짓 하나 — 할 일을 주지 않는다
+- 설치 없는 링크: 앱을 깔기 전에 먼저 한 장면을 본다
+- 쉴 곳으로 이어짐: 끝 화면이 실제 장소(카페 · 전시 · 산책 · 서점 · 공원 · 마켓)로 넘어간다
+- 조용한 기술: 기술은 드러나지 않고, 개인정보를 남기지 않는다
 
 ## Why This Project Exists
 
-대부분의 디지털 콘텐츠는 사용자의 주의를 붙잡는 데 최적화되어 있습니다. ArtBox는 사용자의 주의를 다시 자기 자신에게 돌려주는 경험을 만듭니다.
+MomentTune 앱은 공개 한 달 동안 유입이 거의 없었습니다(광고 클릭 696 → 설치 1). 웹 가상 사찰 «산사» 사례는 «한 문장 · 한 장면 · 설치 없는 링크» 가 사람을 모은다는 것을 보여 줬습니다. artBox 는 그 입구를 산사를 따라 하지 않고 **모티**로 만듭니다.
 
-사용자는 불안, 피로, 산만함, 외로움, 과자극 상태를 느끼지만 무엇을 해야 할지 모를 때가 많습니다. ArtBox는 감정 선택, 콘텐츠 진입, 인터랙션, 피드백이라는 짧은 루프를 통해 낮은 진입 장벽의 감정 리셋을 제공합니다.
+## 작품 계획
 
-## Long-term Vision: 3년
+| 순서 | 공간 | 주소 | 상태 |
+|---|---|---|---|
+| 1 | 카페 «모티의 쉬는 날 · 창가 자리» | `momenttune.com/moti/cafe` | 작업 중(브리프 §5) |
+| 다음 | 서점 · 전시 · 산책 · 공원 · 마켓 중 | `momenttune.com/moti/<공간>` | 카페를 재 본 뒤 정한다 |
 
-### Year 1: Emotional Content Lab
-
-- 감정 기반 콘텐츠 카테고리 정의
-- metadata-driven content engine 구축
-- Calm, Focus, Breathing, Sleep, Creativity, Nature, Meditation, Drawing, Music Reactive, Generative Art 프로토타입 출시
-- 세션 피드백과 기본 추천 metadata 수집
-
-### Year 2: Personalized Wellness Experience
-
-- MomentTune 사용자 상태 데이터와 ArtBox 연결
-- mood, time, weather, stress, sleep, HR, HRV 기반 개인화
-- completion, interaction, before/after feedback으로 추천 개선
-
-### Year 3: Wellness Content Platform
-
-- creator-ready content format 제공
-- 브랜드 웰니스, 교육, 감정 프로그램으로 확장
-- AI 기반 개인화와 adaptive content parameter 구축
+기존 작품 «점심의 틈» · «출근의 리듬» 은 입구로 쓰지 않습니다.
 
 ## Brand Identity
 
-ArtBox는 감정을 조율하는 부드러운 인터랙티브 공간입니다.
+ArtBox 는 모티가 쉬는 날을 보내는 작은 공간들입니다.
 
 Brand keywords:
 
-- Emotional
-- Immersive
-- Gentle
-- Reflective
-- Adaptive
-- Sensory
-- Wellness
-- Poetic Technology
+- 모티
+- 쉬는 날
+- 곁에 앉기
+- 따뜻한 종이톤
+- 색연필 · 크레용 질감
+- 조용함
+- 설치 없음
 
 ## Design Philosophy
 
-- 감정이 먼저이고 UI는 그 다음입니다.
-- 기본값은 차분해야 합니다.
-- 몰입 중에는 UI를 최소화합니다.
-- 장식보다 아름다운 상호작용을 우선합니다.
-- 접근성과 성능은 감정 경험의 일부입니다.
+- 장면이 먼저이고 UI 는 그 다음입니다.
+- 기본값은 조용해야 합니다(소리 기본 꺼짐).
+- 장면이 흐르는 동안 UI 를 최소화합니다.
+- 장식보다 작은 손짓 하나의 반응을 우선합니다.
+- 접근성과 성능은 장면의 일부입니다.
 
-## Emotional Experience
+## 쓰는 말
 
-ArtBox 경험은 감정 전환을 기준으로 설계합니다.
+한 일만 말합니다 — «모티의 쉬는 날» · «잠깐 쉬어 가는 짧은 작품» · «곁에 앉아 같이 쉬기» · «잠깐 같이 앉아 있었네요». 효과를 약속하는 말은 쓰지 않습니다(브리프 §2-1).
 
-- 불안에서 안정으로
-- 산만함에서 집중으로
-- 피로에서 회복으로
-- 무기력에서 활력으로
-- 외로움에서 위로로
-- 막힘에서 창의성으로
+## 재는 것
 
-## Success Metrics
+숫자 기준 없이 «재기만» 합니다(브리프 §6).
 
-- 세션 시작률
-- 세션 완료율
-- before/after mood improvement
-- 재방문율
-- 추천 콘텐츠 클릭률
-- 모바일 완료율
-- 접근성 모드 사용률
-- 평균 performance score
+- `?from=` 별 방문(서버 요청 수)
+- 끝 화면까지 본 수(서버 로그 합계)
+- App Store 캠페인 `ct=artbox_cafe` 페이지 조회 · 다운로드
+- 창업자 주변 몇 명에게 «또 열어 볼 것 같나» 직접 묻기
 
 ## Future Roadmap
 
-- metadata-driven content registry
-- recommendation scoring model
-- runtime content configuration
-- MomentTune integration
-- AI personalization
-- creator tooling
-- emotional wellness program
+[`ROADMAP.md`](ROADMAP.md) 참고.

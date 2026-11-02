@@ -1,85 +1,13 @@
-# MomentTune ArtBox Recommendation Engine
+# MomentTune ArtBox Recommendation Engine — 보류(PARK)
 
-ArtBox 추천은 MomentTune의 사용자 상태 신호를 인터랙티브 콘텐츠로 연결합니다.
+> **2026-11-02 보류(PARK): 브리프 §2 · §7 과 충돌.** artBox 는 자체 추천 엔진을 갖지 않는다.
+> 이 문서에 있던 데이터 흐름(HR · HRV · Sleep · Stress 입력) · 점수 공식 · 피드백 신호(기분 전후 · 생체 변화) · 추천 계약은 [`PARKED.md`](PARKED.md) P-3 · P-4 로 뗐다. 원문은 git 기록에 있다.
 
-## 연결 구조 이미지
+## 지금 artBox 가 하는 일
 
-![MomentTune와 ArtBox 연결 구조](assets/momenttune-artbox-connection.png)
+artBox 작품의 끝 화면은 **고정 링크 하나**로 MomentTune 앱에 이어진다.
 
-## Data Flow
+- 카페: «이번 주말, 이런 카페 하나 어때요?» → [쉴 곳 지도에서 카페 보기] = App Store 캠페인 링크(`ct=artbox_cafe`)
+- 앱에서 들어온 경우(`?from=momenttune`)만 «모먼트튠으로 돌아가기»
 
-```mermaid
-flowchart TD
-    A["Input"] --> A1["HR"]
-    A --> A2["HRV"]
-    A --> A3["Sleep"]
-    A --> A4["Stress"]
-    A --> A5["Mood"]
-    A --> A6["Weather"]
-    A --> A7["Time"]
-    A1 --> B["Analysis"]
-    A2 --> B
-    A3 --> B
-    A4 --> B
-    A5 --> B
-    A6 --> B
-    A7 --> B
-    B --> C["Recommendation"]
-    C --> D["Interactive Content"]
-    D --> E["Feedback"]
-    E --> C
-```
-
-## Scoring Inputs
-
-- emotion match
-- stress fit
-- focus fit
-- sleep fit
-- energy fit
-- time of day
-- weather context
-- user preference
-- completion history
-- freshness
-
-## Score Formula
-
-```ts
-recommendationScore =
-  emotionMatch * 0.30 +
-  contextFit * 0.20 +
-  personalizationFit * 0.20 +
-  difficultyFit * 0.10 +
-  durationFit * 0.10 +
-  freshness * 0.10;
-```
-
-## Feedback Signals
-
-- session started
-- session completed
-- session exited early
-- duration
-- interaction count
-- sound usage
-- before mood
-- after mood
-- user rating
-- available physiological change
-
-## Recommendation Contract
-
-모든 콘텐츠는 아래 값을 제공해야 합니다.
-
-- source emotion
-- target emotion
-- category
-- duration
-- difficulty
-- interaction type
-- stress fit
-- focus fit
-- sleep fit
-- recommendation weight
-- accessibility support
+어떤 장소를 보여 줄지는 MomentTune 앱(쉴 곳 지도)이 정한다. artBox 는 방문자의 상태를 묻지도, 기록하지도, 점수 매기지도 않는다.

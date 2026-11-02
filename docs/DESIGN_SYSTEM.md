@@ -1,6 +1,8 @@
 # MomentTune ArtBox Design System
 
-ArtBox 디자인 시스템은 차분하고 아름답고 접근 가능한 상호작용을 통해 감정 변화를 지원하기 위해 존재합니다.
+> **2026-11-02 안내:** 이 문서의 «대상 감정 상태 · 추천 조건 · 감정 메타데이터» 관련 기준은 보류(PARK)되었다 — [`PARKED.md`](PARKED.md) · 정본 [`MOTI_CAFE_BRIEF.md`](MOTI_CAFE_BRIEF.md). 본문 정리는 브리프 §5-3 에서 한다.
+
+ArtBox 디자인 시스템은 차분하고 아름답고 접근 가능한 상호작용으로 모티가 주인공인 장면을 그리기 위해 존재합니다.
 
 ## Color Token
 
