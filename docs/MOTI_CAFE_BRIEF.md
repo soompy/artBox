@@ -35,7 +35,7 @@
 3. **모티는 쉬는 날을 즐기는 모습** — 지쳐 쓰러진 모티를 사용자가 돌보는 구도 ✗(감정 돌봄·상담처럼 읽힌다). 힘든 표정 금지
 4. **개인정보** — 분석 스크립트 · 쿠키 · localStorage 기록 ✗ · 링크에 상태·건강 값 ✗ · **기분 전후 비교 · 심박·HRV 연동 ✗** · 외부 폰트 호출 ✗(방문자 IP 가 넘어간다)
 5. **안전** — 빠른 깜빡임·번쩍임·화면 진동 ✗. «출근의 리듬» 의 번개·화면 진동 장면은 광과민·전정 위험이 있어 입구에 쓰지 않는다
-6. **호스팅** — Vercel 이 아니라 **`momenttune.com/art/…`**(MomentTune 홈페이지와 같은 Cloudflare). Vercel 에 두면 MomentTune 처리방침에 수탁자를 새로 적어야 한다
+6. **호스팅** — Vercel 이 아니라 **`momenttune.com/moti/…`**(MomentTune 홈페이지와 같은 Cloudflare). 카페 작품 주소는 **`momenttune.com/moti/cafe`**(창업자 2026-11-02). Vercel 에 두면 MomentTune 처리방침에 수탁자를 새로 적어야 한다
 
 ## 3. 작품
 
@@ -152,7 +152,8 @@
    - 측정·생체: 기분 전후 비교(`docs/EXPERIENCE_PRINCIPLES.md` · `docs/ROADMAP.md` · `docs/DECISION_LOG.md` · `docs/ARTWORK_SCHEMA.md` 의 `trackMoodBeforeAfter`) · HR·HRV·Sleep 연동(`docs/PRODUCT_BOOK.md` · `docs/ROADMAP.md` · `docs/RECOMMENDATION_ENGINE.md`) · AI 개인화
    - artBox 의 자리를 «MomentTune 의 웹 입구» 로, 작품 방향을 «모티가 주인공인 공간» 으로 고쳐 적는다(`docs/DECISION_LOG.md` 2026-11-02 항목 참고)
 2. **빌드 손보기**
-   - `next.config.js` 에 `output: 'export'` · `basePath: '/art'` → `momenttune.com/art/…` 정적 배포(작업 사본에서 빌드 성공 확인, 결과 약 3.2MB)
+   - `next.config.js` 에 `output: 'export'` · `basePath: '/moti'` → `momenttune.com/moti/…` 정적 배포(`/art` 로 작업 사본 빌드 성공 확인, 결과 약 3.2MB — 경로 이름만 다르다)
+   - 카페 작품은 **`/moti/cafe`** 에서 바로 열린다 — 앱 라우트 `src/app/cafe/page.tsx`(basePath 가 `/moti` 를 붙인다). 갤러리 홈·`/projects/…` 는 입구에서 쓰지 않는다(정적 export 에서 빼거나 길잡이를 숨긴다)
    - `src/app/globals.css` 의 Google Fonts 원격 import 제거 — `next/font` 가 같은 서체를 이미 자체 제공
    - 안 쓰는 의존성 정리(GSAP · Three.js 는 실제로 불러오는 곳이 없다)
    - «출근의 리듬»(1,218줄)을 지연 로드로 · Chrome 전용 성능 타이머 제거 · `ignoreBuildErrors` 끄기
@@ -164,7 +165,7 @@
 
 4. **그림 7장** — 창업자
 5. 그림 끼우기 · WebP 굽기 · 무게 재기 · 실제 아이폰 Safari 에서 발열·끊김 확인
-6. **`momenttune.com/art/…` 에 올리기** — MomentTune 홈페이지 레포(momenttune-web) · Cloudflare 경로 설정이 필요하다. **배포는 창업자 승인**
+6. **`momenttune.com/moti/…` 에 올리기** — MomentTune 홈페이지 레포(momenttune-web) · Cloudflare 경로 설정이 필요하다. **배포는 창업자 승인**
 7. 창업자 개인 스레드 글 · 15초 화면 녹화(`?from=threads` · `?from=insta`) — **발신은 창업자**
 
 ## 6. 재는 것 — 숫자 기준 없이 «재기만»
@@ -188,7 +189,6 @@
 ## 8. 사람이 정하는 것 (창업자)
 
 - 웹 배포 · SNS 발신 · 비용 · 외부 연락
-- 작품 주소 — `/art/cafe` 그대로 / `/moti/cafe` 처럼 모티를 앞에(**미정**)
 - 빗소리 파일 출처(**미정**)
 
 ## 9. 확정된 것 (창업자 2026-11-02)
@@ -201,6 +201,7 @@
 | 끝 화면 문구 | «잠깐 같이 앉아 있었네요» |
 | 그림 | 창업자가 직접(외부 발주 없음) |
 | 빗소리 | 켜고 끌 수 있게, 기본 꺼짐 |
+| 작품 주소 | **`momenttune.com/moti/cafe`** — 다음 작품도 `/moti/<공간>`(예: `/moti/bookstore`) |
 
 ## 10. 정본 (MomentTune 앱 레포 — `MomentTune/momenttune-app`)
 
