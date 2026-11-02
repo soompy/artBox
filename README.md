@@ -1,5 +1,7 @@
 # MomentTune ArtBox
 
+> **지금 작업 중: 첫 작품 «모티의 쉬는 날 · 창가 자리»(카페)** — 시작은 [`docs/MOTI_CAFE_BRIEF.md`](docs/MOTI_CAFE_BRIEF.md). 이 브리프와 아래 설명이 다르면 브리프를 따른다(아래 설명은 정리 예정).
+
 > MomentTune의 감정 경험을 만드는 인터랙티브 웰니스 콘텐츠 플랫폼
 
 ## Mission
