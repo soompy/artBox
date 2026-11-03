@@ -129,7 +129,17 @@ export const Rain = forwardRef<RainHandle, RainProps>(function Rain({ levelRef, 
 
     if (still) {
       draw();
-      return () => window.removeEventListener('resize', resize);
+      // 멈춘 장면이어도 빗발이 가늘어지는 것(약 100초·끝)은 보여 준다 — 움직임 없이 다시 한 장
+      let drawnLevel = levelRef.current;
+      const id = setInterval(() => {
+        if (levelRef.current === drawnLevel) return;
+        drawnLevel = levelRef.current;
+        draw();
+      }, 1000);
+      return () => {
+        clearInterval(id);
+        window.removeEventListener('resize', resize);
+      };
     }
 
     let frame = 0;

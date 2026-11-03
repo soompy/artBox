@@ -101,6 +101,10 @@ export function MotiCafe() {
   useEffect(() => {
     firedRef.current = { page: false, nod: false };
     levelRef.current = 1;
+    // 한 번 더: 지난 흐름의 한 모금·꾸벅·책장이 첫 장면에서 다시 재생되지 않게
+    setSipKey(0);
+    setNodKey(0);
+    setPageKey(0);
     setHeadTurned(false);
     setUmbrellas([]);
     setPuffs([]);
